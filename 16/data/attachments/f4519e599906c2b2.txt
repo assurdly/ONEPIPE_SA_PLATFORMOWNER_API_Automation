@@ -1,0 +1,5 @@
+{
+    "name": "Senior",
+    "description": "District Directives Coordinator",
+    "permissions": []
+}
