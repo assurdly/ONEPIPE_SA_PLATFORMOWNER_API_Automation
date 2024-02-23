@@ -1,0 +1,4 @@
+{
+    "email": "sultan+995@assurdly.com",
+    "role_id": "30"
+}
