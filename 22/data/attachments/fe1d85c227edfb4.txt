@@ -1,0 +1,5 @@
+{
+    "name": "Chief",
+    "description": "Product Markets Administrator",
+    "permissions": []
+}
