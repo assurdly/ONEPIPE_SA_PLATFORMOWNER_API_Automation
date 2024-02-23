@@ -5898,6 +5898,232 @@
 			"name": "Setting",
 			"item": [
 				{
+					"name": "Add document-",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e5b61932-fdde-403a-9dc9-61511eaf46c8",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is an object with success property\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data property is an object with specific properties\", function () {\r",
+									"    var data = pm.response.json().data;\r",
+									"    pm.expect(data).to.be.an('object').that.has.all.keys('document_name', 'document_size', 'document_type', 'mandatory', 'id', 'updated_at', 'created_at');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Pagination property is null\", function () {\r",
+									"    pm.expect(pm.response.json().pagination).to.be.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"KYB settings success message\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.eql('KYB setting created successfully')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "7e3389c1-d649-4bc1-9457-d769573842fc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"document_name\": \"Certificate of Incorporation\",\n    \"document_size\": \"6\",\n    \"document_type\": \"JPEG\",\n    \"mandatory\": \"yes\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/setting/add-document"
+					},
+					"response": [
+						{
+							"id": "79364aeb-8315-45a7-a28e-3fe82fcdad81",
+							"name": "Add document",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"document_name\": \"Certificate of Incorporation\",\n    \"document_size\": \"2MB\",\n    \"document_type\": \"JPEG\",\n    \"mandatory\": \"yes\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:8000/api/setting/add-document"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Feb 2024 01:37:41 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Feb 2024 01:37:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.17"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"document_name\": \"Certificate of Incorporation\",\n        \"document_size\": \"2MB\",\n        \"document_type\": \"JPEG\",\n        \"mandatory\": \"yes\",\n        \"id\": \"01hp0kdcaq9rgj08409mc5xmwy\",\n        \"updated_at\": \"2024-02-07T01:37:41.000000Z\",\n        \"created_at\": \"2024-02-07T01:37:41.000000Z\"\n    },\n    \"pagination\": null,\n    \"message\": \"Kyb setting created successfully\"\n}"
+						},
+						{
+							"id": "3b82d494-33ae-4024-95e0-97c4fc1b3730",
+							"name": "Add document",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"document_name\": \"Certificate of Incorporation\",\n    \"document_size\": \"2\",\n    \"document_type\": \"JPEG\",\n    \"mandatory\": \"yes\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/setting/add-document"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 21 Feb 2024 17:43:23 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Server",
+									"value": "nginx/1.19.1"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"document_name\": \"Certificate of Incorporation\",\n        \"document_size\": \"2\",\n        \"document_type\": \"JPEG\",\n        \"mandatory\": \"yes\",\n        \"id\": \"01hq6c7nca1zn3sg90xq949pnt\",\n        \"updated_at\": \"2024-02-21T17:43:22.000000Z\",\n        \"created_at\": \"2024-02-21T17:43:22.000000Z\"\n    },\n    \"pagination\": null,\n    \"message\": \"KYB setting created successfully\"\n}"
+						}
+					]
+				},
+				{
 					"name": "Add document",
 					"event": [
 						{
