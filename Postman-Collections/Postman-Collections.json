@@ -9,7 +9,7 @@
 			"name": "Onboarding",
 			"item": [
 				{
-					"name": "Login- Invalid Password",
+					"name": "Login- Incorrect Password",
 					"event": [
 						{
 							"listen": "test",
@@ -26,7 +26,7 @@
 									"    pm.response.to.have.status(\"Unauthorized\");\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Invalid password message is returned \", function () {\r",
+									"pm.test(\"Incorrect password error message is returned \", function () {\r",
 									"    pm.expect(jsonData.message).to.eql(\"Invalid credentials\");\r",
 									"});"
 								],
@@ -142,7 +142,7 @@
 					]
 				},
 				{
-					"name": "Login- Wrong email",
+					"name": "Login- Incorrect email",
 					"event": [
 						{
 							"listen": "test",
@@ -159,7 +159,7 @@
 									"    pm.response.to.have.status(\"Unprocessable Content\");\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Wrong email message is returned \", function () {\r",
+									"pm.test(\"Incorrect email error message is returned \", function () {\r",
 									"    pm.expect(jsonData.message).to.eql(\"Invalid credentials.\");\r",
 									"});"
 								],
@@ -420,7 +420,7 @@
 					]
 				},
 				{
-					"name": "Login- Invalid Email Copy",
+					"name": "Login- Blank",
 					"event": [
 						{
 							"listen": "test",
@@ -476,7 +476,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"email\": \"platformownersalaryadvance.com\",\n \"password\": \"pasword\"\n\n }",
+							"raw": "{\n\"email\": \"\",\n \"password\": \"\"\n\n }",
 							"options": {
 								"raw": {
 									"language": "json"
