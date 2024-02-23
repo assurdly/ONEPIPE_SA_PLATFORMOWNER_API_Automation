@@ -1,0 +1,1 @@
+{"success":true,"data":{"id":34,"name":"Manager","description":"Manager","business_id":null,"status":"active","is_default":0,"created_at":"2024-02-23T09:38:01.000000Z","updated_at":"2024-02-23T09:38:26.000000Z"},"pagination":null,"message":"Manager activated successfully"}

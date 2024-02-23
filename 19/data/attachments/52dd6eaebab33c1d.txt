@@ -1,0 +1,5 @@
+{
+    "name": "Forward",
+    "description": "Regional Operations Director",
+    "permissions": []
+}
