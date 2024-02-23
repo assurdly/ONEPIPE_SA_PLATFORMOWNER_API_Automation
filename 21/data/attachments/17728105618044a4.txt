@@ -1,0 +1,5 @@
+{
+    "name": "Regional",
+    "description": "District Tactics Producer",
+    "permissions": []
+}
