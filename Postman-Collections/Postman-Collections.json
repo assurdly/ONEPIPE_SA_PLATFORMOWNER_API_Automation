@@ -3523,14 +3523,10 @@
 									"pm.test(\"Status code name has string\", function () {",
 									"    pm.response.to.have.status(\"Unprocessable Content\");",
 									"});",
-									"pm.test(\"Response is a JSON object\", function () {",
-									"    pm.expect(pm.response.json()).to.be.an('object');",
-									"});",
 									"",
-									"pm.test(\"Existing team member invite error message\", function () {",
-									"    var jsonData = pm.response.json();",
-									"   pm.expect(jsonData.errors.email[0]).to.eql('Email already invited.')",
-									"})"
+									"pm.test(\"Invalid email invite error message is returned \", function () {",
+									"    pm.expect(jsonData.errors.email[0]).to.eql(\"The email field must be a valid email address.\");",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -3551,7 +3547,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"platformowner@salaryadvance.com\",\n    \"role_id\": \"{{roleId}}\"\n}",
+							"raw": "{\n    \"email\": \"platformownersalaryadvance.com\",\n    \"role_id\": \"{{roleId}}\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4118,6 +4114,150 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"01hq6apy96da1rv6mzdjp0jp5a\",\n        \"email\": \"esseshewen@gmail.com\",\n        \"user_id\": \"01hq6apyefdkt66jpmb0phrgnh\",\n        \"role_id\": \"9\",\n        \"business_id\": null,\n        \"status\": \"pending\",\n        \"accepted_at\": null,\n        \"deleted_at\": null,\n        \"created_at\": \"2024-02-21T17:16:46.000000Z\",\n        \"updated_at\": \"2024-02-21T17:16:46.000000Z\"\n    },\n    \"pagination\": null,\n    \"message\": \"Invite resent to esseshewen@gmail.com successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Accept Invite- Blank profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9d7ad8dd-096c-42c4-a793-91410b8379e3",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Set Team email Value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.collectionVariables.set(\"email\", jsonData.data.email);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is a JSON object\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains a 'success' property\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response data is an object with specific properties\", function () {\r",
+									"    var data = pm.response.json().data;\r",
+									"    pm.expect(data).to.be.an('object').that.includes.all.keys('id', 'email', 'first_name', 'last_name', 'role_id', 'status', 'created_at', 'updated_at', 'name');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Team member invite acceptance  success message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"   pm.expect(jsonData.message).to.eql('Invite accepted successfully')\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "5606e44d-c876-4de0-af05-b8e23f382e35",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"{{$randomFirstName}}\",\n    \"last_name\": \"{{$randomLastName}}\",\n    \"password\": \"{{$randomPassword}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/team-members/invite/:id/accept",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"team-members",
+								"invite",
+								":id",
+								"accept"
+							],
+							"variable": [
+								{
+									"id": "caea733a-1879-4826-9cbc-6f1d9e6ae3db",
+									"key": "id",
+									"value": "{{inviteId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "e8edfe2a-aad1-4962-bc37-2953b8db762c",
+							"name": "Accept Invite",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"test1\",\n    \"last_name\": \"test2\",\n    \"email\": \"test@gmail.com\",\n    \"phone_number\": \"7032123456\",\n    \"business_name\": \"test business\",\n    \"rc_number\": \"212344\",\n    \"business_type\": \"Marketing\",\n    \"password\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/register"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 00:23:12 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 00:23:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Business Registration successful\",\n    \"user\": {\n        \"first_name\": \"test1\",\n        \"last_name\": \"test2\",\n        \"email\": \"test@gmail.com\",\n        \"phone_number\": \"2347032123456\",\n        \"role_id\": 6,\n        \"business_id\": \"01hq1ya419x92arzrs38c4ywnd\",\n        \"status\": \"pending\",\n        \"id\": \"01hq1ya42sybcqr2zyaaj241r5\",\n        \"updated_at\": \"2024-02-20T00:23:05.000000Z\",\n        \"created_at\": \"2024-02-20T00:23:05.000000Z\",\n        \"name\": \"test1 test2\"\n    }\n}"
 						}
 					]
 				},
