@@ -2252,25 +2252,22 @@
 							"script": {
 								"id": "2bf5d287-a053-44a4-be5e-862731574fbf",
 								"exec": [
-									"pm.test(\"Response status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"var jsonData = pm.response.json()\r",
+									"\r",
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
 									"});\r",
 									"\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"Unprocessable Content\");\r",
+									"});\r",
 									"pm.test(\"Response is a JSON object\", function () {\r",
 									"    pm.expect(pm.response.json()).to.be.an('object');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Response has a 'success' property\", function () {\r",
-									"    pm.expect(pm.response.json()).to.have.property('success');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response 'success' property is a boolean\", function () {\r",
-									"    pm.expect(pm.response.json().success).to.be.a('boolean');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Role update success message\", function () {\r",
+									"pm.test(\"Permissions omission error message\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"   pm.expect(jsonData.message).to.eql('Role updated successfully')\r",
+									"   pm.expect(jsonData.errors.permissions[0]).to.eql('The permissions field is required.')\r",
 									"})"
 								],
 								"type": "text/javascript"
@@ -6795,6 +6792,178 @@
 					"response": [
 						{
 							"id": "dd6df9e4-6139-48a5-a34c-0a3d45156969",
+							"name": "Get List of documents Copy",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:8000/api/setting/document/01hp2etcb66kf7rhaq6r7rgt0m"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Feb 2024 19:34:12 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 Feb 2024 19:34:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.17"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"01hp2etcb66kf7rhaq6r7rgt0m\",\n        \"document_name\": \"Another Tax Identification Number\",\n        \"document_size\": \"5MB\",\n        \"document_type\": \"JPEG\",\n        \"mandatory\": \"yes\",\n        \"date_created\": \"07/02/2024 @ 07:55PM\"\n    },\n    \"pagination\": null,\n    \"message\": \"Document details fetched successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update document - Missing document type",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ab464492-f69a-4f43-a858-48a1ee3416f3",
+								"exec": [
+									"pm.globals.set(\"ran\", _.random(1, 19))"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "2dc7fade-5eb5-4c35-9a5b-bf38c454fffb",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is an object with success property\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('success');",
+									"});",
+									"",
+									"pm.test(\"Data property is an object with specific attributes\", function () {",
+									"    var data = pm.response.json().data;",
+									"    pm.expect(data).to.be.an('object').that.includes.all.keys('id', 'document_name', 'document_size', 'document_type', 'mandatory', 'deleted_at', 'created_at', 'updated_at');",
+									"});",
+									"",
+									"pm.test(\"Pagination property is null\", function () {",
+									"    pm.expect(pm.response.json().pagination).to.be.null;",
+									"});",
+									"",
+									"pm.test(\"Document update success message\", function () {",
+									"    pm.expect(pm.response.json().message).to.equal('Document details updated successfully');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "f68b7a16-a9ac-4fa7-9a4d-485997d1fe91",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"document_name\": \"Certificate of Incorporation\",\n    \"document_size\": \"{{ran}}\",\n    \"document_type\": \"JPEG,JPG,PDF\",\n    \"mandatory\": \"yes\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/setting/document/update/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"setting",
+								"document",
+								"update",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "c6dc626c-e467-4bec-8274-d6bb81d250bd",
+									"key": "id",
+									"value": "{{docId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "6d2bee1f-95c6-43d1-ba1a-219ff4e26148",
 							"name": "Get List of documents Copy",
 							"originalRequest": {
 								"method": "GET",
