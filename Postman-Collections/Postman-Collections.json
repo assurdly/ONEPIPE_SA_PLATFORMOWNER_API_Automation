@@ -557,6 +557,135 @@
 					]
 				},
 				{
+					"name": "Forgot Password- Non existing email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "75fdc533-c38b-4ff7-9ace-7f008b4fe0ad",
+								"exec": [
+									"var jsonData = pm.response.json()",
+									"",
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"Not Found\");",
+									"});",
+									"",
+									"pm.test(\"Forgot password error message is returned \", function () {",
+									"    pm.expect(jsonData.message).to.eql(\"User not found\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "11e59a0e-517b-49b6-b92f-f7d8a93b25f8",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "a6d0a223-f5cd-4693-a0ee-1044e14dd6a2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"email\": \"{{$randomEmail}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/password/forgot"
+					},
+					"response": [
+						{
+							"id": "9a36a08b-46a1-4dae-891b-680f8109e408",
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"habeebshewen@gmail.com\",\n    \"password\": \"Password*\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://127.0.0.1:8000/api/login"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 00:10:10 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 00:10:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Login successful\",\n    \"token\": \"13|Gqm4CaOBC8Q6Zmk7T8fBlcsL8Pf9JcG735LJN9Hn576970e3\",\n    \"user\": {\n        \"id\": \"01hq1kpxmkxjjs46pv5kz9pms4\",\n        \"first_name\": \"Habeeb\",\n        \"last_name\": \"Seun\",\n        \"email\": \"habeebshewen@gmail.com\",\n        \"phone\": null,\n        \"role\": {\n            \"id\": 2,\n            \"name\": \"Business Owner\",\n            \"description\": \"Has access to full permissions\",\n            \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"status\": \"active\",\n            \"is_default\": 1,\n            \"created_at\": \"2024-02-19T21:17:50.000000Z\",\n            \"updated_at\": \"2024-02-19T21:17:50.000000Z\",\n            \"permissions\": [\n                {\n                    \"id\": 26,\n                    \"module\": \"dashboard\",\n                    \"action\": \"view_dashboard\",\n                    \"description\": \"View Dashboard\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 26\n                    }\n                },\n                {\n                    \"id\": 27,\n                    \"module\": \"employee\",\n                    \"action\": \"view_employee\",\n                    \"description\": \"View Employee\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 27\n                    }\n                },\n                {\n                    \"id\": 28,\n                    \"module\": \"employee\",\n                    \"action\": \"create_employee\",\n                    \"description\": \"Create Employee\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 28\n                    }\n                },\n                {\n                    \"id\": 29,\n                    \"module\": \"employee\",\n                    \"action\": \"update_employee\",\n                    \"description\": \"Update Employee\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 29\n                    }\n                },\n                {\n                    \"id\": 30,\n                    \"module\": \"employee\",\n                    \"action\": \"activate_employee\",\n                    \"description\": \"Activate Employee\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 30\n                    }\n                },\n                {\n                    \"id\": 31,\n                    \"module\": \"employee\",\n                    \"action\": \"deactivate_employee\",\n                    \"description\": \"Deactivate Employee\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 31\n                    }\n                },\n                {\n                    \"id\": 32,\n                    \"module\": \"employee\",\n                    \"action\": \"delete_employee\",\n                    \"description\": \"Delete Employee\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 32\n                    }\n                },\n                {\n                    \"id\": 33,\n                    \"module\": \"payroll\",\n                    \"action\": \"view_payroll\",\n                    \"description\": \"View Payroll\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 33\n                    }\n                },\n                {\n                    \"id\": 34,\n                    \"module\": \"payroll\",\n                    \"action\": \"create_payroll\",\n                    \"description\": \"Create Payroll\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 34\n                    }\n                },\n                {\n                    \"id\": 35,\n                    \"module\": \"payroll\",\n                    \"action\": \"update_payroll\",\n                    \"description\": \"Update Payroll\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 35\n                    }\n                },\n                {\n                    \"id\": 36,\n                    \"module\": \"payroll\",\n                    \"action\": \"approve_payroll\",\n                    \"description\": \"Approve Payroll\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 36\n                    }\n                },\n                {\n                    \"id\": 37,\n                    \"module\": \"payroll\",\n                    \"action\": \"decline_payroll\",\n                    \"description\": \"Decline Payroll\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 37\n                    }\n                },\n                {\n                    \"id\": 38,\n                    \"module\": \"loan\",\n                    \"action\": \"view_loan\",\n                    \"description\": \"View Loan\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 38\n                    }\n                },\n                {\n                    \"id\": 39,\n                    \"module\": \"loan\",\n                    \"action\": \"book_loan\",\n                    \"description\": \"Book Loan\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 39\n                    }\n                },\n                {\n                    \"id\": 40,\n                    \"module\": \"loan\",\n                    \"action\": \"approve_loan\",\n                    \"description\": \"Approve Loan\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 40\n                    }\n                },\n                {\n                    \"id\": 41,\n                    \"module\": \"loan\",\n                    \"action\": \"decline_loan\",\n                    \"description\": \"Decline Loan\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 41\n                    }\n                },\n                {\n                    \"id\": 42,\n                    \"module\": \"transaction\",\n                    \"action\": \"view_transaction\",\n                    \"description\": \"View Transaction\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 42\n                    }\n                },\n                {\n                    \"id\": 43,\n                    \"module\": \"team\",\n                    \"action\": \"view_team\",\n                    \"description\": \"View Team\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 43\n                    }\n                },\n                {\n                    \"id\": 44,\n                    \"module\": \"team\",\n                    \"action\": \"invite_team\",\n                    \"description\": \"Invite Team\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 44\n                    }\n                },\n                {\n                    \"id\": 45,\n                    \"module\": \"team\",\n                    \"action\": \"edit_team\",\n                    \"description\": \"Edit Team\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 45\n                    }\n                },\n                {\n                    \"id\": 46,\n                    \"module\": \"team\",\n                    \"action\": \"activate_team\",\n                    \"description\": \"Activate Team\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 46\n                    }\n                },\n                {\n                    \"id\": 47,\n                    \"module\": \"team\",\n                    \"action\": \"deactivate_team\",\n                    \"description\": \"Deactivate Team\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 47\n                    }\n                },\n                {\n                    \"id\": 48,\n                    \"module\": \"team\",\n                    \"action\": \"delete_team\",\n                    \"description\": \"Delete Team\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 48\n                    }\n                },\n                {\n                    \"id\": 49,\n                    \"module\": \"role\",\n                    \"action\": \"view_role\",\n                    \"description\": \"View Role\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 49\n                    }\n                },\n                {\n                    \"id\": 50,\n                    \"module\": \"role\",\n                    \"action\": \"create_role\",\n                    \"description\": \"Create Role\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 50\n                    }\n                },\n                {\n                    \"id\": 51,\n                    \"module\": \"role\",\n                    \"action\": \"edit_role\",\n                    \"description\": \"Edit Role\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 51\n                    }\n                },\n                {\n                    \"id\": 52,\n                    \"module\": \"role\",\n                    \"action\": \"activate_role\",\n                    \"description\": \"Activate Role\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 52\n                    }\n                },\n                {\n                    \"id\": 53,\n                    \"module\": \"role\",\n                    \"action\": \"deactivate_role\",\n                    \"description\": \"Deactivate Role\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 53\n                    }\n                },\n                {\n                    \"id\": 54,\n                    \"module\": \"audit-trail\",\n                    \"action\": \"view_audit_trail\",\n                    \"description\": \"View Audit Trail\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 54\n                    }\n                },\n                {\n                    \"id\": 55,\n                    \"module\": \"settings\",\n                    \"action\": \"view_settings\",\n                    \"description\": \"View Settings\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 55\n                    }\n                },\n                {\n                    \"id\": 56,\n                    \"module\": \"settings\",\n                    \"action\": \"edit_settings\",\n                    \"description\": \"Edit Settings\",\n                    \"user_type\": \"business\",\n                    \"created_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"updated_at\": \"2024-02-19T21:14:57.000000Z\",\n                    \"pivot\": {\n                        \"role_id\": 2,\n                        \"permission_id\": 56\n                    }\n                }\n            ]\n        },\n        \"type\": \"business\",\n        \"has_verified_email\": \"2024-02-19T21:18:26.000000Z\",\n        \"business\": {\n            \"id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"business_name\": \"Habeeb12\",\n            \"email\": \"habeebshewen@gmail.com\",\n            \"phone_number\": \"2347012345678\",\n            \"owner_name\": \"Habeeb Seun\",\n            \"date_created\": \"19/02/2024 @ 10:17PM\",\n            \"rc_number\": \"123456\",\n            \"business_type\": \"Telecommunications\",\n            \"status\": \"active\",\n            \"enable_email\": 0,\n            \"enable_sms\": 0,\n            \"has_completed_kyb\": 1,\n            \"owner_id\": \"01hq1kpxmkxjjs46pv5kz9pms4\",\n            \"state_id\": \"01hq1khn17gpgxh7cx5p8k008z\",\n            \"address\": \"This is my address\",\n            \"virtualAccount\": {\n                \"id\": \"01hq1nh4jw5qp7am0cexehvpa0\",\n                \"account_name\": \"Habeeb12\",\n                \"account_number\": \"587685348\",\n                \"bank_name\": \"SUPPORT MICROFINANCE BANK\"\n            }\n        },\n        \"permissions\": [\n            \"view_dashboard\",\n            \"view_employee\",\n            \"create_employee\",\n            \"update_employee\",\n            \"activate_employee\",\n            \"deactivate_employee\",\n            \"delete_employee\",\n            \"view_payroll\",\n            \"create_payroll\",\n            \"update_payroll\",\n            \"approve_payroll\",\n            \"decline_payroll\",\n            \"view_loan\",\n            \"book_loan\",\n            \"approve_loan\",\n            \"decline_loan\",\n            \"view_transaction\",\n            \"view_team\",\n            \"invite_team\",\n            \"edit_team\",\n            \"activate_team\",\n            \"deactivate_team\",\n            \"delete_team\",\n            \"view_role\",\n            \"create_role\",\n            \"edit_role\",\n            \"activate_role\",\n            \"deactivate_role\",\n            \"view_audit_trail\",\n            \"view_settings\",\n            \"edit_settings\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
 					"name": "Forgot Password",
 					"event": [
 						{
