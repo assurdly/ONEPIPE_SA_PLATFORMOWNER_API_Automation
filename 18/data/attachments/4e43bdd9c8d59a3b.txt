@@ -1,0 +1,5 @@
+{
+    "name": "Human",
+    "description": "Investor Markets Developer",
+    "permissions": []
+}
