@@ -1915,340 +1915,6 @@
 					]
 				},
 				{
-					"name": "Update Role",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "2bf5d287-a053-44a4-be5e-862731574fbf",
-								"exec": [
-									"pm.test(\"Response status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response is a JSON object\", function () {\r",
-									"    pm.expect(pm.response.json()).to.be.an('object');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response has a 'success' property\", function () {\r",
-									"    pm.expect(pm.response.json()).to.have.property('success');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response 'success' property is a boolean\", function () {\r",
-									"    pm.expect(pm.response.json().success).to.be.a('boolean');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response has a 'data' property\", function () {\r",
-									"    pm.expect(pm.response.json()).to.have.property('data');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Role update success message\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"   pm.expect(jsonData.message).to.eql('Role updated successfully')\r",
-									"})"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"id": "3d05eefe-7a01-4f5c-8ea4-0f04d7384dcb",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"Manager\",\n    \"description\": \"{{$randomJobDescriptor}}\",\n    \"permissions\": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/roles/:id",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"roles",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{roleId}}"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"id": "91481c9d-c683-4f8d-b03b-cb6efa1a23c1",
-							"name": "New Request",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"name\": \"test2\",\n    \"description\": \"test test2\",\n    \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n    \"permission\": {\n        \"module\": \"dashboard\"\n    }\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/api/roles"
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "localhost:8000"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 19 Feb 2024 23:03:47 GMT"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 19 Feb 2024 23:03:47 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.4"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "59"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"name\": \"test2\",\n        \"description\": \"test test2\",\n        \"status\": \"active\",\n        \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n        \"updated_at\": \"2024-02-19T23:03:47.000000Z\",\n        \"created_at\": \"2024-02-19T23:03:47.000000Z\",\n        \"id\": 5\n    },\n    \"pagination\": null,\n    \"message\": \"Role created successfully\"\n}"
-						},
-						{
-							"id": "a37168ab-b3bc-4a2e-b743-ac1df042392f",
-							"name": "Empty Id",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"name\": \"Manager\",\n    \"description\": \"Manager Role\",\n    \"permission\": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/roles/:id",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"roles",
-										":id"
-									],
-									"variable": [
-										{
-											"id": "4c9ae1ef-ccc7-4267-8b8a-19bdf3aa8d4a",
-											"key": "id",
-											"value": ""
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Date",
-									"value": "Wed, 21 Feb 2024 16:57:55 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Server",
-									"value": "nginx/1.19.1"
-								},
-								{
-									"key": "Vary",
-									"value": "Accept-Encoding"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "59"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Content-Encoding",
-									"value": "gzip"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"success\": false,\n    \"message\": \"Role not found\",\n    \"error\": \"Role not found\"\n}"
-						},
-						{
-							"id": "41df3226-1073-40f9-a8aa-87b245399068",
-							"name": "Update Role- Success",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"name\": \"Manager\",\n    \"description\": \"Manager Role\",\n    \"permission\": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/roles/:id",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"roles",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "9"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Date",
-									"value": "Wed, 21 Feb 2024 16:58:28 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Server",
-									"value": "nginx/1.19.1"
-								},
-								{
-									"key": "Vary",
-									"value": "Accept-Encoding"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "58"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Content-Encoding",
-									"value": "gzip"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 9,\n        \"name\": \"Manager\",\n        \"description\": \"Manager\",\n        \"business_id\": null,\n        \"status\": \"active\",\n        \"is_default\": 0,\n        \"created_at\": \"2024-02-21T16:56:32.000000Z\",\n        \"updated_at\": \"2024-02-21T16:58:27.000000Z\"\n    },\n    \"pagination\": null,\n    \"message\": \"Role updated successfully\"\n}"
-						}
-					]
-				},
-				{
 					"name": "Update Role- Non existing role",
 					"event": [
 						{
@@ -2909,6 +2575,340 @@
 					]
 				},
 				{
+					"name": "Update Role",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2bf5d287-a053-44a4-be5e-862731574fbf",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is a JSON object\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has a 'success' property\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response 'success' property is a boolean\", function () {\r",
+									"    pm.expect(pm.response.json().success).to.be.a('boolean');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has a 'data' property\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('data');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Role update success message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"   pm.expect(jsonData.message).to.eql('Role updated successfully')\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "3d05eefe-7a01-4f5c-8ea4-0f04d7384dcb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Manager\",\n    \"description\": \"{{$randomJobDescriptor}}\",\n    \"permissions\": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/roles/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"roles",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{roleId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "91481c9d-c683-4f8d-b03b-cb6efa1a23c1",
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"test2\",\n    \"description\": \"test test2\",\n    \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n    \"permission\": {\n        \"module\": \"dashboard\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/roles"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Feb 2024 23:03:47 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Feb 2024 23:03:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"name\": \"test2\",\n        \"description\": \"test test2\",\n        \"status\": \"active\",\n        \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n        \"updated_at\": \"2024-02-19T23:03:47.000000Z\",\n        \"created_at\": \"2024-02-19T23:03:47.000000Z\",\n        \"id\": 5\n    },\n    \"pagination\": null,\n    \"message\": \"Role created successfully\"\n}"
+						},
+						{
+							"id": "a37168ab-b3bc-4a2e-b743-ac1df042392f",
+							"name": "Empty Id",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Manager\",\n    \"description\": \"Manager Role\",\n    \"permission\": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/roles/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"roles",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "4c9ae1ef-ccc7-4267-8b8a-19bdf3aa8d4a",
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 21 Feb 2024 16:57:55 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Server",
+									"value": "nginx/1.19.1"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": false,\n    \"message\": \"Role not found\",\n    \"error\": \"Role not found\"\n}"
+						},
+						{
+							"id": "41df3226-1073-40f9-a8aa-87b245399068",
+							"name": "Update Role- Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Manager\",\n    \"description\": \"Manager Role\",\n    \"permission\": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/roles/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"roles",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "9"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 21 Feb 2024 16:58:28 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Server",
+									"value": "nginx/1.19.1"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 9,\n        \"name\": \"Manager\",\n        \"description\": \"Manager\",\n        \"business_id\": null,\n        \"status\": \"active\",\n        \"is_default\": 0,\n        \"created_at\": \"2024-02-21T16:56:32.000000Z\",\n        \"updated_at\": \"2024-02-21T16:58:27.000000Z\"\n    },\n    \"pagination\": null,\n    \"message\": \"Role updated successfully\"\n}"
+						}
+					]
+				},
+				{
 					"name": "Deactivate Role",
 					"event": [
 						{
@@ -3289,6 +3289,220 @@
 		{
 			"name": "Team member",
 			"item": [
+				{
+					"name": "Invite Team Member- Existing member",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ada7f463-63e1-4662-a661-826e6baad513",
+								"exec": [
+									"pm.globals.set(\"ran\", _.random(100, 999))"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "ccdada5d-a7e9-4f15-8491-59bfeeda5799",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Set Team invite Id Value\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set(\"inviteId\", jsonData.data.id);",
+									"});",
+									"pm.test(\"Set resend resend email Value\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set(\"resendEmail\", jsonData.data.email);",
+									"});",
+									"pm.test(\"Set resend role id Value\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set(\"resendId\", jsonData.data.role_id);",
+									"});",
+									"pm.test(\"Response is a JSON object with success, data, pagination, and message properties\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('object').that.has.all.keys('success', 'data', 'pagination', 'message');",
+									"});",
+									"",
+									"pm.test(\"Team invite success message\", function () {",
+									"    var jsonData = pm.response.json();",
+									"   pm.expect(jsonData.message).to.eql('Team Invite sent successfully')",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "7e84421a-66c0-43ee-a1b1-28884ca7ec6d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"sultan+{{ran}}@assurdly.com\",\n    \"role_id\": \"{{roleId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/team-members"
+					},
+					"response": [
+						{
+							"id": "86bb6656-87a5-4fe0-a160-c2a2655d7d10",
+							"name": "Invite Team Member",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"esseshewen@gmail.com\",\n    \"role_id\": \"2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/team-members"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 17:35:55 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 17:35:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"email\": \"esseshewen@gmail.com\",\n        \"role_id\": \"2\",\n        \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n        \"status\": \"pending\",\n        \"id\": \"01hq3sd5kt0rvgghnp1pcg6hka\",\n        \"updated_at\": \"2024-02-20T17:35:51.000000Z\",\n        \"created_at\": \"2024-02-20T17:35:51.000000Z\"\n    },\n    \"pagination\": null,\n    \"message\": \"Invite sent to esseshewen@gmail.com successfully\"\n}"
+						},
+						{
+							"id": "b8e73c5a-1c10-4183-aeec-431d4a6c1813",
+							"name": "Invite Team Member-Existing Email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"esseshewen@gmail.com\",\n    \"role_id\": \"9\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/team-members"
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 21 Feb 2024 17:28:52 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Server",
+									"value": "nginx/1.19.1"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Email already invited.\",\n    \"errors\": {\n        \"email\": [\n            \"Email already invited.\"\n        ]\n    }\n}"
+						}
+					]
+				},
 				{
 					"name": "Invite Team Member",
 					"event": [
