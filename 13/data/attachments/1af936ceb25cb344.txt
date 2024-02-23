@@ -1,0 +1,5 @@
+{
+    "name": "International",
+    "description": "Principal Group Analyst",
+    "permissions": []
+}
