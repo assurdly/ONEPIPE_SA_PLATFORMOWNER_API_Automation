@@ -3307,29 +3307,22 @@
 							"script": {
 								"id": "ccdada5d-a7e9-4f15-8491-59bfeeda5799",
 								"exec": [
-									"pm.test(\"Response status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"pm.test(\"Set Team invite Id Value\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.collectionVariables.set(\"inviteId\", jsonData.data.id);",
-									"});",
-									"pm.test(\"Set resend resend email Value\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.collectionVariables.set(\"resendEmail\", jsonData.data.email);",
-									"});",
-									"pm.test(\"Set resend role id Value\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.collectionVariables.set(\"resendId\", jsonData.data.role_id);",
-									"});",
-									"pm.test(\"Response is a JSON object with success, data, pagination, and message properties\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData).to.be.an('object').that.has.all.keys('success', 'data', 'pagination', 'message');",
+									"var jsonData = pm.response.json()",
+									"",
+									"pm.test(\"Status code is 422\", function () {",
+									"    pm.response.to.have.status(422);",
 									"});",
 									"",
-									"pm.test(\"Team invite success message\", function () {",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"Unprocessable Content\");",
+									"});",
+									"pm.test(\"Response is a JSON object\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object');",
+									"});",
+									"",
+									"pm.test(\"Existing team member invite error message\", function () {",
 									"    var jsonData = pm.response.json();",
-									"   pm.expect(jsonData.message).to.eql('Team Invite sent successfully')",
+									"   pm.expect(jsonData.errors.email[0]).to.eql('Email already invited.')",
 									"})"
 								],
 								"type": "text/javascript"
@@ -3351,7 +3344,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"sultan+{{ran}}@assurdly.com\",\n    \"role_id\": \"{{roleId}}\"\n}",
+							"raw": "{\n    \"email\": \"platformowner@salaryadvance.com\",\n    \"role_id\": \"{{roleId}}\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3435,6 +3428,213 @@
 						},
 						{
 							"id": "b8e73c5a-1c10-4183-aeec-431d4a6c1813",
+							"name": "Invite Team Member-Existing Email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"esseshewen@gmail.com\",\n    \"role_id\": \"9\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/team-members"
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 21 Feb 2024 17:28:52 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Server",
+									"value": "nginx/1.19.1"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Email already invited.\",\n    \"errors\": {\n        \"email\": [\n            \"Email already invited.\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Invite Team Member- Invalid email",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ada7f463-63e1-4662-a661-826e6baad513",
+								"exec": [
+									"pm.globals.set(\"ran\", _.random(100, 999))"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "ccdada5d-a7e9-4f15-8491-59bfeeda5799",
+								"exec": [
+									"var jsonData = pm.response.json()",
+									"",
+									"pm.test(\"Status code is 422\", function () {",
+									"    pm.response.to.have.status(422);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"Unprocessable Content\");",
+									"});",
+									"pm.test(\"Response is a JSON object\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object');",
+									"});",
+									"",
+									"pm.test(\"Existing team member invite error message\", function () {",
+									"    var jsonData = pm.response.json();",
+									"   pm.expect(jsonData.errors.email[0]).to.eql('Email already invited.')",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "56c1235c-8102-4b4b-898f-36970ba91f9a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"platformowner@salaryadvance.com\",\n    \"role_id\": \"{{roleId}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/team-members"
+					},
+					"response": [
+						{
+							"id": "41d820dd-5d7b-4274-83d5-01965d9de98a",
+							"name": "Invite Team Member",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"esseshewen@gmail.com\",\n    \"role_id\": \"2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/team-members"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 17:35:55 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 17:35:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"email\": \"esseshewen@gmail.com\",\n        \"role_id\": \"2\",\n        \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n        \"status\": \"pending\",\n        \"id\": \"01hq3sd5kt0rvgghnp1pcg6hka\",\n        \"updated_at\": \"2024-02-20T17:35:51.000000Z\",\n        \"created_at\": \"2024-02-20T17:35:51.000000Z\"\n    },\n    \"pagination\": null,\n    \"message\": \"Invite sent to esseshewen@gmail.com successfully\"\n}"
+						},
+						{
+							"id": "02c7299b-6193-4d2f-ae9f-69662e51ed34",
 							"name": "Invite Team Member-Existing Email",
 							"originalRequest": {
 								"method": "POST",
