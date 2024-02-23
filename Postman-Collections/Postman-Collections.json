@@ -1339,33 +1339,22 @@
 							"script": {
 								"id": "4eedbe70-8799-42b4-8bed-68571385b8d8",
 								"exec": [
-									"pm.test(\"Response status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"var jsonData = pm.response.json()\r",
+									"\r",
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
 									"});\r",
 									"\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"Unprocessable Content\");\r",
+									"});\r",
 									"pm.test(\"Response is a JSON object\", function () {\r",
 									"    pm.expect(pm.response.json()).to.be.an('object');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Response has a property 'success' with value true\", function () {\r",
-									"    pm.expect(pm.response.json().success).to.be.true;\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response has a data object with specific properties\", function () {\r",
-									"    var data = pm.response.json().data;\r",
-									"    pm.expect(data).to.be.an('object');\r",
-									"    pm.expect(data).to.have.property('name');\r",
-									"    pm.expect(data).to.have.property('description');\r",
-									"    pm.expect(data).to.have.property('status');\r",
-									"    pm.expect(data).to.have.property('business_id');\r",
-									"    pm.expect(data).to.have.property('updated_at');\r",
-									"    pm.expect(data).to.have.property('created_at');\r",
-									"    pm.expect(data).to.have.property('id');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Role creation success message\", function () {\r",
+									"pm.test(\"Permissions omission error message\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"   pm.expect(jsonData.message).to.eql('Role created successfully')\r",
+									"   pm.expect(jsonData.errors.permissions[0]).to.eql('The permissions field is required.')\r",
 									"})"
 								],
 								"type": "text/javascript"
@@ -1387,7 +1376,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"{{$randomJobDescriptor}}\",\n    \"description\": \"{{$randomJobTitle}}\",\n    \"permissions\": [1,2,3,4,5,6,7,8,9,10,11]\n}",
+							"raw": "{\n    \"name\": \"{{$randomJobDescriptor}}\",\n    \"description\": \"{{$randomJobTitle}}\",\n    \"permissions\": []\n}",
 							"options": {
 								"raw": {
 									"language": "json"
