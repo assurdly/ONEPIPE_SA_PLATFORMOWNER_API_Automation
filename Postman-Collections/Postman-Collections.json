@@ -437,8 +437,12 @@
 									"    pm.response.to.have.status(\"Unprocessable Content\");\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Invalid email message is returned \", function () {\r",
-									"    pm.expect(jsonData.message).to.eql(\"Please enter a valid email address.\");\r",
+									"pm.test(\"Email required message is returned \", function () {\r",
+									"    pm.expect(jsonData.errors.email[0]).to.eql(\"The email field is required.\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Password required message is returned \", function () {\r",
+									"    pm.expect(jsonData.errors.password[0]).to.eql(\"The password field is required.\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1255,6 +1259,146 @@
 					"response": [
 						{
 							"id": "6f9dd3f5-598e-4fb1-a4c1-b7eac657b549",
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"test2\",\n    \"description\": \"test test2\",\n    \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n    \"permission\": {\n        \"module\": \"dashboard\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/roles"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Feb 2024 23:03:47 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Feb 2024 23:03:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"name\": \"test2\",\n        \"description\": \"test test2\",\n        \"status\": \"active\",\n        \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n        \"updated_at\": \"2024-02-19T23:03:47.000000Z\",\n        \"created_at\": \"2024-02-19T23:03:47.000000Z\",\n        \"id\": 5\n    },\n    \"pagination\": null,\n    \"message\": \"Role created successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Role- No permission",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4eedbe70-8799-42b4-8bed-68571385b8d8",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is a JSON object\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has a property 'success' with value true\", function () {\r",
+									"    pm.expect(pm.response.json().success).to.be.true;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has a data object with specific properties\", function () {\r",
+									"    var data = pm.response.json().data;\r",
+									"    pm.expect(data).to.be.an('object');\r",
+									"    pm.expect(data).to.have.property('name');\r",
+									"    pm.expect(data).to.have.property('description');\r",
+									"    pm.expect(data).to.have.property('status');\r",
+									"    pm.expect(data).to.have.property('business_id');\r",
+									"    pm.expect(data).to.have.property('updated_at');\r",
+									"    pm.expect(data).to.have.property('created_at');\r",
+									"    pm.expect(data).to.have.property('id');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Role creation success message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"   pm.expect(jsonData.message).to.eql('Role created successfully')\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "783d66a6-88f6-4c8b-8b5c-561417c30cc9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{$randomJobDescriptor}}\",\n    \"description\": \"{{$randomJobTitle}}\",\n    \"permissions\": [1,2,3,4,5,6,7,8,9,10,11]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/roles"
+					},
+					"response": [
+						{
+							"id": "1a2f7fed-92bd-4554-91bf-c0f57d54780b",
 							"name": "New Request",
 							"originalRequest": {
 								"method": "POST",
