@@ -1,0 +1,5 @@
+{
+    "name": "National",
+    "description": "Senior Intranet Coordinator",
+    "permissions": []
+}
