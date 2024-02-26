@@ -1,0 +1,5 @@
+{
+    "name": "Future",
+    "description": "Lead Configuration Developer",
+    "permissions": []
+}
