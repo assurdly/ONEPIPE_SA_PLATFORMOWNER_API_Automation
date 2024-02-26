@@ -1,0 +1,5 @@
+{
+    "name": "International",
+    "description": "International Operations Designer",
+    "permissions": []
+}
