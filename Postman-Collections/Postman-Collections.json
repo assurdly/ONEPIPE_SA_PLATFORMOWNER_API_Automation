@@ -5484,64 +5484,28 @@
 					]
 				},
 				{
-					"name": "Get Business Details By ID Copy",
+					"name": "Get Business Details By ID- Invalid id",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"id": "7558f815-163b-4bbf-9cb3-4a17a86a5496",
 								"exec": [
-									"pm.test(\"Response status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test('Status code is 404', function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"})\r",
+									"\r",
+									"pm.test('Status code name has string', function () {\r",
+									"    pm.response.to.have.status('Bad Request');\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Invalid business id error message is returned \", function () {\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Response is in JSON format\", function () {\r",
-									"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response has 'success' property with value true\", function () {\r",
-									"    pm.expect(pm.response.json().success).to.be.true;\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response has 'data' property of type object\", function () {\r",
-									"    pm.expect(pm.response.json().data).to.be.an('object');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Data object has specific properties\", function () {\r",
-									"    var data = pm.response.json().data;\r",
-									"    pm.expect(data).to.have.property('id');\r",
-									"    pm.expect(data).to.have.property('business_name');\r",
-									"    pm.expect(data).to.have.property('email');\r",
-									"    pm.expect(data).to.have.property('phone_number');\r",
-									"    pm.expect(data).to.have.property('owner_name');\r",
-									"    pm.expect(data).to.have.property('date_created');\r",
-									"    pm.expect(data).to.have.property('rc_number');\r",
-									"    pm.expect(data).to.have.property('business_type');\r",
-									"    pm.expect(data).to.have.property('status');\r",
-									"    pm.expect(data).to.have.property('enable_email');\r",
-									"    pm.expect(data).to.have.property('enable_sms');\r",
-									"    pm.expect(data).to.have.property('has_completed_kyb');\r",
-									"    pm.expect(data).to.have.property('owner_id');\r",
-									"    pm.expect(data).to.have.property('state_id');\r",
-									"    pm.expect(data).to.have.property('address');\r",
-									"    pm.expect(data).to.have.property('virtualAccount');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Virtual account object has specific properties\", function () {\r",
-									"    var virtualAccount = pm.response.json().data.virtualAccount;\r",
-									"    if (virtualAccount) {\r",
-									"        pm.expect(virtualAccount).to.be.an('object');\r",
-									"        pm.expect(virtualAccount).to.have.property('id');\r",
-									"        pm.expect(virtualAccount).to.have.property('account_name');\r",
-									"        pm.expect(virtualAccount).to.have.property('account_number');\r",
-									"        pm.expect(virtualAccount).to.have.property('bank_name');\r",
-									"    }\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Business retrieval success message\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData).to.have.property('message').to.eql('Business fetched successfully')\r",
-									"})"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -5565,9 +5529,8 @@
 							],
 							"variable": [
 								{
-									"id": "0aae5858-8958-4a0e-b641-b4317101eae1",
 									"key": "id",
-									"value": "{{businessId}}"
+									"value": "88883994845"
 								}
 							]
 						}
