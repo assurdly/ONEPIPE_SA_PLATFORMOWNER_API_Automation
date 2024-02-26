@@ -7640,25 +7640,18 @@
 							"script": {
 								"id": "2dc7fade-5eb5-4c35-9a5b-bf38c454fffb",
 								"exec": [
-									"pm.test(\"Response status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
+									"var jsonData = pm.response.json()",
+									"",
+									"pm.test(\"Status code is 422\", function () {",
+									"    pm.response.to.have.status(422);",
 									"});",
 									"",
-									"pm.test(\"Response is an object with success property\", function () {",
-									"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('success');",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"Unprocessable Content\");",
 									"});",
 									"",
-									"pm.test(\"Data property is an object with specific attributes\", function () {",
-									"    var data = pm.response.json().data;",
-									"    pm.expect(data).to.be.an('object').that.includes.all.keys('id', 'document_name', 'document_size', 'document_type', 'mandatory', 'deleted_at', 'created_at', 'updated_at');",
-									"});",
-									"",
-									"pm.test(\"Pagination property is null\", function () {",
-									"    pm.expect(pm.response.json().pagination).to.be.null;",
-									"});",
-									"",
-									"pm.test(\"Document update success message\", function () {",
-									"    pm.expect(pm.response.json().message).to.equal('Document details updated successfully');",
+									"pm.test(\"Missing document type error message is returned \", function () {",
+									"    pm.expect(jsonData.message).to.be.a('string');",
 									"});"
 								],
 								"type": "text/javascript"
@@ -7686,7 +7679,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"document_name\": \"Certificate of Incorporation\",\n    \"document_size\": \"{{ran}}\",\n    \"document_type\": \"JPEG,JPG,PDF\",\n    \"mandatory\": \"yes\"\n}",
+							"raw": "{\n    \"document_name\": \"Certificate of Incorporation\",\n    \"document_size\": \"{{ran}}\",\n    \"document_type\": \"\",\n    \"mandatory\": \"yes\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -7706,7 +7699,6 @@
 							],
 							"variable": [
 								{
-									"id": "c6dc626c-e467-4bec-8274-d6bb81d250bd",
 									"key": "id",
 									"value": "{{docId}}"
 								}
