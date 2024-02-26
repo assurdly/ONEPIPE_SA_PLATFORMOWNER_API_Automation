@@ -6049,6 +6049,76 @@
 			"name": "Setting",
 			"item": [
 				{
+					"name": "General",
+					"item": [
+						{
+							"name": "Get General settings",
+							"id": "c3dc030e-c93b-4002-9761-5c1719db4845",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"document_name\": \"Tax Identification Number\",\n    \"document_size\": \"3\",\n    \"document_type\": \"JPEG,JPG,PDF\",\n    \"mandatory\": \"Yes\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/admin/settings/general"
+							},
+							"response": []
+						},
+						{
+							"name": "Save General settings",
+							"id": "47bdf3f6-508f-4bd4-bef9-3363ddd1fc8d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"document_name\": \"Tax Identification Number\",\n    \"document_size\": \"3\",\n    \"document_type\": \"JPEG,JPG,PDF\",\n    \"mandatory\": \"Yes\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/admin/settings/general"
+							},
+							"response": []
+						}
+					],
+					"id": "aca8f369-9e29-4165-b314-e693f91a8028"
+				},
+				{
 					"name": "Add document- Blank document details",
 					"event": [
 						{
@@ -7682,6 +7752,543 @@
 				}
 			],
 			"id": "b8824d87-e351-4c46-ad76-e12ffd07681f"
+		},
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "Delete Employee",
+					"id": "4ced4e29-9668-48e1-a3ab-9fc2fae40331",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "11|QzqO1sR7U3qM9wesuj36d3O05tfMA1zoE99kd6GWb33c336c"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"employee_id\": \"01hq1sz0jdmfahcqtg4649szfd\",\n    \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/api/employee/delete"
+					},
+					"response": [
+						{
+							"id": "755356c9-77bb-4715-8c3c-ccb303cf81a1",
+							"name": "Delete Employee",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"01hq1sz0jdmfahcqtg4649szfd\",\n    \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/employee/delete"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Feb 2024 23:37:39 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Feb 2024 23:37:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "56"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Employee deleted successfully\",\n    \"code\": 200\n}"
+						}
+					]
+				},
+				{
+					"name": "Activate Or Deactivate Employee",
+					"id": "53ce4edf-3c03-4d4f-97c1-1e9938d11e69",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "18|sWzFftHMwF9bShXfEv9eDrUfG2yPJ6LQQRbjxRvPda8672a0"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"employee_id\": \"01hq1ns9zhpd730x7510mayj2f\",\n    \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/api/employee"
+					},
+					"response": [
+						{
+							"id": "16579dc2-aef9-4c6f-b318-2f07ac22320f",
+							"name": "Activate Or Deactivate Employee",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"01hq1ns9zhpd730x7510mayj2f\",\n    \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/employee"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Feb 2024 23:52:42 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Feb 2024 23:52:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Employee Activated successfully\",\n    \"code\": 200\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Employee Details By ID",
+					"id": "6d70aacd-f785-46a4-80df-f3eef86d1a2f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "10|dwJTL2CKi6g8gl8bhyQSKv0fRJdtdTGHsiMTFV40129db7fc"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+								"disabled": true
+							}
+						],
+						"url": "{{baseUrl}}/api/employee/01hq1ns9zhpd730x7510mayj2f"
+					},
+					"response": [
+						{
+							"id": "532ab5d5-440c-4067-92cb-6a2ad17830e3",
+							"name": "Get Employee Details By ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"url": "{{baseUrl}}/api/employee/01hq1ns9zhpd730x7510mayj2f"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Feb 2024 23:08:40 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Feb 2024 23:08:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"data\": {\n        \"id\": \"01hq1ns9zhpd730x7510mayj2f\",\n        \"first_name\": \"Habeeb\",\n        \"last_name\": \"Hab\",\n        \"email_address\": \"habeebshewen@gmail.com\",\n        \"phone_number\": \"2347012345671\",\n        \"employement_date\": \"2024-02-12 00:00:00\",\n        \"job_title\": \"Software Developer\",\n        \"annual_net_salary\": \"1000000.00\",\n        \"annual_gross_salary\": \"1500000.00\",\n        \"bank_details_id\": \"01hq1ns9zw92admrxn7p8jsyv9\",\n        \"virtual_account_details_id\": \"01hq1nsa030911y42ppxpsdmpv\",\n        \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n        \"status\": \"inactive\",\n        \"created_at\": \"2024-02-19T21:54:05.000000Z\",\n        \"updated_at\": \"2024-02-19T21:54:05.000000Z\",\n        \"name\": \"Habeeb Hab\",\n        \"bank_details\": {\n            \"id\": \"01hq1ns9zw92admrxn7p8jsyv9\",\n            \"bank_id\": \"01hq1khn3762jhp4cksvx9nava\",\n            \"account_name\": \"AKPOKUMUAYE  ESSE STACY\",\n            \"account_number\": \"0113377906\",\n            \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"employee_id\": \"01hq1ns9zhpd730x7510mayj2f\",\n            \"created_at\": \"2024-02-19T21:54:05.000000Z\",\n            \"updated_at\": \"2024-02-19T21:54:05.000000Z\",\n            \"bank\": {\n                \"id\": \"01hq1khn3762jhp4cksvx9nava\",\n                \"bank_name\": \"GTBank\",\n                \"bank_nip_code\": null,\n                \"bank_code\": \"058\",\n                \"created_at\": \"2024-02-19T21:14:58.000000Z\",\n                \"updated_at\": \"2024-02-19T21:14:58.000000Z\"\n            }\n        },\n        \"virtual_account_details\": {\n            \"id\": \"01hq1nsa030911y42ppxpsdmpv\",\n            \"bank_id\": \"01hq1khn5dbqwjfhan1saatz7w\",\n            \"account_name\": \"Habeeb Hab\",\n            \"account_number\": \"1381853264\",\n            \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"employee_id\": \"01hq1ns9zhpd730x7510mayj2f\",\n            \"created_at\": \"2024-02-19T21:54:05.000000Z\",\n            \"updated_at\": \"2024-02-19T21:54:05.000000Z\",\n            \"bank\": {\n                \"id\": \"01hq1khn5dbqwjfhan1saatz7w\",\n                \"bank_name\": \"SUPPORT MICROFINANCE BANK\",\n                \"bank_nip_code\": null,\n                \"bank_code\": \"295\",\n                \"created_at\": \"2024-02-19T21:14:58.000000Z\",\n                \"updated_at\": \"2024-02-19T21:14:58.000000Z\"\n            }\n        }\n    },\n    \"message\": \"Employee details fetched successfully\",\n    \"code\": 200\n}"
+						}
+					]
+				},
+				{
+					"name": "Bulk Employee Upload",
+					"id": "00bcb1ef-8715-4393-b840-ee29407e0095",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "2|PKOQUvIcR4AXA9IukxsytPnTBoLFTOwqdSTWEIMyf62ee9d4"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/hlawal/Downloads/s-advance-employee - Sheet1.csv"
+								},
+								{
+									"key": "businessId",
+									"value": "01hpz4rh1v4388mww8j2ewk0vn",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{baseUrl}}/api/employee/bulk"
+					},
+					"response": [
+						{
+							"id": "0c933304-9d60-42cb-84d1-b4bcc1d74c74",
+							"name": "Bulk Employee Upload",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/Users/hlawal/Downloads/s-advance-employee - Sheet1.csv"
+										},
+										{
+											"key": "businessId",
+											"value": "01hpz4rh1v4388mww8j2ewk0vn",
+											"type": "text"
+										}
+									]
+								},
+								"url": "{{baseUrl}}/api/employee/bulk"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 18 Feb 2024 22:21:12 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 18 Feb 2024 22:21:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Employee Registration successful\",\n    \"data\": {\n        \"successfull\": [\n            {\n                \"first_name\": \"Test\",\n                \"last_name\": \"test1\",\n                \"email_address\": \"test@yahoo.com\",\n                \"phone_number\": 2347012121312,\n                \"employment_date\": \"2024-02-18\",\n                \"job_title\": \"Software Developer\",\n                \"annual_net_salary\": 100000,\n                \"annual_gross_salary\": 100000,\n                \"bank_id\": \"01hpy8q10ekakk4jvrqtn60pdg\",\n                \"account_number\": 121223432,\n                \"account_name\": \"Test test\"\n            },\n            {\n                \"first_name\": \"Testaa\",\n                \"last_name\": \"testaa1\",\n                \"email_address\": \"testaa@yahoo.com\",\n                \"phone_number\": 2347012121313,\n                \"employment_date\": \"2024-02-18\",\n                \"job_title\": \"Software Engineer\",\n                \"annual_net_salary\": 300000,\n                \"annual_gross_salary\": 300000,\n                \"bank_id\": \"01hpy8q10ekakk4jvrqtn60pdg\",\n                \"account_number\": 121223434,\n                \"account_name\": \"Testaa testaa\"\n            }\n        ]\n    },\n    \"code\": 200\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Employees List By BuisnessID",
+					"id": "90e027ef-0f42-45a8-8c3b-723fc0f52ad7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "10|dwJTL2CKi6g8gl8bhyQSKv0fRJdtdTGHsiMTFV40129db7fc"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+								"disabled": true
+							}
+						],
+						"url": "{{baseUrl}}/api/employees/01hq1kpxkvma8gbjx328hjkh7k"
+					},
+					"response": [
+						{
+							"id": "4a7d3cbd-2c62-4ea8-afcd-7248a9aa48fa",
+							"name": "Get Employees List By BuisnessID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"url": "{{baseUrl}}/api/employees/01hq1kpxkvma8gbjx328hjkh7k"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Feb 2024 23:15:08 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Feb 2024 23:15:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"data\": [\n        {\n            \"id\": \"01hq1ns9zhpd730x7510mayj2f\",\n            \"first_name\": \"Habeeb\",\n            \"last_name\": \"Hab\",\n            \"email_address\": \"habeebshewen@gmail.com\",\n            \"phone_number\": \"2347012345671\",\n            \"employement_date\": \"2024-02-12 00:00:00\",\n            \"job_title\": \"Software Developer\",\n            \"annual_net_salary\": \"1000000.00\",\n            \"annual_gross_salary\": \"1500000.00\",\n            \"bank_details_id\": \"01hq1ns9zw92admrxn7p8jsyv9\",\n            \"virtual_account_details_id\": \"01hq1nsa030911y42ppxpsdmpv\",\n            \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"status\": \"inactive\",\n            \"created_at\": \"2024-02-19T21:54:05.000000Z\",\n            \"updated_at\": \"2024-02-19T21:54:05.000000Z\",\n            \"name\": \"Habeeb Hab\"\n        },\n        {\n            \"id\": \"01hq1sz0jdmfahcqtg4649szfd\",\n            \"first_name\": \"Habe2\",\n            \"last_name\": \"Hab2\",\n            \"email_address\": \"hab2@gmail.com\",\n            \"phone_number\": \"2347012345672\",\n            \"employement_date\": \"2024-02-12 00:00:00\",\n            \"job_title\": \"Software Developer\",\n            \"annual_net_salary\": \"1000000.00\",\n            \"annual_gross_salary\": \"1500000.00\",\n            \"bank_details_id\": \"01hq1sz0jk9dfj57atak1tfptb\",\n            \"virtual_account_details_id\": \"01hq1sz0jxqbqan1chs12m65pc\",\n            \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"status\": \"active\",\n            \"created_at\": \"2024-02-19T23:07:07.000000Z\",\n            \"updated_at\": \"2024-02-19T23:07:07.000000Z\",\n            \"name\": \"Habe2 Hab2\"\n        }\n    ],\n    \"message\": \"List of employees fetched successfully\",\n    \"code\": 200\n}"
+						}
+					]
+				}
+			],
+			"id": "01a04c25-fbdc-489a-b723-ceb37f9e3371"
 		}
 	],
 	"auth": {
