@@ -1,0 +1,5 @@
+{
+    "name": "Central",
+    "description": "Future Response Officer",
+    "permissions": []
+}

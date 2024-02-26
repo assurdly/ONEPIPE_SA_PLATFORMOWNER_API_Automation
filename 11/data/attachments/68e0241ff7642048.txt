@@ -1,5 +1,0 @@
-{
-    "name": "Lead",
-    "description": "Regional Program Liaison",
-    "permissions": []
-}
