@@ -1,0 +1,5 @@
+{
+    "name": "Dynamic",
+    "description": "Lead Identity Orchestrator",
+    "permissions": []
+}
