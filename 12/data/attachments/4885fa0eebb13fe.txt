@@ -1,5 +1,0 @@
-{
-    "name": "Dynamic",
-    "description": "Central Research Architect",
-    "permissions": []
-}
