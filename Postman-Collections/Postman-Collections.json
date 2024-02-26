@@ -5212,7 +5212,13 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{baseUrl}}/businesses/:id",
 							"host": [
@@ -5224,9 +5230,8 @@
 							],
 							"variable": [
 								{
-									"id": "220becfe-2971-4c99-8457-73a9e3e0b0c0",
 									"key": "id",
-									"value": "{{businessId}}"
+									"value": "266757fgjhkkkkgggddd"
 								}
 							]
 						}
