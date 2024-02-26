@@ -6243,12 +6243,12 @@
 					"item": [
 						{
 							"name": "Get General settings",
-							"id": "c3dc030e-c93b-4002-9761-5c1719db4845",
+							"id": "47bdf3f6-508f-4bd4-bef9-3363ddd1fc8d",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
-								"method": "POST",
+								"method": "GET",
 								"header": [
 									{
 										"key": "Accept",
@@ -6275,12 +6275,12 @@
 						},
 						{
 							"name": "Save General settings",
-							"id": "47bdf3f6-508f-4bd4-bef9-3363ddd1fc8d",
+							"id": "c3dc030e-c93b-4002-9761-5c1719db4845",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
-								"method": "GET",
+								"method": "POST",
 								"header": [
 									{
 										"key": "Accept",
@@ -6313,12 +6313,12 @@
 					"item": [
 						{
 							"name": "Get OnePipe settings",
-							"id": "f5e9ba96-8cae-4f4a-9e32-63b4d64a7216",
+							"id": "dfb90690-4500-459b-8994-f6bbd6fcdec4",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
-								"method": "POST",
+								"method": "GET",
 								"header": [
 									{
 										"key": "Accept",
@@ -6332,7 +6332,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "",
+									"raw": "{\n    \"host_url\": \"onepipe.io\",\n    \"webhook_url\": \"onepipe.io\",\n    \"api_key\": \"1234567890asa#sdsas\",\n    \"api_secret_key\": \"qwqweqewqwads122324wedfwfegrthr\",\n    \"timeout\": \"4\",\n    \"clinet_id\": \"412334ASAS\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6345,12 +6345,12 @@
 						},
 						{
 							"name": "Save OnePipe settings",
-							"id": "dfb90690-4500-459b-8994-f6bbd6fcdec4",
+							"id": "f5e9ba96-8cae-4f4a-9e32-63b4d64a7216",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
-								"method": "GET",
+								"method": "POST",
 								"header": [
 									{
 										"key": "Accept",
