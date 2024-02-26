@@ -4754,24 +4754,21 @@
 							"script": {
 								"id": "9b75e96f-2d17-4ca3-9fb9-dd8d41db8fc9",
 								"exec": [
-									"pm.test(\"Response status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test('Status code is 422', function () {",
+									"    pm.response.to.have.status(422);",
+									"})",
+									"",
+									"pm.test('Status code name has string', function () {",
+									"    pm.response.to.have.status('Unprocessable Content');",
+									"})",
+									"",
+									"pm.test(\"Invalid role error message is returned \", function () {",
+									"    pm.expect(jsonData.message).to.be.a('string');",
 									"});",
 									"",
-									"pm.test(\"Response is a JSON object\", function () {",
-									"    pm.expect(pm.response.json()).to.be.an('object');",
-									"});",
-									"",
-									"pm.test(\"Response contains 'success' property with value true\", function () {",
-									"    pm.expect(pm.response.json().success).to.be.true;",
-									"});",
-									"",
-									"pm.test(\"Response contains 'data' property which is an object\", function () {",
-									"    pm.expect(pm.response.json().data).to.be.an('object');",
-									"});",
-									"pm.test(\"Team member update success message \", function () {",
-									"    pm.expect(pm.response.json().message).to.eql('Team member updated successfully');",
-									"});"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -4792,7 +4789,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"first_name\": \"{{$randomFirstName}}\",\n    \"last_name\": \"{{$randomLastName}}\",\n    \"email\": \"esseshewen@gmail.com\",\n    \"role_id\": \"2\"\n}",
+							"raw": "{\n    \"first_name\": \"{{$randomFirstName}}\",\n    \"last_name\": \"{{$randomLastName}}\",\n    \"email\": \"esseshewen@gmail.com\",\n    \"role_id\": \"100000666\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -5483,6 +5480,155 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": \"01hq1ya419x92arzrs38c4ywnd\",\n            \"business_name\": \"test business\",\n            \"email\": \"test@gmail.com\",\n            \"phone_number\": \"2347032123456\",\n            \"owner_name\": \"test1 test2\",\n            \"date_created\": \"20/02/2024 @ 01:23AM\",\n            \"rc_number\": \"212344\",\n            \"business_type\": \"Marketing\",\n            \"status\": \"pending\",\n            \"enable_email\": 0,\n            \"enable_sms\": 0,\n            \"has_completed_kyb\": 0,\n            \"owner_id\": \"01hq1ya42sybcqr2zyaaj241r5\",\n            \"state_id\": null,\n            \"address\": null,\n            \"virtualAccount\": null\n        },\n        {\n            \"id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"business_name\": \"Habeeb12\",\n            \"email\": \"habeebshewen@gmail.com\",\n            \"phone_number\": \"2347012345678\",\n            \"owner_name\": \"Habeeb Seun\",\n            \"date_created\": \"19/02/2024 @ 10:17PM\",\n            \"rc_number\": \"123456\",\n            \"business_type\": \"Telecommunications\",\n            \"status\": \"active\",\n            \"enable_email\": 0,\n            \"enable_sms\": 0,\n            \"has_completed_kyb\": 1,\n            \"owner_id\": \"01hq1kpxmkxjjs46pv5kz9pms4\",\n            \"state_id\": \"01hq1khn17gpgxh7cx5p8k008z\",\n            \"address\": \"This is my address\",\n            \"virtualAccount\": {\n                \"id\": \"01hq1nh4jw5qp7am0cexehvpa0\",\n                \"account_name\": \"Habeeb12\",\n                \"account_number\": \"587685348\",\n                \"bank_name\": \"SUPPORT MICROFINANCE BANK\"\n            }\n        }\n    ],\n    \"pagination\": {\n        \"current_page\": 1,\n        \"per_page\": 10,\n        \"total\": 2,\n        \"next_page_url\": null,\n        \"prev_page_url\": null\n    },\n    \"message\": \"Businesses retrieved successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Business Details By ID Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7558f815-163b-4bbf-9cb3-4a17a86a5496",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is in JSON format\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\", \"application/json\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has 'success' property with value true\", function () {\r",
+									"    pm.expect(pm.response.json().success).to.be.true;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has 'data' property of type object\", function () {\r",
+									"    pm.expect(pm.response.json().data).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data object has specific properties\", function () {\r",
+									"    var data = pm.response.json().data;\r",
+									"    pm.expect(data).to.have.property('id');\r",
+									"    pm.expect(data).to.have.property('business_name');\r",
+									"    pm.expect(data).to.have.property('email');\r",
+									"    pm.expect(data).to.have.property('phone_number');\r",
+									"    pm.expect(data).to.have.property('owner_name');\r",
+									"    pm.expect(data).to.have.property('date_created');\r",
+									"    pm.expect(data).to.have.property('rc_number');\r",
+									"    pm.expect(data).to.have.property('business_type');\r",
+									"    pm.expect(data).to.have.property('status');\r",
+									"    pm.expect(data).to.have.property('enable_email');\r",
+									"    pm.expect(data).to.have.property('enable_sms');\r",
+									"    pm.expect(data).to.have.property('has_completed_kyb');\r",
+									"    pm.expect(data).to.have.property('owner_id');\r",
+									"    pm.expect(data).to.have.property('state_id');\r",
+									"    pm.expect(data).to.have.property('address');\r",
+									"    pm.expect(data).to.have.property('virtualAccount');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Virtual account object has specific properties\", function () {\r",
+									"    var virtualAccount = pm.response.json().data.virtualAccount;\r",
+									"    if (virtualAccount) {\r",
+									"        pm.expect(virtualAccount).to.be.an('object');\r",
+									"        pm.expect(virtualAccount).to.have.property('id');\r",
+									"        pm.expect(virtualAccount).to.have.property('account_name');\r",
+									"        pm.expect(virtualAccount).to.have.property('account_number');\r",
+									"        pm.expect(virtualAccount).to.have.property('bank_name');\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Business retrieval success message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('message').to.eql('Business fetched successfully')\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "38433df3-a576-46b6-865f-c12a289cc724",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/businesses/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"businesses",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "0aae5858-8958-4a0e-b641-b4317101eae1",
+									"key": "id",
+									"value": "{{businessId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "24a94eac-0b2b-43b3-8cab-552443439fe6",
+							"name": "Get Business Details By ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseUrl}}/api/businesses/01hq1kpxkvma8gbjx328hjkh7k"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 20:24:24 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 20:24:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n        \"business_name\": \"Habeeb12\",\n        \"email\": \"habeebshewen@gmail.com\",\n        \"phone_number\": \"2347012345678\",\n        \"owner_name\": \"Habeeb Seun\",\n        \"date_created\": \"19/02/2024 @ 10:17PM\",\n        \"rc_number\": \"123456\",\n        \"business_type\": \"Telecommunications\",\n        \"status\": \"active\",\n        \"enable_email\": 0,\n        \"enable_sms\": 0,\n        \"has_completed_kyb\": 1,\n        \"owner_id\": \"01hq1kpxmkxjjs46pv5kz9pms4\",\n        \"state_id\": \"01hq1khn17gpgxh7cx5p8k008z\",\n        \"address\": \"This is my address\",\n        \"virtualAccount\": {\n            \"id\": \"01hq1nh4jw5qp7am0cexehvpa0\",\n            \"account_name\": \"Habeeb12\",\n            \"account_number\": \"587685348\",\n            \"bank_name\": \"SUPPORT MICROFINANCE BANK\"\n        }\n    },\n    \"pagination\": null,\n    \"message\": \"Business fetched successfully\"\n}"
 						}
 					]
 				},
