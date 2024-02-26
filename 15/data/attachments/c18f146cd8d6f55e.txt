@@ -1,5 +1,0 @@
-{
-    "name": "Legacy",
-    "description": "Future Integration Supervisor",
-    "permissions": []
-}
