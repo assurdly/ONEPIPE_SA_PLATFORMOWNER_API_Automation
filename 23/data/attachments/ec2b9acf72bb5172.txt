@@ -1,0 +1,5 @@
+{
+    "name": "Chief",
+    "description": "Legacy Mobility Developer",
+    "permissions": []
+}
