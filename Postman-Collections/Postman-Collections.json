@@ -4747,6 +4747,152 @@
 					]
 				},
 				{
+					"name": "Update Team Member Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9b75e96f-2d17-4ca3-9fb9-dd8d41db8fc9",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is a JSON object\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object');",
+									"});",
+									"",
+									"pm.test(\"Response contains 'success' property with value true\", function () {",
+									"    pm.expect(pm.response.json().success).to.be.true;",
+									"});",
+									"",
+									"pm.test(\"Response contains 'data' property which is an object\", function () {",
+									"    pm.expect(pm.response.json().data).to.be.an('object');",
+									"});",
+									"pm.test(\"Team member update success message \", function () {",
+									"    pm.expect(pm.response.json().message).to.eql('Team member updated successfully');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "b6f619fd-b0c8-488f-9b9a-77fe97fbe322",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"{{$randomFirstName}}\",\n    \"last_name\": \"{{$randomLastName}}\",\n    \"email\": \"esseshewen@gmail.com\",\n    \"role_id\": \"2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/team-members/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"team-members",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "4c68efd7-ac83-4d76-bab7-3f15b4933164",
+									"key": "id",
+									"value": "{{teamId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "4f164c1b-c66c-4657-9c34-d17967a78112",
+							"name": "Invite Team Member",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"esseshewen@gmail.com\",\n    \"role_id\": \"2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/team-members"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 17:35:55 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 17:35:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"email\": \"esseshewen@gmail.com\",\n        \"role_id\": \"2\",\n        \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n        \"status\": \"pending\",\n        \"id\": \"01hq3sd5kt0rvgghnp1pcg6hka\",\n        \"updated_at\": \"2024-02-20T17:35:51.000000Z\",\n        \"created_at\": \"2024-02-20T17:35:51.000000Z\"\n    },\n    \"pagination\": null,\n    \"message\": \"Invite sent to esseshewen@gmail.com successfully\"\n}"
+						}
+					]
+				},
+				{
 					"name": "Update Team Member",
 					"event": [
 						{
@@ -8030,103 +8176,6 @@
 			"name": "Employee",
 			"item": [
 				{
-					"name": "Get Employee Details By ID",
-					"id": "6d70aacd-f785-46a4-80df-f3eef86d1a2f",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "10|dwJTL2CKi6g8gl8bhyQSKv0fRJdtdTGHsiMTFV40129db7fc"
-							}
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
-								"disabled": true
-							}
-						],
-						"url": "{{baseUrl}}/api/employee/01hq1ns9zhpd730x7510mayj2f"
-					},
-					"response": [
-						{
-							"id": "532ab5d5-440c-4067-92cb-6a2ad17830e3",
-							"name": "Get Employee Details By ID",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
-										"disabled": true
-									}
-								],
-								"url": "{{baseUrl}}/api/employee/01hq1ns9zhpd730x7510mayj2f"
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "localhost:8000"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 19 Feb 2024 23:08:40 GMT"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 19 Feb 2024 23:08:40 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.4"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "59"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"data\": {\n        \"id\": \"01hq1ns9zhpd730x7510mayj2f\",\n        \"first_name\": \"Habeeb\",\n        \"last_name\": \"Hab\",\n        \"email_address\": \"habeebshewen@gmail.com\",\n        \"phone_number\": \"2347012345671\",\n        \"employement_date\": \"2024-02-12 00:00:00\",\n        \"job_title\": \"Software Developer\",\n        \"annual_net_salary\": \"1000000.00\",\n        \"annual_gross_salary\": \"1500000.00\",\n        \"bank_details_id\": \"01hq1ns9zw92admrxn7p8jsyv9\",\n        \"virtual_account_details_id\": \"01hq1nsa030911y42ppxpsdmpv\",\n        \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n        \"status\": \"inactive\",\n        \"created_at\": \"2024-02-19T21:54:05.000000Z\",\n        \"updated_at\": \"2024-02-19T21:54:05.000000Z\",\n        \"name\": \"Habeeb Hab\",\n        \"bank_details\": {\n            \"id\": \"01hq1ns9zw92admrxn7p8jsyv9\",\n            \"bank_id\": \"01hq1khn3762jhp4cksvx9nava\",\n            \"account_name\": \"AKPOKUMUAYE  ESSE STACY\",\n            \"account_number\": \"0113377906\",\n            \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"employee_id\": \"01hq1ns9zhpd730x7510mayj2f\",\n            \"created_at\": \"2024-02-19T21:54:05.000000Z\",\n            \"updated_at\": \"2024-02-19T21:54:05.000000Z\",\n            \"bank\": {\n                \"id\": \"01hq1khn3762jhp4cksvx9nava\",\n                \"bank_name\": \"GTBank\",\n                \"bank_nip_code\": null,\n                \"bank_code\": \"058\",\n                \"created_at\": \"2024-02-19T21:14:58.000000Z\",\n                \"updated_at\": \"2024-02-19T21:14:58.000000Z\"\n            }\n        },\n        \"virtual_account_details\": {\n            \"id\": \"01hq1nsa030911y42ppxpsdmpv\",\n            \"bank_id\": \"01hq1khn5dbqwjfhan1saatz7w\",\n            \"account_name\": \"Habeeb Hab\",\n            \"account_number\": \"1381853264\",\n            \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"employee_id\": \"01hq1ns9zhpd730x7510mayj2f\",\n            \"created_at\": \"2024-02-19T21:54:05.000000Z\",\n            \"updated_at\": \"2024-02-19T21:54:05.000000Z\",\n            \"bank\": {\n                \"id\": \"01hq1khn5dbqwjfhan1saatz7w\",\n                \"bank_name\": \"SUPPORT MICROFINANCE BANK\",\n                \"bank_nip_code\": null,\n                \"bank_code\": \"295\",\n                \"created_at\": \"2024-02-19T21:14:58.000000Z\",\n                \"updated_at\": \"2024-02-19T21:14:58.000000Z\"\n            }\n        }\n    },\n    \"message\": \"Employee details fetched successfully\",\n    \"code\": 200\n}"
-						}
-					]
-				},
-				{
 					"name": "Get Employees List",
 					"id": "90e027ef-0f42-45a8-8c3b-723fc0f52ad7",
 					"protocolProfileBehavior": {
@@ -8151,7 +8200,7 @@
 								"disabled": true
 							}
 						],
-						"url": "{{baseUrl}}/api/employees/01hq1kpxkvma8gbjx328hjkh7k"
+						"url": "{{baseUrl}}/employees"
 					},
 					"response": [
 						{
@@ -8220,6 +8269,118 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"data\": [\n        {\n            \"id\": \"01hq1ns9zhpd730x7510mayj2f\",\n            \"first_name\": \"Habeeb\",\n            \"last_name\": \"Hab\",\n            \"email_address\": \"habeebshewen@gmail.com\",\n            \"phone_number\": \"2347012345671\",\n            \"employement_date\": \"2024-02-12 00:00:00\",\n            \"job_title\": \"Software Developer\",\n            \"annual_net_salary\": \"1000000.00\",\n            \"annual_gross_salary\": \"1500000.00\",\n            \"bank_details_id\": \"01hq1ns9zw92admrxn7p8jsyv9\",\n            \"virtual_account_details_id\": \"01hq1nsa030911y42ppxpsdmpv\",\n            \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"status\": \"inactive\",\n            \"created_at\": \"2024-02-19T21:54:05.000000Z\",\n            \"updated_at\": \"2024-02-19T21:54:05.000000Z\",\n            \"name\": \"Habeeb Hab\"\n        },\n        {\n            \"id\": \"01hq1sz0jdmfahcqtg4649szfd\",\n            \"first_name\": \"Habe2\",\n            \"last_name\": \"Hab2\",\n            \"email_address\": \"hab2@gmail.com\",\n            \"phone_number\": \"2347012345672\",\n            \"employement_date\": \"2024-02-12 00:00:00\",\n            \"job_title\": \"Software Developer\",\n            \"annual_net_salary\": \"1000000.00\",\n            \"annual_gross_salary\": \"1500000.00\",\n            \"bank_details_id\": \"01hq1sz0jk9dfj57atak1tfptb\",\n            \"virtual_account_details_id\": \"01hq1sz0jxqbqan1chs12m65pc\",\n            \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"status\": \"active\",\n            \"created_at\": \"2024-02-19T23:07:07.000000Z\",\n            \"updated_at\": \"2024-02-19T23:07:07.000000Z\",\n            \"name\": \"Habe2 Hab2\"\n        }\n    ],\n    \"message\": \"List of employees fetched successfully\",\n    \"code\": 200\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Employee Details By ID",
+					"id": "6d70aacd-f785-46a4-80df-f3eef86d1a2f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "10|dwJTL2CKi6g8gl8bhyQSKv0fRJdtdTGHsiMTFV40129db7fc"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/employee/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"employee",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "532ab5d5-440c-4067-92cb-6a2ad17830e3",
+							"name": "Get Employee Details By ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"url": "{{baseUrl}}/api/employee/01hq1ns9zhpd730x7510mayj2f"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Feb 2024 23:08:40 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Feb 2024 23:08:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"data\": {\n        \"id\": \"01hq1ns9zhpd730x7510mayj2f\",\n        \"first_name\": \"Habeeb\",\n        \"last_name\": \"Hab\",\n        \"email_address\": \"habeebshewen@gmail.com\",\n        \"phone_number\": \"2347012345671\",\n        \"employement_date\": \"2024-02-12 00:00:00\",\n        \"job_title\": \"Software Developer\",\n        \"annual_net_salary\": \"1000000.00\",\n        \"annual_gross_salary\": \"1500000.00\",\n        \"bank_details_id\": \"01hq1ns9zw92admrxn7p8jsyv9\",\n        \"virtual_account_details_id\": \"01hq1nsa030911y42ppxpsdmpv\",\n        \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n        \"status\": \"inactive\",\n        \"created_at\": \"2024-02-19T21:54:05.000000Z\",\n        \"updated_at\": \"2024-02-19T21:54:05.000000Z\",\n        \"name\": \"Habeeb Hab\",\n        \"bank_details\": {\n            \"id\": \"01hq1ns9zw92admrxn7p8jsyv9\",\n            \"bank_id\": \"01hq1khn3762jhp4cksvx9nava\",\n            \"account_name\": \"AKPOKUMUAYE  ESSE STACY\",\n            \"account_number\": \"0113377906\",\n            \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"employee_id\": \"01hq1ns9zhpd730x7510mayj2f\",\n            \"created_at\": \"2024-02-19T21:54:05.000000Z\",\n            \"updated_at\": \"2024-02-19T21:54:05.000000Z\",\n            \"bank\": {\n                \"id\": \"01hq1khn3762jhp4cksvx9nava\",\n                \"bank_name\": \"GTBank\",\n                \"bank_nip_code\": null,\n                \"bank_code\": \"058\",\n                \"created_at\": \"2024-02-19T21:14:58.000000Z\",\n                \"updated_at\": \"2024-02-19T21:14:58.000000Z\"\n            }\n        },\n        \"virtual_account_details\": {\n            \"id\": \"01hq1nsa030911y42ppxpsdmpv\",\n            \"bank_id\": \"01hq1khn5dbqwjfhan1saatz7w\",\n            \"account_name\": \"Habeeb Hab\",\n            \"account_number\": \"1381853264\",\n            \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"employee_id\": \"01hq1ns9zhpd730x7510mayj2f\",\n            \"created_at\": \"2024-02-19T21:54:05.000000Z\",\n            \"updated_at\": \"2024-02-19T21:54:05.000000Z\",\n            \"bank\": {\n                \"id\": \"01hq1khn5dbqwjfhan1saatz7w\",\n                \"bank_name\": \"SUPPORT MICROFINANCE BANK\",\n                \"bank_nip_code\": null,\n                \"bank_code\": \"295\",\n                \"created_at\": \"2024-02-19T21:14:58.000000Z\",\n                \"updated_at\": \"2024-02-19T21:14:58.000000Z\"\n            }\n        }\n    },\n    \"message\": \"Employee details fetched successfully\",\n    \"code\": 200\n}"
 						}
 					]
 				}
