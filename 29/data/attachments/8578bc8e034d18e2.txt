@@ -1,0 +1,5 @@
+{
+    "name": "Principal",
+    "description": "Senior Identity Architect",
+    "permissions": []
+}
