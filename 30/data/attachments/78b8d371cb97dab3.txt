@@ -1,0 +1,1 @@
+{"success":true,"data":{"document_name":"Tax Identification Number","document_size":"3","document_type":"JPEG,JPG,PDF","mandatory":"Yes"},"pagination":null,"message":"Settings updated successfully"}
