@@ -6222,6 +6222,31 @@
 						},
 						{
 							"name": "Save General settings- Password reset token missing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "52c510a7-8f97-48a7-bd6c-2ecad311e332",
+										"exec": [
+											"var jsonData = pm.response.json()\r",
+											"\r",
+											"pm.test(\"Status code is 422\", function () {\r",
+											"    pm.response.to.have.status(422);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Unprocessable Content\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Password reset token expiration duration required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.password_reset_token_expiration_duration[0]).to.eql(\"The password reset token expiration duration field is required.\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "1f0aea01-c549-4d1b-888c-24ae4d8f247e",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -6242,6 +6267,120 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"inactivity_timeout\": \"3600\",\n    \"auth_token_expiration_duration\": \"86400\",\n    \"password_reset_token_expiration_duration\": \"\",\n    \"invite_token_expiration_duration\": \"600\",\n    \"max_login_attempts\": \"4\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/admin/settings/general"
+							},
+							"response": []
+						},
+						{
+							"name": "Save General settings- Invite token missing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "714e7406-d885-4ff6-a571-2b611cb2d234",
+										"exec": [
+											"var jsonData = pm.response.json()\r",
+											"\r",
+											"pm.test(\"Status code is 422\", function () {\r",
+											"    pm.response.to.have.status(422);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Unprocessable Content\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Invite token expiration duration required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.invite_token_expiration_duration[0]).to.eql(\"The invite token expiration duration field is required.\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "a79ca853-7939-4218-b73d-a3e71dd0fb78",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"inactivity_timeout\": \"3600\",\n    \"auth_token_expiration_duration\": \"86400\",\n    \"password_reset_token_expiration_duration\": \"3600\",\n    \"invite_token_expiration_duration\": \"\",\n    \"max_login_attempts\": \"4\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/admin/settings/general"
+							},
+							"response": []
+						},
+						{
+							"name": "Save General settings- Max login missing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "be3fdc44-f020-4e3d-b5c3-c0c5181c45e7",
+										"exec": [
+											"var jsonData = pm.response.json()\r",
+											"\r",
+											"pm.test(\"Status code is 422\", function () {\r",
+											"    pm.response.to.have.status(422);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Unprocessable Content\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Max login attempts required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.max_login_attempts[0]).to.eql(\"The max login attempts field is required.\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "c7d702a4-ccef-4504-a7fe-1f5d774c4097",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"inactivity_timeout\": \"3600\",\n    \"auth_token_expiration_duration\": \"86400\",\n    \"password_reset_token_expiration_duration\": \"3600\",\n    \"invite_token_expiration_duration\": \"600\",\n    \"max_login_attempts\": \"\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
