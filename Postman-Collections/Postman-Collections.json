@@ -1360,7 +1360,8 @@
 									"\r",
 									"pm.test(\"Non existing role error message is returned\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"   pm.expect(jsonData.error).to.eql('Role not found')"
+									"   pm.expect(jsonData.error).to.eql('Role not found')\r",
+									"})"
 								],
 								"type": "text/javascript"
 							}
@@ -8025,17 +8026,37 @@
 				},
 				{
 					"name": "Get Employee Details By ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7fbddcd5-190c-4170-bb21-1a17cd4d68fb",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is an object with success property\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has data object\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('data').that.is.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Employee details retrieval success message\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.eql('Employee details fetched successfully');\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"id": "6d70aacd-f785-46a4-80df-f3eef86d1a2f",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "10|dwJTL2CKi6g8gl8bhyQSKv0fRJdtdTGHsiMTFV40129db7fc"
-							}
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -8060,7 +8081,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": ""
+									"value": "{{employeeId}}"
 								}
 							]
 						}
@@ -8068,6 +8089,143 @@
 					"response": [
 						{
 							"id": "532ab5d5-440c-4067-92cb-6a2ad17830e3",
+							"name": "Get Employee Details By ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"url": "{{baseUrl}}/api/employee/01hq1ns9zhpd730x7510mayj2f"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Feb 2024 23:08:40 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Feb 2024 23:08:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"data\": {\n        \"id\": \"01hq1ns9zhpd730x7510mayj2f\",\n        \"first_name\": \"Habeeb\",\n        \"last_name\": \"Hab\",\n        \"email_address\": \"habeebshewen@gmail.com\",\n        \"phone_number\": \"2347012345671\",\n        \"employement_date\": \"2024-02-12 00:00:00\",\n        \"job_title\": \"Software Developer\",\n        \"annual_net_salary\": \"1000000.00\",\n        \"annual_gross_salary\": \"1500000.00\",\n        \"bank_details_id\": \"01hq1ns9zw92admrxn7p8jsyv9\",\n        \"virtual_account_details_id\": \"01hq1nsa030911y42ppxpsdmpv\",\n        \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n        \"status\": \"inactive\",\n        \"created_at\": \"2024-02-19T21:54:05.000000Z\",\n        \"updated_at\": \"2024-02-19T21:54:05.000000Z\",\n        \"name\": \"Habeeb Hab\",\n        \"bank_details\": {\n            \"id\": \"01hq1ns9zw92admrxn7p8jsyv9\",\n            \"bank_id\": \"01hq1khn3762jhp4cksvx9nava\",\n            \"account_name\": \"AKPOKUMUAYE  ESSE STACY\",\n            \"account_number\": \"0113377906\",\n            \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"employee_id\": \"01hq1ns9zhpd730x7510mayj2f\",\n            \"created_at\": \"2024-02-19T21:54:05.000000Z\",\n            \"updated_at\": \"2024-02-19T21:54:05.000000Z\",\n            \"bank\": {\n                \"id\": \"01hq1khn3762jhp4cksvx9nava\",\n                \"bank_name\": \"GTBank\",\n                \"bank_nip_code\": null,\n                \"bank_code\": \"058\",\n                \"created_at\": \"2024-02-19T21:14:58.000000Z\",\n                \"updated_at\": \"2024-02-19T21:14:58.000000Z\"\n            }\n        },\n        \"virtual_account_details\": {\n            \"id\": \"01hq1nsa030911y42ppxpsdmpv\",\n            \"bank_id\": \"01hq1khn5dbqwjfhan1saatz7w\",\n            \"account_name\": \"Habeeb Hab\",\n            \"account_number\": \"1381853264\",\n            \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"employee_id\": \"01hq1ns9zhpd730x7510mayj2f\",\n            \"created_at\": \"2024-02-19T21:54:05.000000Z\",\n            \"updated_at\": \"2024-02-19T21:54:05.000000Z\",\n            \"bank\": {\n                \"id\": \"01hq1khn5dbqwjfhan1saatz7w\",\n                \"bank_name\": \"SUPPORT MICROFINANCE BANK\",\n                \"bank_nip_code\": null,\n                \"bank_code\": \"295\",\n                \"created_at\": \"2024-02-19T21:14:58.000000Z\",\n                \"updated_at\": \"2024-02-19T21:14:58.000000Z\"\n            }\n        }\n    },\n    \"message\": \"Employee details fetched successfully\",\n    \"code\": 200\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Employee Details By ID- Invalid id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7fbddcd5-190c-4170-bb21-1a17cd4d68fb",
+								"exec": [
+									"pm.test(\"Response status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is a JSON object\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has a 'success' property\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response 'success' property is a boolean\", function () {\r",
+									"    pm.expect(pm.response.json().success).to.be.a('boolean');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Non existing employee error message is returned\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"   pm.expect(jsonData.error).to.eql('Employee not found')\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "624dea99-4637-4d1c-9ea2-adb690604923",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/employee/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"employee",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "93766098899888"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "7f037812-7fcc-4214-9b7d-59e036513c23",
 							"name": "Get Employee Details By ID",
 							"originalRequest": {
 								"method": "GET",
