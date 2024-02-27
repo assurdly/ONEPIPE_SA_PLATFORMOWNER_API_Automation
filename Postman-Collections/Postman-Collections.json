@@ -6107,6 +6107,82 @@
 							"response": []
 						},
 						{
+							"name": "Save General settings- Blank fields Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "61d4e178-b668-4cc5-82ba-018152edb563",
+										"exec": [
+											"var jsonData = pm.response.json()\r",
+											"\r",
+											"pm.test(\"Status code is 422\", function () {\r",
+											"    pm.response.to.have.status(422);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Unprocessable Content\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Host url required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.host_url[0]).to.eql(\"The host url field is required.\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Webhook required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.webhook_url[0]).to.eql(\"The webhook url field is required.\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"API key required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.api_key[0]).to.eql(\"The api key field is required.\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"API secret key required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.api_secret_key[0]).to.eql(\"The api secret key field is required.\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Timeout required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.timeout[0]).to.eql(\"The timeout field is required.\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Client id required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.client_id[0]).to.eql(\"The client id field is required.\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "fe35c02d-413c-46cd-886e-574a31569658",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"inactivity_timeout\": \"\",\n    \"auth_token_expiration_duration\": \"\",\n    \"password_reset_token_expiration_duration\": \"\",\n    \"invite_token_expiration_duration\": \"\",\n    \"max_login_attempts\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/admin/settings/general"
+							},
+							"response": []
+						},
+						{
 							"name": "Save General settings",
 							"id": "c3dc030e-c93b-4002-9761-5c1719db4845",
 							"protocolProfileBehavior": {
