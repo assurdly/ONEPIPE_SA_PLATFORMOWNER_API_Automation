@@ -6794,9 +6794,8 @@
 							],
 							"variable": [
 								{
-									"id": "0fe2cfb5-3957-4ff1-b1de-0232bc83c663",
 									"key": "id",
-									"value": "01hq1kpxkvma8gbjx328hjkh7k"
+									"value": "{{businessId}}"
 								}
 							]
 						}
