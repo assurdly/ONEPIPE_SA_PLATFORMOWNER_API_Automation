@@ -1,5 +1,0 @@
-{
-    "name": "Customer",
-    "description": "Corporate Markets Consultant",
-    "permissions": []
-}
