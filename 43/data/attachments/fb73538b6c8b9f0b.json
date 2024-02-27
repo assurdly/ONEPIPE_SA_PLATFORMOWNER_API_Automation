@@ -1,0 +1,11 @@
+{
+    "Date": "Tue, 27 Feb 2024 12:09:48 GMT",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Transfer-Encoding": "chunked",
+    "Connection": "keep-alive",
+    "Server": "nginx/1.19.1",
+    "Cache-Control": "no-cache, private",
+    "X-RateLimit-Limit": "60",
+    "X-RateLimit-Remaining": "58",
+    "Access-Control-Allow-Origin": "*"
+}
