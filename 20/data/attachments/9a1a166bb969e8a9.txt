@@ -1,5 +1,0 @@
-{
-    "name": "Global",
-    "description": "Direct Metrics Specialist",
-    "permissions": []
-}

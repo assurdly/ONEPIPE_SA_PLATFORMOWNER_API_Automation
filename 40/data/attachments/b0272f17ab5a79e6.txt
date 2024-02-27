@@ -1,0 +1,5 @@
+{
+    "name": "Customer",
+    "description": "Principal Paradigm Engineer",
+    "permissions": []
+}
