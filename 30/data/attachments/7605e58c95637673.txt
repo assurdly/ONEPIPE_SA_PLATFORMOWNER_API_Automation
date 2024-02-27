@@ -1,5 +1,0 @@
-{
-    "name": "Lead",
-    "description": "District Functionality Orchestrator",
-    "permissions": []
-}
