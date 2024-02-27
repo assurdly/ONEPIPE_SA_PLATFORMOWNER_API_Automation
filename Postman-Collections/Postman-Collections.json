@@ -6772,6 +6772,94 @@
 							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n        \"business_name\": \"Habeeb12\",\n        \"rc_number\": \"123456\",\n        \"business_type\": \"Telecommunications\",\n        \"state_id\": \"01hq1khn0zhdfddzyw4p5506rs\",\n        \"bank_details_id\": \"01hq495acq84b25qzz4j3s79sk\",\n        \"address\": \"No 3 Eromosel Avenue, Lagos\",\n        \"enable_sms\": 0,\n        \"enable_email\": 0,\n        \"has_completed_kyb\": false,\n        \"owner_id\": \"01hq1kpxmkxjjs46pv5kz9pms4\",\n        \"status\": \"inactive\",\n        \"created_at\": \"2024-02-19T21:17:50.000000Z\",\n        \"updated_at\": \"2024-02-21T11:10:38.000000Z\"\n    },\n    \"pagination\": null,\n    \"message\": \"Business deactivated successfully\"\n}"
 						}
 					]
+				},
+				{
+					"name": "Blacklist Business By ID",
+					"id": "dc663b31-dadf-48cb-8768-610841983a13",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/businesses/:id/blacklist",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"businesses",
+								":id",
+								"blacklist"
+							],
+							"variable": [
+								{
+									"id": "0fe2cfb5-3957-4ff1-b1de-0232bc83c663",
+									"key": "id",
+									"value": "01hq1kpxkvma8gbjx328hjkh7k"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "ba3ef043-7173-422f-b9e5-abd32bcf5c36",
+							"name": "Get Business Documents By ID Copy",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseUrl}}/api/businesses/01hq1kpxkvma8gbjx328hjkh7k/documents"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 20:25:56 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 20:25:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": \"01hq1nf4s5f3s44py6hb2f8ehw\",\n            \"document_name\": \"Tax Identification Number\",\n            \"file_url\": \"/storage/Documents/pexels-pixabay-268533.jpg\",\n            \"date_submited\": \"19/02/2024 @ 10:48PM\"\n        }\n    ],\n    \"pagination\": null,\n    \"message\": \"Business doucuments fetched successfully\"\n}"
+						}
+					]
 				}
 			],
 			"id": "1a421e7f-6ef5-4ffd-98be-afbadef99206"
