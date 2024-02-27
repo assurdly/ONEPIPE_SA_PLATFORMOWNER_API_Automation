@@ -1,0 +1,1 @@
+{"message":"The host url field is required. (and 5 more errors)","errors":{"host_url":["The host url field is required."],"webhook_url":["The webhook url field is required."],"api_key":["The api key field is required."],"api_secret_key":["The api secret key field is required."],"timeout":["The timeout field is required."],"clinet_id":["The clinet id field is required."]}}
