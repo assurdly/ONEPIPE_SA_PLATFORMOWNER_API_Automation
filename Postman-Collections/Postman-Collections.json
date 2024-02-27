@@ -6964,7 +6964,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"host_url\": \"onepipe.io\",\n    \"webhook_url\": \"onepipe.io\",\n    \"api_key\": \"1234567890asa#sdsas\",\n    \"api_secret_key\": \"qwqweqewqwads122324wedfwfegrthr\",\n    \"timeout\": \"4\",\n    \"clinet_id\": \"412334ASAS\"\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
