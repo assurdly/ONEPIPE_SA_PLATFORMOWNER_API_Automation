@@ -834,6 +834,15 @@
 									"pm.test(\"Response is a JSON object\", function () {\r",
 									"    pm.expect(pm.response.json()).to.be.an('object');\r",
 									"});\r",
+									"pm.test(\"Role name omission error message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"   pm.expect(jsonData.errors.name[0]).to.eql('The name field is required.')\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Role description omission error message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"   pm.expect(jsonData.errors.description[0]).to.eql('The description field is required.')\r",
+									"});\r",
 									"\r",
 									"pm.test(\"Permissions omission error message\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
@@ -859,7 +868,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"{{$randomJobDescriptor}}\",\n    \"description\": \"{{$randomJobTitle}}\",\n    \"permissions\": []\n}",
+							"raw": "{\n    \"name\": \"\",\n    \"description\": \"\",\n    \"permissions\": []\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -871,135 +880,6 @@
 					"response": [
 						{
 							"id": "54f4f209-d4c9-4179-b2ec-b18ef1310786",
-							"name": "New Request",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"name\": \"test2\",\n    \"description\": \"test test2\",\n    \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n    \"permission\": {\n        \"module\": \"dashboard\"\n    }\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/api/roles"
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "localhost:8000"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 19 Feb 2024 23:03:47 GMT"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 19 Feb 2024 23:03:47 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.4"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "59"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"name\": \"test2\",\n        \"description\": \"test test2\",\n        \"status\": \"active\",\n        \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n        \"updated_at\": \"2024-02-19T23:03:47.000000Z\",\n        \"created_at\": \"2024-02-19T23:03:47.000000Z\",\n        \"id\": 5\n    },\n    \"pagination\": null,\n    \"message\": \"Role created successfully\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Create Role- No permission",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "4eedbe70-8799-42b4-8bed-68571385b8d8",
-								"exec": [
-									"var jsonData = pm.response.json()\r",
-									"\r",
-									"pm.test(\"Status code is 422\", function () {\r",
-									"    pm.response.to.have.status(422);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Status code name has string\", function () {\r",
-									"    pm.response.to.have.status(\"Unprocessable Content\");\r",
-									"});\r",
-									"pm.test(\"Response is a JSON object\", function () {\r",
-									"    pm.expect(pm.response.json()).to.be.an('object');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Permissions omission error message\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"   pm.expect(jsonData.errors.permissions[0]).to.eql('The permissions field is required.')\r",
-									"})"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"id": "783d66a6-88f6-4c8b-8b5c-561417c30cc9",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"{{$randomJobDescriptor}}\",\n    \"description\": \"{{$randomJobTitle}}\",\n    \"permissions\": []\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{baseUrl}}/roles"
-					},
-					"response": [
-						{
-							"id": "1a2f7fed-92bd-4554-91bf-c0f57d54780b",
 							"name": "New Request",
 							"originalRequest": {
 								"method": "POST",
@@ -1258,6 +1138,135 @@
 					"response": [
 						{
 							"id": "be7bfb43-0401-4f04-a769-d1d2b14ae2fa",
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"test2\",\n    \"description\": \"test test2\",\n    \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n    \"permission\": {\n        \"module\": \"dashboard\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/roles"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Feb 2024 23:03:47 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Feb 2024 23:03:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"name\": \"test2\",\n        \"description\": \"test test2\",\n        \"status\": \"active\",\n        \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n        \"updated_at\": \"2024-02-19T23:03:47.000000Z\",\n        \"created_at\": \"2024-02-19T23:03:47.000000Z\",\n        \"id\": 5\n    },\n    \"pagination\": null,\n    \"message\": \"Role created successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Role- No permission",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4eedbe70-8799-42b4-8bed-68571385b8d8",
+								"exec": [
+									"var jsonData = pm.response.json()\r",
+									"\r",
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"Unprocessable Content\");\r",
+									"});\r",
+									"pm.test(\"Response is a JSON object\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Permissions omission error message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"   pm.expect(jsonData.errors.permissions[0]).to.eql('The permissions field is required.')\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "783d66a6-88f6-4c8b-8b5c-561417c30cc9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{$randomJobDescriptor}}\",\n    \"description\": \"{{$randomJobTitle}}\",\n    \"permissions\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/roles"
+					},
+					"response": [
+						{
+							"id": "1a2f7fed-92bd-4554-91bf-c0f57d54780b",
 							"name": "New Request",
 							"originalRequest": {
 								"method": "POST",
@@ -4402,6 +4411,418 @@
 					"response": [
 						{
 							"id": "e8edfe2a-aad1-4962-bc37-2953b8db762c",
+							"name": "Accept Invite",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"test1\",\n    \"last_name\": \"test2\",\n    \"email\": \"test@gmail.com\",\n    \"phone_number\": \"7032123456\",\n    \"business_name\": \"test business\",\n    \"rc_number\": \"212344\",\n    \"business_type\": \"Marketing\",\n    \"password\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/register"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 00:23:12 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 00:23:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Business Registration successful\",\n    \"user\": {\n        \"first_name\": \"test1\",\n        \"last_name\": \"test2\",\n        \"email\": \"test@gmail.com\",\n        \"phone_number\": \"2347032123456\",\n        \"role_id\": 6,\n        \"business_id\": \"01hq1ya419x92arzrs38c4ywnd\",\n        \"status\": \"pending\",\n        \"id\": \"01hq1ya42sybcqr2zyaaj241r5\",\n        \"updated_at\": \"2024-02-20T00:23:05.000000Z\",\n        \"created_at\": \"2024-02-20T00:23:05.000000Z\",\n        \"name\": \"test1 test2\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Accept Invite- Missing firstname",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9d7ad8dd-096c-42c4-a793-91410b8379e3",
+								"exec": [
+									"var jsonData = pm.response.json()\r",
+									"\r",
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"Unprocessable Content\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Firstname required message is returned \", function () {\r",
+									"    pm.expect(jsonData.errors.first_name[0]).to.eql(\"The first name field is required.\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "7859ada0-b5c5-40a0-9573-d05429710803",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"\",\n    \"last_name\": \"{{$randomLastName}}\",\n    \"password\": \"{{$randomPassword}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/team-members/invite/:id/accept",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"team-members",
+								"invite",
+								":id",
+								"accept"
+							],
+							"variable": [
+								{
+									"id": "caea733a-1879-4826-9cbc-6f1d9e6ae3db",
+									"key": "id",
+									"value": "{{inviteId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "3a0152c4-28ba-469f-8dd2-8e44549d07b7",
+							"name": "Accept Invite",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"test1\",\n    \"last_name\": \"test2\",\n    \"email\": \"test@gmail.com\",\n    \"phone_number\": \"7032123456\",\n    \"business_name\": \"test business\",\n    \"rc_number\": \"212344\",\n    \"business_type\": \"Marketing\",\n    \"password\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/register"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 00:23:12 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 00:23:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Business Registration successful\",\n    \"user\": {\n        \"first_name\": \"test1\",\n        \"last_name\": \"test2\",\n        \"email\": \"test@gmail.com\",\n        \"phone_number\": \"2347032123456\",\n        \"role_id\": 6,\n        \"business_id\": \"01hq1ya419x92arzrs38c4ywnd\",\n        \"status\": \"pending\",\n        \"id\": \"01hq1ya42sybcqr2zyaaj241r5\",\n        \"updated_at\": \"2024-02-20T00:23:05.000000Z\",\n        \"created_at\": \"2024-02-20T00:23:05.000000Z\",\n        \"name\": \"test1 test2\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Accept Invite- Missing lastname",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9d7ad8dd-096c-42c4-a793-91410b8379e3",
+								"exec": [
+									"var jsonData = pm.response.json()\r",
+									"\r",
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"Unprocessable Content\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Lastname required message is returned \", function () {\r",
+									"    pm.expect(jsonData.errors.last_name[0]).to.eql(\"The last name field is required.\");\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "389eb4c2-1e41-4b3f-97b2-4381bca3c3cb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"{{$randomFirstName}}\",\n    \"last_name\": \"\",\n    \"password\": \"{{$randomPassword}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/team-members/invite/:id/accept",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"team-members",
+								"invite",
+								":id",
+								"accept"
+							],
+							"variable": [
+								{
+									"id": "caea733a-1879-4826-9cbc-6f1d9e6ae3db",
+									"key": "id",
+									"value": "{{inviteId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "403d1a42-cfbf-4f01-9182-4ad4fb5e9f58",
+							"name": "Accept Invite",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"test1\",\n    \"last_name\": \"test2\",\n    \"email\": \"test@gmail.com\",\n    \"phone_number\": \"7032123456\",\n    \"business_name\": \"test business\",\n    \"rc_number\": \"212344\",\n    \"business_type\": \"Marketing\",\n    \"password\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/register"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 00:23:12 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 00:23:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Business Registration successful\",\n    \"user\": {\n        \"first_name\": \"test1\",\n        \"last_name\": \"test2\",\n        \"email\": \"test@gmail.com\",\n        \"phone_number\": \"2347032123456\",\n        \"role_id\": 6,\n        \"business_id\": \"01hq1ya419x92arzrs38c4ywnd\",\n        \"status\": \"pending\",\n        \"id\": \"01hq1ya42sybcqr2zyaaj241r5\",\n        \"updated_at\": \"2024-02-20T00:23:05.000000Z\",\n        \"created_at\": \"2024-02-20T00:23:05.000000Z\",\n        \"name\": \"test1 test2\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Accept Invite- Missing password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9d7ad8dd-096c-42c4-a793-91410b8379e3",
+								"exec": [
+									"var jsonData = pm.response.json()\r",
+									"\r",
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"Unprocessable Content\");\r",
+									"});\r",
+									"pm.test(\"Password required message is returned \", function () {\r",
+									"    pm.expect(jsonData.errors.password[0]).to.eql(\"The password field is required.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "166b4f8b-ad7b-4116-b481-6848f05430d9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"{{$randomFirstName}}\",\n    \"last_name\": \"{{$randomLastName}}\",\n    \"password\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/team-members/invite/:id/accept",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"team-members",
+								"invite",
+								":id",
+								"accept"
+							],
+							"variable": [
+								{
+									"id": "caea733a-1879-4826-9cbc-6f1d9e6ae3db",
+									"key": "id",
+									"value": "{{inviteId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "247ba048-2f34-461c-9738-a4a40b717075",
 							"name": "Accept Invite",
 							"originalRequest": {
 								"method": "POST",
