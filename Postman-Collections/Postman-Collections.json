@@ -7747,41 +7747,63 @@
 								"url": "{{baseUrl}}/admin/settings/onepipe"
 							},
 							"response": []
+						},
+						{
+							"name": "Get OnePipe settings",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4f600d0a-4ec0-4fdd-9a7a-273ae234be13",
+										"exec": [
+											"pm.test('Response status code is 200', function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})\r",
+											"\r",
+											"pm.test('Response is a JSON object with success, data, pagination, and message properties', function () {\r",
+											"    pm.expect(pm.response.json()).to.be.an('object').that.has.all.keys('success', 'data', 'pagination', 'message');\r",
+											"})\r",
+											"\r",
+											"pm.test(\"Onepipe settings retrieval success message is returned\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"Onepipe Settings fetched successfully\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "dfb90690-4500-459b-8994-f6bbd6fcdec4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/admin/settings/onepipe"
+							},
+							"response": []
 						}
 					],
 					"id": "1df04649-452a-4c2c-a0ab-089d90047b6a"
-				},
-				{
-					"name": "Get OnePipe settings",
-					"id": "dfb90690-4500-459b-8994-f6bbd6fcdec4",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{baseUrl}}/admin/settings/onepipe"
-					},
-					"response": []
 				},
 				{
 					"name": "Add document- Blank document details",
