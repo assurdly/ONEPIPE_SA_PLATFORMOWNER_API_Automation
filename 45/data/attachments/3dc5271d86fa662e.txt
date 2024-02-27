@@ -1,0 +1,5 @@
+{
+    "name": "Internal",
+    "description": "Global Solutions Designer",
+    "permissions": []
+}

@@ -1,5 +1,0 @@
-{
-    "name": "Customer",
-    "description": "International Identity Consultant",
-    "permissions": []
-}
