@@ -5976,6 +5976,30 @@
 					"item": [
 						{
 							"name": "Get General settings",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a4917de1-c706-48a2-8a05-fa6735b531e9",
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})",
+											"",
+											"pm.test('Response is a JSON object with success, data, pagination, and message properties', function () {",
+											"    pm.expect(pm.response.json()).to.be.an('object').that.has.all.keys('success', 'data', 'pagination', 'message');",
+											"})",
+											"",
+											"pm.test(\"General settings retrieval success message is returned\", function () {",
+											"    pm.expect(pm.response.json().message).to.eql(\"Settings fetched successfully\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "47bdf3f6-508f-4bd4-bef9-3363ddd1fc8d",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -5996,6 +6020,38 @@
 								"body": {
 									"mode": "raw",
 									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/admin/settings/general"
+							},
+							"response": []
+						},
+						{
+							"name": "Save General settings- Blank fields",
+							"id": "f1997f0e-97f1-4daf-82d9-243708da9349",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"inactivity_timeout\": \"3600\",\n    \"auth_token_expiration_duration\": \"86400\",\n    \"password_reset_token_expiration_duration\": \"\",\n    \"invite_token_expiration_duration\": \"600\",\n    \"max_login_attempts\": \"4\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
