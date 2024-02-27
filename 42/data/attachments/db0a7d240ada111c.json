@@ -1,0 +1,10 @@
+{
+    "Accept": "application/json",
+    "Authorization": "Bearer 190|1S6kiCTrwd0vQRtrWTrXYIw8nYEnSEn5lYoTi6Qi1550dd84",
+    "User-Agent": "PostmanRuntime/7.36.3",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "db63b01d-6d35-4c62-a480-f81dc4cafd31",
+    "Host": "salary.dev.onepipe.io",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive"
+}
