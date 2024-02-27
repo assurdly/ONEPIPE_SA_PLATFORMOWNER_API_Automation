@@ -6569,7 +6569,235 @@
 							"response": []
 						},
 						{
-							"name": "Save OnePipe settings- Blank fields Copy",
+							"name": "Save OnePipe settings- Host url missing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d532290c-b9b6-47d4-adfc-10f97157f9b3",
+										"exec": [
+											"var jsonData = pm.response.json()\r",
+											"\r",
+											"pm.test(\"Status code is 422\", function () {\r",
+											"    pm.response.to.have.status(422);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Unprocessable Content\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Host url required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.host_url[0]).to.eql(\"The host url field is required.\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "6cee531c-6666-4f4d-9ff1-67c8f1772036",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"host_url\": \"\",\n    \"webhook_url\": \"onepipe.io\",\n    \"api_key\": \"1234567890asa#sdsas\",\n    \"api_secret_key\": \"qwqweqewqwads122324wedfwfegrthr\",\n    \"timeout\": \"4\",\n    \"clinet_id\": \"412334ASAS\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/admin/settings/onepipe"
+							},
+							"response": []
+						},
+						{
+							"name": "Save OnePipe settings- Webhook missing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d532290c-b9b6-47d4-adfc-10f97157f9b3",
+										"exec": [
+											"var jsonData = pm.response.json()\r",
+											"\r",
+											"pm.test(\"Status code is 422\", function () {\r",
+											"    pm.response.to.have.status(422);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Unprocessable Content\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Webhook required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.webhook_url[0]).to.eql(\"The webhook url field is required.\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "92e8e11b-c7c8-4623-8b6b-72de4f509151",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"host_url\": \"onepipe.io\",\n    \"webhook_url\": \"\",\n    \"api_key\": \"1234567890asa#sdsas\",\n    \"api_secret_key\": \"qwqweqewqwads122324wedfwfegrthr\",\n    \"timeout\": \"4\",\n    \"clinet_id\": \"412334ASAS\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/admin/settings/onepipe"
+							},
+							"response": []
+						},
+						{
+							"name": "Save OnePipe settings- API key missing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d532290c-b9b6-47d4-adfc-10f97157f9b3",
+										"exec": [
+											"var jsonData = pm.response.json()\r",
+											"\r",
+											"pm.test(\"Status code is 422\", function () {\r",
+											"    pm.response.to.have.status(422);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Unprocessable Content\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"API key required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.api_key[0]).to.eql(\"The api key field is required.\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "b2f3fb62-4f7a-430c-a07d-52f18ebc2efa",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"host_url\": \"onepipe.io\",\n    \"webhook_url\": \"onepipe.io\",\n    \"api_key\": \"\",\n    \"api_secret_key\": \"qwqweqewqwads122324wedfwfegrthr\",\n    \"timeout\": \"4\",\n    \"clinet_id\": \"412334ASAS\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/admin/settings/onepipe"
+							},
+							"response": []
+						},
+						{
+							"name": "Save OnePipe settings- API secret missing",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d532290c-b9b6-47d4-adfc-10f97157f9b3",
+										"exec": [
+											"var jsonData = pm.response.json()\r",
+											"\r",
+											"pm.test(\"Status code is 422\", function () {\r",
+											"    pm.response.to.have.status(422);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Unprocessable Content\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"API secret key required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.api_secret_key[0]).to.eql(\"The api secret key field is required.\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "ff4dcb52-94df-4583-8979-7421ced8f77e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"host_url\": \"onepipe.io\",\n    \"webhook_url\": \"onepipe.io\",\n    \"api_key\": \"1234567890asa#sdsas\",\n    \"api_secret_key\": \"\",\n    \"timeout\": \"4\",\n    \"clinet_id\": \"412334ASAS\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/admin/settings/onepipe"
+							},
+							"response": []
+						},
+						{
+							"name": "Save OnePipe settings- Blank fields Copy 5",
 							"event": [
 								{
 									"listen": "test",
@@ -6614,7 +6842,7 @@
 									}
 								}
 							],
-							"id": "6cee531c-6666-4f4d-9ff1-67c8f1772036",
+							"id": "fdc41882-008c-4e48-94c7-64859cf6c796",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -6645,7 +6873,7 @@
 							"response": []
 						},
 						{
-							"name": "Save OnePipe settings- Blank fields Copy 2",
+							"name": "Save OnePipe settings- Blank fields Copy 6",
 							"event": [
 								{
 									"listen": "test",
@@ -6690,7 +6918,7 @@
 									}
 								}
 							],
-							"id": "92e8e11b-c7c8-4623-8b6b-72de4f509151",
+							"id": "6e0f16fa-122e-45c2-8fcd-83e9e63042ac",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
