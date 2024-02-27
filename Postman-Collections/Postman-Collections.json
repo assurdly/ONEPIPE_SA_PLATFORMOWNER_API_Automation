@@ -617,7 +617,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"email\": \"platformowner@salaryadvance.com\",\n \"password\": \"password\"\n\n }",
+							"raw": "{\n\"email\": \"platformowner@salaryadvance.com\",\n\"password\": \"password\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
