@@ -1,5 +1,0 @@
-{
-    "name": "Central",
-    "description": "Internal Branding Representative",
-    "permissions": []
-}
