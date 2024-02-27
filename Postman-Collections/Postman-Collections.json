@@ -6393,6 +6393,37 @@
 						},
 						{
 							"name": "Save General settings",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "381b8732-98f7-4fe0-b389-9d61bb981d86",
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is an object with success property\", function () {\r",
+											"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Data property is an object with specific properties\", function () {\r",
+											"    var data = pm.response.json().data;\r",
+											"    pm.expect(data).to.be.an('object').that.has.all.keys('inactivity_timeout', 'auth_token_expiration_duration', 'password_reset_token_expiration_duration', 'invite_token_expiration_duration', 'max_login_attempts');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Pagination property is null\", function () {\r",
+											"    pm.expect(pm.response.json().pagination).to.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"General settings success message\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.eql('General setting created successfully')\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "c3dc030e-c93b-4002-9761-5c1719db4845",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -6412,7 +6443,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"inactivity_timeout\": \"3600\",\n    \"auth_token_expiration_duration\": \"86400\",\n    \"password_reset_token_expiration_duration\": \"\",\n    \"invite_token_expiration_duration\": \"600\",\n    \"max_login_attempts\": \"4\"\n}",
+									"raw": "{\n    \"inactivity_timeout\": \"3600\",\n    \"auth_token_expiration_duration\": \"86400\",\n    \"password_reset_token_expiration_duration\": \"600\",\n    \"invite_token_expiration_duration\": \"600\",\n    \"max_login_attempts\": \"4\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6527,6 +6558,158 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"host_url\": \"\",\n    \"webhook_url\": \"\",\n    \"api_key\": \"\",\n    \"api_secret_key\": \"\",\n    \"timeout\": \"\",\n    \"clinet_id\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/admin/settings/onepipe"
+							},
+							"response": []
+						},
+						{
+							"name": "Save OnePipe settings- Blank fields Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d532290c-b9b6-47d4-adfc-10f97157f9b3",
+										"exec": [
+											"var jsonData = pm.response.json()\r",
+											"\r",
+											"pm.test(\"Status code is 422\", function () {\r",
+											"    pm.response.to.have.status(422);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Unprocessable Content\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Host url required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.host_url[0]).to.eql(\"The host url field is required.\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Webhook required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.webhook_url[0]).to.eql(\"The webhook url field is required.\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"API key required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.api_key[0]).to.eql(\"The api key field is required.\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"API secret key required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.api_secret_key[0]).to.eql(\"The api secret key field is required.\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Timeout required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.timeout[0]).to.eql(\"The timeout field is required.\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Client id required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.client_id[0]).to.eql(\"The client id field is required.\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "6cee531c-6666-4f4d-9ff1-67c8f1772036",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"host_url\": \"onepipe.io\",\n    \"webhook_url\": \"onepipe.io\",\n    \"api_key\": \"1234567890asa#sdsas\",\n    \"api_secret_key\": \"qwqweqewqwads122324wedfwfegrthr\",\n    \"timeout\": \"4\",\n    \"clinet_id\": \"412334ASAS\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/admin/settings/onepipe"
+							},
+							"response": []
+						},
+						{
+							"name": "Save OnePipe settings- Blank fields Copy 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d532290c-b9b6-47d4-adfc-10f97157f9b3",
+										"exec": [
+											"var jsonData = pm.response.json()\r",
+											"\r",
+											"pm.test(\"Status code is 422\", function () {\r",
+											"    pm.response.to.have.status(422);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Unprocessable Content\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Host url required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.host_url[0]).to.eql(\"The host url field is required.\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Webhook required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.webhook_url[0]).to.eql(\"The webhook url field is required.\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"API key required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.api_key[0]).to.eql(\"The api key field is required.\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"API secret key required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.api_secret_key[0]).to.eql(\"The api secret key field is required.\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Timeout required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.timeout[0]).to.eql(\"The timeout field is required.\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Client id required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.client_id[0]).to.eql(\"The client id field is required.\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "92e8e11b-c7c8-4623-8b6b-72de4f509151",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"host_url\": \"onepipe.io\",\n    \"webhook_url\": \"onepipe.io\",\n    \"api_key\": \"1234567890asa#sdsas\",\n    \"api_secret_key\": \"qwqweqewqwads122324wedfwfegrthr\",\n    \"timeout\": \"4\",\n    \"clinet_id\": \"412334ASAS\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
