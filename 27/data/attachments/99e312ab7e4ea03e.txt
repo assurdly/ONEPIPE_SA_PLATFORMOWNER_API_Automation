@@ -1,6 +1,0 @@
-{
-    "first_name": "Hilma",
-    "last_name": "Gislason",
-    "email": "esseshewen@gmail.com",
-    "role_id": "2"
-}

@@ -1,1 +1,0 @@
-{"success":true,"data":{"id":"01hqk4xnzjv663hpja3da06w0y","document_name":"Certificate of Incorporation","document_size":"6MB","document_type":"JPEG","mandatory":"yes","date_created":"26\/02\/2024 @ 05:45PM"},"pagination":null,"message":"Document details fetched successfully"}

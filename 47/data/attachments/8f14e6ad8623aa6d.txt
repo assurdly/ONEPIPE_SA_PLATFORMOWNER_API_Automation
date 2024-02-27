@@ -1,0 +1,6 @@
+{
+    "first_name": "Chaz",
+    "last_name": "Rogahn",
+    "email": "esseshewen@gmail.com",
+    "role_id": "2"
+}

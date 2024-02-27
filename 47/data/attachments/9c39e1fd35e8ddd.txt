@@ -1,0 +1,5 @@
+{
+    "name": "Direct",
+    "description": "Dynamic Mobility Analyst",
+    "permissions": []
+}
