@@ -1,0 +1,5 @@
+{
+    "name": "Internal",
+    "description": "Lead Communications Developer",
+    "permissions": []
+}
