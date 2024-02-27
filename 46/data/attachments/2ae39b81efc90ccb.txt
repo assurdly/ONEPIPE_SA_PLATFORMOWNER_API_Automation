@@ -1,0 +1,1 @@
+{"success":true,"data":{"id":"01hqn8c194netcs6q126ggt61d","email":"sultan+484@assurdly.com","user_id":"01hqn8c1em84z65dz66tg7a1cx","role_id":"67","business_id":null,"status":"pending","accepted_at":null,"deleted_at":null,"created_at":"2024-02-27T12:24:28.000000Z","updated_at":"2024-02-27T12:24:28.000000Z"},"pagination":null,"message":"Team invite resent successfully"}
