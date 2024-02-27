@@ -1,0 +1,5 @@
+{
+    "name": "Senior",
+    "description": "National Factors Representative",
+    "permissions": []
+}
