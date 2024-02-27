@@ -1,0 +1,5 @@
+{
+    "name": "Investor",
+    "description": "National Operations Planner",
+    "permissions": []
+}
