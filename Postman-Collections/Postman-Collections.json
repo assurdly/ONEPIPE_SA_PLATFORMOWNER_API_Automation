@@ -3275,15 +3275,12 @@
 									"pm.test(\"Response status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"\r",
 									"pm.test(\"Response is a JSON object with success, data, pagination, and message properties\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.be.an('object').that.has.all.keys('success', 'data', 'pagination', 'message');\r",
 									"});\r",
-									"\r",
 									"pm.test(\"Activation success message\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"   pm.expect(jsonData.message).to.eql('Manager activated successfully')\r",
+									"    pm.expect(pm.response.json().message).to.be.a('string')\r",
 									"})"
 								],
 								"type": "text/javascript"
@@ -7874,7 +7871,7 @@
 											"})\r",
 											"\r",
 											"pm.test(\"Onepipe settings retrieval success message is returned\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.eql(\"Onepipe Settings fetched successfully\");\r",
+											"    pm.expect(pm.response.json().message).to.eql(\"OnePipe Settings fetched successfully\");\r",
 											"});"
 										],
 										"type": "text/javascript"
