@@ -1,0 +1,5 @@
+{
+    "name": "Human",
+    "description": "District Data Designer",
+    "permissions": []
+}
