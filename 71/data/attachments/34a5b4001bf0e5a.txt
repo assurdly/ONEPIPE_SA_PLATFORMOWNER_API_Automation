@@ -1,0 +1,5 @@
+{
+    "name": "National",
+    "description": "Regional Research Planner",
+    "permissions": []
+}

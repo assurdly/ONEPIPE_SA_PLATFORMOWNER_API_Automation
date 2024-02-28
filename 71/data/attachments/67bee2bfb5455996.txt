@@ -1,0 +1,1 @@
+{"message":"The host url field must be a valid URL. (and 1 more error)","errors":{"host_url":["The host url field must be a valid URL."],"webhook_url":["The webhook url field is required."]}}
