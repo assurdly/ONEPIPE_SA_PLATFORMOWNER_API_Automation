@@ -5925,7 +5925,7 @@
 									"})\r",
 									"\r",
 									"pm.test('Status code name has string', function () {\r",
-									"    pm.response.to.have.status('Bad Request');\r",
+									"    pm.response.to.have.status('Not Found');\r",
 									"})\r",
 									"\r",
 									"pm.test(\"Invalid business id error message is returned \", function () {\r",
@@ -10384,7 +10384,7 @@
 									"\r",
 									"pm.test(\"Employee retrieval success message\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"   pm.expect(jsonData.message).to.eql('Employees retrieved successfully')\r",
+									"   pm.expect(jsonData.message).to.eql('List of employees fetched successfully')\r",
 									"})\r",
 									""
 								],
@@ -10409,7 +10409,7 @@
 								"disabled": true
 							}
 						],
-						"url": "{{baseUrl}}/employees"
+						"url": "{{baseUrl}}/employee"
 					},
 					"response": [
 						{
@@ -11196,6 +11196,10 @@
 		},
 		{
 			"key": "email",
+			"value": ""
+		},
+		{
+			"key": "employeeId",
 			"value": ""
 		}
 	]
