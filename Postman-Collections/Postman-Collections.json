@@ -2797,15 +2797,15 @@
 					]
 				},
 				{
-					"name": "Update Role Copy",
+					"name": "Update Role- Exist role name",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"id": "2bf5d287-a053-44a4-be5e-862731574fbf",
 								"exec": [
-									"pm.test(\"Response status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"pm.test(\"Response status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Response is a JSON object\", function () {\r",
@@ -2820,13 +2820,9 @@
 									"    pm.expect(pm.response.json().success).to.be.a('boolean');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Response has a 'data' property\", function () {\r",
-									"    pm.expect(pm.response.json()).to.have.property('data');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Role update success message\", function () {\r",
+									"pm.test(\"Role update error message is returned\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"   pm.expect(jsonData.message).to.eql('Role updated successfully')\r",
+									"   pm.expect(jsonData.error).to.eql('Role name already exist')\r",
 									"})"
 								],
 								"type": "text/javascript"
@@ -3183,7 +3179,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"{{roleName}}\",\n    \"description\": \"{{$randomJobDescriptor}}\",\n    \"permissions\": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]\n}",
+							"raw": "{\n    \"name\": \"{{$randomJobDescriptor}}\",\n    \"description\": \"{{$randomJobTitle}}\",\n    \"permissions\": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
