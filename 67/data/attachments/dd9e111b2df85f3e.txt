@@ -1,0 +1,5 @@
+{
+    "name": "Customer",
+    "description": "Dynamic Accounts Architect",
+    "permissions": []
+}

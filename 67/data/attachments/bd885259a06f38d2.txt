@@ -1,0 +1,1 @@
+{"message":"The invite token expiration duration field is required.","errors":{"invite_token_expiration_duration":["The invite token expiration duration field is required."]}}

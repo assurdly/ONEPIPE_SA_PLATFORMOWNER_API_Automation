@@ -1,0 +1,1 @@
+{"message":"The auth token expiration duration field is required.","errors":{"auth_token_expiration_duration":["The auth token expiration duration field is required."]}}

@@ -1,0 +1,1 @@
+{"message":"The host url field must be a valid URL. (and 2 more errors)","errors":{"host_url":["The host url field must be a valid URL."],"webhook_url":["The webhook url field must be a valid URL."],"api_secret_key":["The api secret key field is required."]}}
