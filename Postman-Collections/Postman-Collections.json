@@ -5188,12 +5188,12 @@
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"",
-									"pm.test('Status code is 422', function () {",
-									"    pm.response.to.have.status(422);",
+									"pm.test('Status code is 404', function () {",
+									"    pm.response.to.have.status(404);",
 									"})",
 									"",
 									"pm.test('Status code name has string', function () {",
-									"    pm.response.to.have.status('Unprocessable Content');",
+									"    pm.response.to.have.status('Not Found');",
 									"})",
 									"",
 									"pm.test(\"Invalid role error message is returned \", function () {",
@@ -5221,7 +5221,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"first_name\": \"{{$randomFirstName}}\",\n    \"last_name\": \"{{$randomLastName}}\",\n    \"email\": \"esseshewen@gmail.com\",\n    \"role_id\": \"100000666\"\n}",
+							"raw": "{\n    \"role_id\": \"2\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -5239,9 +5239,8 @@
 							],
 							"variable": [
 								{
-									"id": "be59510f-5a45-47c7-a35c-1057412af73f",
 									"key": "id",
-									"value": "{{teamId}}"
+									"value": "009987t665454544"
 								}
 							]
 						}
@@ -5367,7 +5366,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"first_name\": \"{{$randomFirstName}}\",\n    \"last_name\": \"{{$randomLastName}}\",\n    \"email\": \"esseshewen@gmail.com\",\n    \"role_id\": \"2\"\n}",
+							"raw": "{\n    \"role_id\": \"4\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
