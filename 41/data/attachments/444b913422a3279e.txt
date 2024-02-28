@@ -1,5 +1,0 @@
-{
-    "name": "Internal",
-    "description": "Dynamic Group Developer",
-    "permissions": []
-}

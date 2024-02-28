@@ -1,1 +1,0 @@
-{"success":true,"data":{"inactivity_timeout":"2000","auth_token_expiration_duration":"2000","password_reset_token_expiration_duration":"2000","invite_token_expiration_duration":"2000","max_login_attempts":"4"},"pagination":null,"message":"Settings fetched successfully"}

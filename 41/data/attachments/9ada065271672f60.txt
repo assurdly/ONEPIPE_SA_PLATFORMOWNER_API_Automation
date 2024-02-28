@@ -1,6 +1,0 @@
-{
-    "first_name": "Cleo",
-    "last_name": "Greenfelder",
-    "email": "esseshewen@gmail.com",
-    "role_id": "100000666"
-}
