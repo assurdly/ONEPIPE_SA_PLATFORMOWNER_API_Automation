@@ -1,0 +1,6 @@
+{
+    "document_name": "Certificate of Incorporation",
+    "document_size": "",
+    "document_type": "JPEG",
+    "mandatory": "yes"
+}
