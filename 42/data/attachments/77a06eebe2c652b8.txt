@@ -1,3 +1,0 @@
-{
-"email": "sultan+593@assurdly.com"
-}

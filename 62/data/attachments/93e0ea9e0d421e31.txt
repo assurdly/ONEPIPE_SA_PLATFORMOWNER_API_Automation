@@ -1,0 +1,5 @@
+{
+    "name": "Human",
+    "description": "Global Usability Planner",
+    "permissions": []
+}
