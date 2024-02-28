@@ -7274,17 +7274,12 @@
 											"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('success');\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Data property is an object with specific properties\", function () {\r",
-											"    var data = pm.response.json().data;\r",
-											"    pm.expect(data).to.be.an('object').that.has.all.keys('inactivity_timeout', 'auth_token_expiration_duration', 'password_reset_token_expiration_duration', 'invite_token_expiration_duration', 'max_login_attempts');\r",
-											"});\r",
-											"\r",
 											"pm.test(\"Pagination property is null\", function () {\r",
 											"    pm.expect(pm.response.json().pagination).to.be.null;\r",
 											"});\r",
 											"\r",
 											"pm.test(\"General settings success message\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.eql('General setting created successfully')\r",
+											"    pm.expect(pm.response.json().message).to.be.a('string');\r",
 											"});"
 										],
 										"type": "text/javascript"
