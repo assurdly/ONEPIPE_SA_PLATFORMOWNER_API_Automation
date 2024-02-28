@@ -7439,7 +7439,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"host_url\": \"\",\n    \"webhook_url\": \"\",\n    \"api_key\": \"\",\n    \"api_secret_key\": \"\",\n    \"timeout\": \"\",\n    \"clinet_id\": \"\"\n}",
+									"raw": "{\n    \"host_url\": \"\",\n    \"webhook_url\": \"\",\n    \"api_key\": \"\",\n    \"api_secret_key\": \"\",\n    \"timeout\": \"\",\n    \"client_id\": \"\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -7496,7 +7496,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"host_url\": \"\",\n    \"webhook_url\": \"onepipe.io\",\n    \"api_key\": \"1234567890asa#sdsas\",\n    \"api_secret_key\": \"qwqweqewqwads122324wedfwfegrthr\",\n    \"timeout\": \"4\",\n    \"clinet_id\": \"412334ASAS\"\n}",
+									"raw": "{\n    \"host_url\": \"\",\n    \"webhook_url\": \"onepipe.io\",\n    \"api_key\": \"1234567890asa#sdsas\",\n    \"api_secret_key\": \"qwqweqewqwads122324wedfwfegrthr\",\n    \"timeout\": \"4\",\n    \"client_id\": \"412334ASAS\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -7553,7 +7553,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"host_url\": \"onepipe.io\",\n    \"webhook_url\": \"\",\n    \"api_key\": \"1234567890asa#sdsas\",\n    \"api_secret_key\": \"qwqweqewqwads122324wedfwfegrthr\",\n    \"timeout\": \"4\",\n    \"clinet_id\": \"412334ASAS\"\n}",
+									"raw": "{\n    \"host_url\": \"onepipe.io\",\n    \"webhook_url\": \"\",\n    \"api_key\": \"1234567890asa#sdsas\",\n    \"api_secret_key\": \"qwqweqewqwads122324wedfwfegrthr\",\n    \"timeout\": \"4\",\n    \"client_id\": \"412334ASAS\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -7610,7 +7610,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"host_url\": \"onepipe.io\",\n    \"webhook_url\": \"onepipe.io\",\n    \"api_key\": \"\",\n    \"api_secret_key\": \"qwqweqewqwads122324wedfwfegrthr\",\n    \"timeout\": \"4\",\n    \"clinet_id\": \"412334ASAS\"\n}",
+									"raw": "{\n    \"host_url\": \"onepipe.io\",\n    \"webhook_url\": \"onepipe.io\",\n    \"api_key\": \"\",\n    \"api_secret_key\": \"qwqweqewqwads122324wedfwfegrthr\",\n    \"timeout\": \"4\",\n    \"client_id\": \"412334ASAS\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -7667,7 +7667,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"host_url\": \"onepipe.io\",\n    \"webhook_url\": \"onepipe.io\",\n    \"api_key\": \"1234567890asa#sdsas\",\n    \"api_secret_key\": \"\",\n    \"timeout\": \"4\",\n    \"clinet_id\": \"412334ASAS\"\n}",
+									"raw": "{\n    \"host_url\": \"onepipe.io\",\n    \"webhook_url\": \"onepipe.io\",\n    \"api_key\": \"1234567890asa#sdsas\",\n    \"api_secret_key\": \"\",\n    \"timeout\": \"4\",\n    \"client_id\": \"412334ASAS\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -7724,7 +7724,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"host_url\": \"onepipe.io\",\n    \"webhook_url\": \"onepipe.io\",\n    \"api_key\": \"1234567890asa#sdsas\",\n    \"api_secret_key\": \"qwqweqewqwads122324wedfwfegrthr\",\n    \"timeout\": \"\",\n    \"clinet_id\": \"412334ASAS\"\n}",
+									"raw": "{\n    \"host_url\": \"onepipe.io\",\n    \"webhook_url\": \"onepipe.io\",\n    \"api_key\": \"1234567890asa#sdsas\",\n    \"api_secret_key\": \"qwqweqewqwads122324wedfwfegrthr\",\n    \"timeout\": \"\",\n    \"client_id\": \"412334ASAS\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -7780,7 +7780,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"host_url\": \"onepipe.io\",\n    \"webhook_url\": \"onepipe.io\",\n    \"api_key\": \"1234567890asa#sdsas\",\n    \"api_secret_key\": \"qwqweqewqwads122324wedfwfegrthr\",\n    \"timeout\": \"4\",\n    \"clinet_id\": \"\"\n}",
+									"raw": "{\n    \"host_url\": \"onepipe.io\",\n    \"webhook_url\": \"onepipe.io\",\n    \"api_key\": \"1234567890asa#sdsas\",\n    \"api_secret_key\": \"qwqweqewqwads122324wedfwfegrthr\",\n    \"timeout\": \"4\",\n    \"client_id\": \"\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -7843,7 +7843,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"host_url\": \"onepipe.io\",\n    \"webhook_url\": \"onepipe.io\",\n    \"api_key\": \"1234567890asa#sdsas\",\n    \"api_secret_key\": \"qwqweqewqwads122324wedfwfegrthr\",\n    \"timeout\": \"4\",\n    \"clinet_id\": \"412334ASAS\"\n}",
+									"raw": "{\n    \"host_url\": \"onepipe.io\",\n    \"webhook_url\": \"onepipe.io\",\n    \"api_key\": \"1234567890asa#sdsas\",\n    \"api_secret_key\": \"qwqweqewqwads122324wedfwfegrthr\",\n    \"timeout\": \"4\",\n    \"client_id\": \"412334ASAS\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
