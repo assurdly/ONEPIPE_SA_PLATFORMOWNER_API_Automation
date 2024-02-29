@@ -1,0 +1,5 @@
+{
+    "name": "Direct",
+    "description": "Corporate Creative Orchestrator",
+    "permissions": []
+}

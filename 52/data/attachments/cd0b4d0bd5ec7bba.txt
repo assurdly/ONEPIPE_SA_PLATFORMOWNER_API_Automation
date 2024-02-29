@@ -1,5 +1,0 @@
-{
-    "name": "International",
-    "description": "Principal Branding Assistant",
-    "permissions": []
-}
