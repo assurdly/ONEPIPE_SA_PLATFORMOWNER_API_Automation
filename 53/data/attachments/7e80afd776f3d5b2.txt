@@ -1,5 +1,0 @@
-{
-    "name": "Future",
-    "description": "Investor Integration Specialist",
-    "permissions": []
-}

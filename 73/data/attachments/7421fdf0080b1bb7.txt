@@ -1,0 +1,1 @@
+{"success":true,"data":{"host_url":"onepipe.io","webhook_url":"onepipe.io","api_key":"1234567890asa#sdsas","api_secret_key":"qwqweqewqwads122324wedfwfegrthr","timeout":"4","client_id":"412334ASAS"},"pagination":null,"message":"OnePipe Settings fetched successfully"}
