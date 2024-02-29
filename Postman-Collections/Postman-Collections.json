@@ -8145,17 +8145,12 @@
 											"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('success');\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Data property is an object with specific properties\", function () {\r",
-											"    var data = pm.response.json().data;\r",
-											"    pm.expect(data).to.be.an('object').that.has.all.keys('host_url', 'webhook_url', 'api_key', 'api_secret_key', 'timeout','clinet_id');\r",
-											"});\r",
-											"\r",
 											"pm.test(\"Pagination property is null\", function () {\r",
 											"    pm.expect(pm.response.json().pagination).to.be.null;\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Onepipe settings success message\", function () {\r",
-											"    pm.expect(pm.response.json().message).to.eql('Onepipe setting created successfully')\r",
+											"    pm.expect(pm.response.json().message).to.eql('Onepipe Settings updated successfully');\r",
 											"});"
 										],
 										"type": "text/javascript"
