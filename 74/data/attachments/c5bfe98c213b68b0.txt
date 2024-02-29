@@ -1,0 +1,5 @@
+{
+    "name": "Global",
+    "description": "Internal Accountability Supervisor",
+    "permissions": []
+}
