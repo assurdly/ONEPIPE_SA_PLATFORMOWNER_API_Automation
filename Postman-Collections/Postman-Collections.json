@@ -1498,6 +1498,11 @@
 									"    pm.collectionVariables.set(\"roleId\", jsonData.data[0].id);\r",
 									"});\r",
 									"\r",
+									"pm.test(\"Set Existing role Id Value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.collectionVariables.set(\"existingRoleId\", jsonData.data[1].id);\r",
+									"});\r",
+									"\r",
 									"pm.test('Response is a success object with data, pagination, and message properties', function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData).to.have.property('success', true);\r",
@@ -2799,25 +2804,17 @@
 							"script": {
 								"id": "2bf5d287-a053-44a4-be5e-862731574fbf",
 								"exec": [
-									"pm.test(\"Response status code is 404\", function () {\r",
-									"    pm.response.to.have.status(404);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response is a JSON object\", function () {\r",
-									"    pm.expect(pm.response.json()).to.be.an('object');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response has a 'success' property\", function () {\r",
-									"    pm.expect(pm.response.json()).to.have.property('success');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response 'success' property is a boolean\", function () {\r",
-									"    pm.expect(pm.response.json().success).to.be.a('boolean');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Role update error message is returned\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"   pm.expect(jsonData.error).to.eql('Role name already exist')\r",
+									"pm.test(\"Response status code is 422\", function () {",
+									"    pm.response.to.have.status(422);",
+									"});",
+									"",
+									"pm.test(\"Response is a JSON object\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object');",
+									"});",
+									"",
+									"pm.test(\"Role update error message is returned\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.errors.name[0]).to.eql('The name has already been taken.');",
 									"})"
 								],
 								"type": "text/javascript"
@@ -2857,9 +2854,8 @@
 							],
 							"variable": [
 								{
-									"id": "d674248c-e843-4eee-946c-b2c1f077efdc",
 									"key": "id",
-									"value": "{{roleId}}"
+									"value": "{{existingRoleId}}"
 								}
 							]
 						}
@@ -11532,6 +11528,10 @@
 		},
 		{
 			"key": "roleName",
+			"value": ""
+		},
+		{
+			"key": "existingRoleId",
 			"value": ""
 		}
 	]
