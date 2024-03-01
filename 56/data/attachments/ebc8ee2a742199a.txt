@@ -1,5 +1,0 @@
-{
-    "name": "Product",
-    "description": "Direct Brand Executive",
-    "permissions": []
-}

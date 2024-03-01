@@ -1,0 +1,5 @@
+{
+    "name": "Future",
+    "description": "Investor Brand Representative",
+    "permissions": []
+}
