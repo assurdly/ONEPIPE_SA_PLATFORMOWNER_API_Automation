@@ -1,0 +1,8 @@
+{
+    "host_url": "",
+    "webhook_url": "",
+    "api_key": "",
+    "api_secret_key": "",
+    "timeout": "",
+    "client_id": ""
+}

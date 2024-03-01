@@ -1,0 +1,5 @@
+{
+    "name": "District",
+    "description": "Regional Directives Associate",
+    "permissions": []
+}
