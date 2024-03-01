@@ -1,0 +1,5 @@
+{
+    "name": "Central",
+    "description": "Customer Response Planner",
+    "permissions": []
+}

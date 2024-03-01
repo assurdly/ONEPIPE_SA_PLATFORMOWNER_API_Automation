@@ -1,5 +1,0 @@
-{
-    "name": "Internal",
-    "description": "Global Integration Assistant",
-    "permissions": []
-}
