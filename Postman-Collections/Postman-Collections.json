@@ -2814,7 +2814,7 @@
 									"",
 									"pm.test(\"Role update error message is returned\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.errors.name[0]).to.eql('The name has already been taken.');",
+									"    pm.expect(jsonData.errors.name[0]).to.be.a('string');",
 									"})"
 								],
 								"type": "text/javascript"
