@@ -11452,6 +11452,47 @@
 				},
 				{
 					"name": "Get  Loan Details By ID- Invalid ID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "86d22112-65de-4264-b708-ada9efc0fdc3",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a2e76b7e-eec3-4831-a6b4-a3ea54dda958",
+								"exec": [
+									"pm.test(\"Response status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is a JSON object\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has a 'success' property\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response 'success' property is a boolean\", function () {\r",
+									"    pm.expect(pm.response.json().success).to.be.a('boolean');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Non existing loan error message is returned\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"   pm.expect(jsonData.error).to.eql('Loan not found')\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"id": "5a3d6e93-1093-434f-8bb5-4bd76c336fd7",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -11486,9 +11527,8 @@
 							],
 							"variable": [
 								{
-									"id": "2a7aecf7-778e-4e93-ac41-90be13341f24",
 									"key": "id",
-									"value": ""
+									"value": "{{loanId}}"
 								}
 							]
 						}
@@ -11497,6 +11537,32 @@
 				},
 				{
 					"name": "Get  Loan Details By ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d72e564b-f7fa-488c-a1a7-a1d18f3bd173",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is an object with success property\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has data object\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('data').that.is.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Loan details retrieval success message\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.eql('Loan details fetched successfully');\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"id": "a1ec9fbf-4364-4ba9-b20f-8961041f6798",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -11531,9 +11597,8 @@
 							],
 							"variable": [
 								{
-									"id": "2a7aecf7-778e-4e93-ac41-90be13341f24",
 									"key": "id",
-									"value": ""
+									"value": "{{loanId}}"
 								}
 							]
 						}
