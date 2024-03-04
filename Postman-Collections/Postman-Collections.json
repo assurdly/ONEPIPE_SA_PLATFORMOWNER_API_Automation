@@ -1340,6 +1340,136 @@
 					]
 				},
 				{
+					"name": "Create Role- Numeric for name fields",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4eedbe70-8799-42b4-8bed-68571385b8d8",
+								"exec": [
+									"var jsonData = pm.response.json()\r",
+									"\r",
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"Unprocessable Content\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Name required message is returned \", function () {\r",
+									"    pm.expect(jsonData.errors.name[0]).to.eql(\"The name field is required.\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Description required message is returned \", function () {\r",
+									"    pm.expect(jsonData.errors.description[0]).to.eql(\"The description name field is required.\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "e7f849ce-9046-4a38-9286-599a84dbe57f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{$randomPhoneNumber}}\",\n    \"description\": \"{{$randomPhoneNumber}}\",\n    \"permissions\": [1,2,3,4,5,6,7,8,9,10,11]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/roles"
+					},
+					"response": [
+						{
+							"id": "096a2f8c-e971-4c2c-9a4a-54291ee9b885",
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"test2\",\n    \"description\": \"test test2\",\n    \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n    \"permission\": {\n        \"module\": \"dashboard\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/api/roles"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Feb 2024 23:03:47 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Feb 2024 23:03:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"name\": \"test2\",\n        \"description\": \"test test2\",\n        \"status\": \"active\",\n        \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n        \"updated_at\": \"2024-02-19T23:03:47.000000Z\",\n        \"created_at\": \"2024-02-19T23:03:47.000000Z\",\n        \"id\": 5\n    },\n    \"pagination\": null,\n    \"message\": \"Role created successfully\"\n}"
+						}
+					]
+				},
+				{
 					"name": "Create Role",
 					"event": [
 						{
@@ -5215,39 +5345,31 @@
 					]
 				},
 				{
-					"name": "Accept Invite Copy",
+					"name": "Accept Invite- Numerics for name field",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"id": "9d7ad8dd-096c-42c4-a793-91410b8379e3",
 								"exec": [
-									"pm.test(\"Response status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Set Team email Value\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.collectionVariables.set(\"email\", jsonData.data.email);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response is a JSON object\", function () {\r",
-									"    pm.expect(pm.response.json()).to.be.an('object');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response contains a 'success' property\", function () {\r",
-									"    pm.expect(pm.response.json()).to.have.property('success');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response data is an object with specific properties\", function () {\r",
-									"    var data = pm.response.json().data;\r",
-									"    pm.expect(data).to.be.an('object').that.includes.all.keys('id', 'email', 'first_name', 'last_name', 'role_id', 'status', 'created_at', 'updated_at', 'name');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Team member invite acceptance  success message\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"   pm.expect(jsonData.message).to.eql('Invite accepted successfully')\r",
-									"})"
+									"var jsonData = pm.response.json()",
+									"",
+									"pm.test(\"Status code is 422\", function () {",
+									"    pm.response.to.have.status(422);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"Unprocessable Content\");",
+									"});",
+									"",
+									"pm.test(\"Firstname required message is returned \", function () {",
+									"    pm.expect(jsonData.errors.first_name[0]).to.eql(\"The first name field is required.\");",
+									"});",
+									"",
+									"pm.test(\"Lastname required message is returned \", function () {",
+									"    pm.expect(jsonData.errors.last_name[0]).to.eql(\"The last name field is required.\");",
+									"});",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -5262,7 +5384,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"first_name\": \"{{$randomFirstName}}\",\n    \"last_name\": \"{{$randomLastName}}\",\n    \"password\": \"{{$randomPassword}}\"\n}",
+							"raw": "{\n    \"first_name\": \"{{$randomPhoneNumber}}\",\n    \"last_name\": \"{{$randomPhoneNumber}}\",\n    \"password\": \"{{$randomPassword}}\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
