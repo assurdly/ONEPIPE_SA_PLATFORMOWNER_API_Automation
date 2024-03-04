@@ -1,1 +1,0 @@
-{"success":true,"data":{"id":85,"name":"Investor","description":"Dynamic Identity Engineer","business_id":null,"status":"active","is_default":0,"created_at":"2024-02-28T16:51:50.000000Z","updated_at":"2024-02-28T16:52:16.000000Z"},"pagination":null,"message":"Investor activated successfully"}
