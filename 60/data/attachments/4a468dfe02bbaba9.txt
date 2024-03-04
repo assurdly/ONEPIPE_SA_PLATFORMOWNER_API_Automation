@@ -1,1 +1,0 @@
-{"message":"Email already invited.","errors":{"email":["Email already invited."]}}

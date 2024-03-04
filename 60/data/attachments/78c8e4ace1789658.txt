@@ -1,5 +1,0 @@
-{
-    "name": "Dynamic",
-    "description": "Dynamic Markets Engineer",
-    "permissions": []
-}
