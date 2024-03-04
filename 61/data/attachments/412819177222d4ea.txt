@@ -1,5 +1,0 @@
-{
-    "name": "Central",
-    "description": "International Infrastructure Engineer",
-    "permissions": []
-}

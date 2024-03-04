@@ -1,0 +1,5 @@
+{
+    "name": "Investor",
+    "description": "Principal Communications Orchestrator",
+    "permissions": []
+}
