@@ -1,0 +1,1 @@
+{"success":true,"data":[{"id":"01hr4r7yz29b9ft684g431qwa6","document_name":"CAC Certificate","file_url":"https:\/\/onepipe-salary-advance-dev.s3.eu-west-2.amazonaws.com\/Documents\/SLI-Workbook.pdf","date_submited":"04\/03\/2024 @ 01:50PM"}],"pagination":null,"message":"Business doucuments fetched successfully"}
