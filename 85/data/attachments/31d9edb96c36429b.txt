@@ -1,0 +1,5 @@
+{
+    "name": "District",
+    "description": "Dynamic Functionality Executive",
+    "permissions": []
+}
