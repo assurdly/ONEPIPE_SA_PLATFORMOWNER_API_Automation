@@ -8502,6 +8502,48 @@
 					"id": "1df04649-452a-4c2c-a0ab-089d90047b6a"
 				},
 				{
+					"name": "Loan Type",
+					"item": [
+						{
+							"name": "Get Loan types",
+							"id": "38491bae-6e08-4724-bf86-220f3509c53f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": "{{baseUrl}}/admin/settings/loan-types"
+							},
+							"response": []
+						},
+						{
+							"name": "Create Loan types",
+							"id": "fb7acce6-af52-4e35-9cbc-aba542840b5a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": "{{baseUrl}}/admin/settings/loan-types"
+							},
+							"response": []
+						}
+					],
+					"id": "06c807a5-b8bf-4cd2-807e-4c13a4f733a9"
+				},
+				{
 					"name": "Add document- Blank document details",
 					"event": [
 						{
@@ -11342,6 +11384,86 @@
 				}
 			],
 			"id": "01a04c25-fbdc-489a-b723-ceb37f9e3371"
+		},
+		{
+			"name": "Loan",
+			"item": [
+				{
+					"name": "Get  List of Loans",
+					"id": "d5201f7e-25be-4a38-a9e9-fa78a6ae1115",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "73|ztkpoNJEugi2c4BY6qB0vgC1F4IBYvEIOWJcvc65d3e74d55"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+								"disabled": true
+							}
+						],
+						"url": "{{baseUrl}}/loans"
+					},
+					"response": []
+				},
+				{
+					"name": "Get  Loan Details By ID",
+					"id": "a1ec9fbf-4364-4ba9-b20f-8961041f6798",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "5|c14aP2J7BojYPRZ8fn5GPbI4xikSX59wxRC0kzJaee8c2ee5"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/loans/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"loans",
+								":id"
+							],
+							"variable": [
+								{
+									"id": "2a7aecf7-778e-4e93-ac41-90be13341f24",
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "bfaf2c81-a900-4492-b838-5747b4b8ba3a"
 		},
 		{
 			"name": "Forgot password",
