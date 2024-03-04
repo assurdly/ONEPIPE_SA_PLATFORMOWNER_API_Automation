@@ -1,4 +1,0 @@
-{
-    "email": "platformowner@salaryadvance.com",
-    "role_id": "83"
-}
