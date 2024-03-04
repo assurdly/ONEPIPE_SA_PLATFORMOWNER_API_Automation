@@ -1,0 +1,1 @@
+{"success":true,"data":{"id":17,"name":"Dynamic","description":"Legacy Accountability Executive","business_id":null,"status":"active","is_default":0,"created_at":"2024-03-04T17:26:43.000000Z","updated_at":"2024-03-04T17:27:11.000000Z"},"pagination":null,"message":"Dynamic activated successfully"}

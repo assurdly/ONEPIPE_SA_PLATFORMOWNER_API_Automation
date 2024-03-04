@@ -1,5 +1,0 @@
-{
-    "name": "Regional",
-    "description": "Central Infrastructure Facilitator",
-    "permissions": []
-}
