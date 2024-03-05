@@ -11390,7 +11390,7 @@
 							"script": {
 								"id": "054dd073-833e-4e28-8691-a1e5ea560a6e",
 								"exec": [
-									"pm.test('Status code is 200', function () {\r",
+									"/**pm.test('Status code is 200', function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"})\r",
 									"\r",
@@ -11411,7 +11411,7 @@
 									"    var jsonData = pm.response.json();\r",
 									"   pm.expect(jsonData.message).to.eql('List of laons fetched successfully')\r",
 									"})\r",
-									""
+									"**/"
 								],
 								"type": "text/javascript"
 							}
@@ -11462,7 +11462,7 @@
 							"script": {
 								"id": "a2e76b7e-eec3-4831-a6b4-a3ea54dda958",
 								"exec": [
-									"pm.test(\"Response status code is 404\", function () {\r",
+									"/**pm.test(\"Response status code is 404\", function () {\r",
 									"    pm.response.to.have.status(404);\r",
 									"});\r",
 									"\r",
@@ -11481,7 +11481,7 @@
 									"pm.test(\"Non existing loan error message is returned\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"   pm.expect(jsonData.error).to.eql('Loan not found')\r",
-									"})"
+									"})**/"
 								],
 								"type": "text/javascript"
 							}
@@ -11537,7 +11537,7 @@
 							"script": {
 								"id": "d72e564b-f7fa-488c-a1a7-a1d18f3bd173",
 								"exec": [
-									"pm.test(\"Response status code is 200\", function () {\r",
+									"/**pm.test(\"Response status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
@@ -11551,7 +11551,7 @@
 									"\r",
 									"pm.test(\"Loan details retrieval success message\", function () {\r",
 									"    pm.expect(pm.response.json().message).to.eql('Loan details fetched successfully');\r",
-									"})"
+									"})**/"
 								],
 								"type": "text/javascript"
 							}
@@ -11605,6 +11605,129 @@
 		{
 			"name": "Payroll",
 			"item": [
+				{
+					"name": "Get  List of Payrolls",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "75da6ad3-09ab-4e65-a725-dbe8bdda7aba",
+								"exec": [
+									"pm.test('Status code is 200', function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Set Loan Id Value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.collectionVariables.set(\"loanId\", jsonData.data[0].id);\r",
+									"});\r",
+									"\r",
+									"pm.test('Response is a success object with data, pagination, and message properties', function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('success', true);\r",
+									"    pm.expect(jsonData).to.have.property('data');\r",
+									"    pm.expect(jsonData).to.have.property('pagination');\r",
+									"    pm.expect(jsonData).to.have.property('message');\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Payroll retrieval success message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"   pm.expect(jsonData.message).to.eql('Payrolls retrieved successfully')\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "2dafa45f-5b97-4bc8-b41c-b1c2526a7c72",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+								"disabled": true
+							}
+						],
+						"url": "{{baseUrl}}/payrolls"
+					},
+					"response": [
+						{
+							"id": "86129ba8-e955-4a8c-91b7-e06918b80329",
+							"name": "Get  List of Payrolls",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"url": "{{baseUrl}}/api/payrolls"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Feb 2024 12:06:52 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Feb 2024 12:06:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "54"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": \"01hqjmfbxt7n89rvznm4aa760k\",\n            \"name\": \"March 2024 Payroll\",\n            \"cycle_starts\": \"Mar 27, 2024\",\n            \"cycle_ends\": \"Apr 27, 2024\",\n            \"amount_disbursed\": \"84999.99\",\n            \"date_created\": \"26/02/2024 @ 12:58PM\",\n            \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"employee_count\": \"3\",\n            \"status\": \"pending\"\n        },\n        {\n            \"id\": \"01hqhrzbp0d43jbfzzaaxm56bj\",\n            \"name\": \"February 2024 Payroll\",\n            \"cycle_starts\": \"Feb 27, 2024\",\n            \"cycle_ends\": \"Mar 27, 2024\",\n            \"amount_disbursed\": \"84999.99\",\n            \"date_created\": \"26/02/2024 @ 04:57AM\",\n            \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"employee_count\": \"3\",\n            \"status\": \"Approved\"\n        },\n        {\n            \"id\": \"2\",\n            \"name\": \"August Payroll\",\n            \"cycle_starts\": \"Feb 14, 2024\",\n            \"cycle_ends\": \"Feb 17, 2024\",\n            \"amount_disbursed\": \"10000.00\",\n            \"date_created\": \"14/02/2024 @ 01:11AM\",\n            \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"employee_count\": \"1\",\n            \"status\": \"Approved\"\n        }\n    ],\n    \"pagination\": {\n        \"current_page\": 1,\n        \"per_page\": 10,\n        \"total\": 3,\n        \"next_page_url\": null,\n        \"prev_page_url\": null\n    },\n    \"message\": \"Payrolls retrieved successfully\"\n}"
+						}
+					]
+				},
 				{
 					"name": "Get  Payroll Details By ID",
 					"id": "0a370ead-48bd-41e8-a756-16f52d55285a",
@@ -11734,103 +11857,6 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"data\": {\n        \"id\": \"01hqhrzbp0d43jbfzzaaxm56bj\",\n        \"name\": \"February 2024 Payroll\",\n        \"cycle_starts\": \"2024-02-27 00:00:00\",\n        \"cycle_ends\": \"2024-03-27 00:00:00\",\n        \"amount_disbursed\": \"84999.99\",\n        \"sms_email_fee\": \"0.00\",\n        \"employees_loan_amount\": \"0.00\",\n        \"amount_to_fund\": \"84999.99\",\n        \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n        \"account_fund_status\": \"pending\",\n        \"employee_count\": \"3\",\n        \"status\": \"Approved\",\n        \"deleted_at\": null,\n        \"created_at\": \"2024-02-26T03:57:40.000000Z\",\n        \"updated_at\": \"2024-02-26T11:59:35.000000Z\"\n    },\n    \"message\": \"Payroll details fetched successfully\",\n    \"code\": 200\n}"
-						}
-					]
-				},
-				{
-					"name": "Get  List of Payrolls",
-					"id": "2dafa45f-5b97-4bc8-b41c-b1c2526a7c72",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "22|ErBe8eui6I1caOSmwL5qoN5F5tv0FGPhlfrGIF861ec2dfbe"
-							}
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
-								"disabled": true
-							}
-						],
-						"url": "{{baseUrl}}/api/payrolls"
-					},
-					"response": [
-						{
-							"id": "86129ba8-e955-4a8c-91b7-e06918b80329",
-							"name": "Get  List of Payrolls",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
-										"disabled": true
-									}
-								],
-								"url": "{{baseUrl}}/api/payrolls"
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "localhost:8000"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 26 Feb 2024 12:06:52 GMT"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 26 Feb 2024 12:06:52 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.4"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "54"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": \"01hqjmfbxt7n89rvznm4aa760k\",\n            \"name\": \"March 2024 Payroll\",\n            \"cycle_starts\": \"Mar 27, 2024\",\n            \"cycle_ends\": \"Apr 27, 2024\",\n            \"amount_disbursed\": \"84999.99\",\n            \"date_created\": \"26/02/2024 @ 12:58PM\",\n            \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"employee_count\": \"3\",\n            \"status\": \"pending\"\n        },\n        {\n            \"id\": \"01hqhrzbp0d43jbfzzaaxm56bj\",\n            \"name\": \"February 2024 Payroll\",\n            \"cycle_starts\": \"Feb 27, 2024\",\n            \"cycle_ends\": \"Mar 27, 2024\",\n            \"amount_disbursed\": \"84999.99\",\n            \"date_created\": \"26/02/2024 @ 04:57AM\",\n            \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"employee_count\": \"3\",\n            \"status\": \"Approved\"\n        },\n        {\n            \"id\": \"2\",\n            \"name\": \"August Payroll\",\n            \"cycle_starts\": \"Feb 14, 2024\",\n            \"cycle_ends\": \"Feb 17, 2024\",\n            \"amount_disbursed\": \"10000.00\",\n            \"date_created\": \"14/02/2024 @ 01:11AM\",\n            \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"employee_count\": \"1\",\n            \"status\": \"Approved\"\n        }\n    ],\n    \"pagination\": {\n        \"current_page\": 1,\n        \"per_page\": 10,\n        \"total\": 3,\n        \"next_page_url\": null,\n        \"prev_page_url\": null\n    },\n    \"message\": \"Payrolls retrieved successfully\"\n}"
 						}
 					]
 				},
@@ -12407,6 +12433,10 @@
 		},
 		{
 			"key": "existingRoleId",
+			"value": ""
+		},
+		{
+			"key": "loanId",
 			"value": ""
 		}
 	]
