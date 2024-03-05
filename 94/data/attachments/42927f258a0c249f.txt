@@ -1,0 +1,1 @@
+{"success":true,"data":{"id":5,"name":"District","description":"Future Usability Assistant","business_id":null,"status":"inactive","is_default":0,"created_at":"2024-03-05T13:54:49.000000Z","updated_at":"2024-03-05T13:55:15.000000Z"},"pagination":null,"message":"District deactivated successfully"}
