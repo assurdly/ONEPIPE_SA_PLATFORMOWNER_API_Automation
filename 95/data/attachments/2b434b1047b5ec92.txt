@@ -1,0 +1,5 @@
+{
+    "first_name": "Arnulfo",
+    "last_name": "Cummerata",
+    "password": "gbNZrCzTCOV6UAk"
+}
