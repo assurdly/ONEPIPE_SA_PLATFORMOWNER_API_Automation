@@ -11619,7 +11619,7 @@
 									"\r",
 									"pm.test(\"Set Loan Id Value\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.collectionVariables.set(\"loanId\", jsonData.data[0].id);\r",
+									"    pm.collectionVariables.set(\"payrollId\", jsonData.data[0].id);\r",
 									"});\r",
 									"\r",
 									"pm.test('Response is a success object with data, pagination, and message properties', function () {\r",
@@ -11730,17 +11730,33 @@
 				},
 				{
 					"name": "Get  Payroll Details By ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "de1fc9d6-7ea8-40a8-b619-056bbc200f10",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has data object\", function () {",
+									"    pm.expect(pm.response.json()).to.have.property('data').that.is.an('object');",
+									"});",
+									"",
+									"pm.test(\"Payroll details retrieval success message\", function () {",
+									"    pm.expect(pm.response.json().message).to.eql('Payroll details fetched successfully');",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"id": "0a370ead-48bd-41e8-a756-16f52d55285a",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "22|ErBe8eui6I1caOSmwL5qoN5F5tv0FGPhlfrGIF861ec2dfbe"
-							}
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -11754,21 +11770,19 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api/payroll/details/:payrollId",
+							"raw": "{{baseUrl}}/payroll/details/:payrollId",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"api",
 								"payroll",
 								"details",
 								":payrollId"
 							],
 							"variable": [
 								{
-									"id": "cf1359ca-5faa-457e-a9fd-2a34affe99b1",
 									"key": "payrollId",
-									"value": ""
+									"value": "{{payrollId}}"
 								}
 							]
 						}
@@ -12437,6 +12451,10 @@
 		},
 		{
 			"key": "loanId",
+			"value": ""
+		},
+		{
+			"key": "payrollId",
 			"value": ""
 		}
 	]
