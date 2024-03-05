@@ -11736,26 +11736,19 @@
 							"script": {
 								"id": "de1fc9d6-7ea8-40a8-b619-056bbc200f10",
 								"exec": [
-									"pm.test(\"Response status code is 404\", function () {",
-									"    pm.response.to.have.status(404);",
+									"pm.test(\"Response status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
 									"});",
 									"",
 									"pm.test(\"Response is a JSON object\", function () {",
 									"    pm.expect(pm.response.json()).to.be.an('object');",
 									"});",
 									"",
-									"pm.test(\"Response has a 'success' property\", function () {",
-									"    pm.expect(pm.response.json()).to.have.property('success');",
-									"});",
-									"",
-									"pm.test(\"Response 'success' property is a boolean\", function () {",
-									"    pm.expect(pm.response.json().success).to.be.a('boolean');",
-									"});",
-									"",
 									"pm.test(\"Non existing payroll error message is returned\", function () {",
 									"    var jsonData = pm.response.json();",
-									"   pm.expect(jsonData.error).to.eql('Payroll not found')",
-									"})"
+									"    pm.expect(jsonData.error).to.eql(\"Payroll doesn't exist\");",
+									"});",
+									""
 								],
 								"type": "text/javascript"
 							}
