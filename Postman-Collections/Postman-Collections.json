@@ -11729,6 +11729,161 @@
 					]
 				},
 				{
+					"name": "Get  Payroll Details By ID- Invalid ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "de1fc9d6-7ea8-40a8-b619-056bbc200f10",
+								"exec": [
+									"pm.test(\"Response status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Response is a JSON object\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object');",
+									"});",
+									"",
+									"pm.test(\"Response has a 'success' property\", function () {",
+									"    pm.expect(pm.response.json()).to.have.property('success');",
+									"});",
+									"",
+									"pm.test(\"Response 'success' property is a boolean\", function () {",
+									"    pm.expect(pm.response.json().success).to.be.a('boolean');",
+									"});",
+									"",
+									"pm.test(\"Non existing payroll error message is returned\", function () {",
+									"    var jsonData = pm.response.json();",
+									"   pm.expect(jsonData.error).to.eql('Payroll not found')",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "bf5a9b8c-eaa1-4d33-af07-a8062738a6f1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/payroll/details/:payrollId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"payroll",
+								"details",
+								":payrollId"
+							],
+							"variable": [
+								{
+									"key": "payrollId",
+									"value": "9828299930030"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "49951a8c-66a4-41ea-bb82-3fc299563577",
+							"name": "Get  Payroll Details By ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/payroll/details/:payrollId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"payroll",
+										"details",
+										":payrollId"
+									],
+									"variable": [
+										{
+											"key": "payrollId",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Feb 2024 12:10:58 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Feb 2024 12:10:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"data\": {\n        \"id\": \"01hqhrzbp0d43jbfzzaaxm56bj\",\n        \"name\": \"February 2024 Payroll\",\n        \"cycle_starts\": \"2024-02-27 00:00:00\",\n        \"cycle_ends\": \"2024-03-27 00:00:00\",\n        \"amount_disbursed\": \"84999.99\",\n        \"sms_email_fee\": \"0.00\",\n        \"employees_loan_amount\": \"0.00\",\n        \"amount_to_fund\": \"84999.99\",\n        \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n        \"account_fund_status\": \"pending\",\n        \"employee_count\": \"3\",\n        \"status\": \"Approved\",\n        \"deleted_at\": null,\n        \"created_at\": \"2024-02-26T03:57:40.000000Z\",\n        \"updated_at\": \"2024-02-26T11:59:35.000000Z\"\n    },\n    \"message\": \"Payroll details fetched successfully\",\n    \"code\": 200\n}"
+						}
+					]
+				},
+				{
 					"name": "Get  Payroll Details By ID",
 					"event": [
 						{
@@ -11876,17 +12031,33 @@
 				},
 				{
 					"name": "Get  List of Payroll Items",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cc2d1c1c-30d4-4d8d-bdb6-a353295f7e97",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has data object\", function () {",
+									"    pm.expect(pm.response.json()).to.have.property('data').that.is.an('array');",
+									"});",
+									"",
+									"pm.test(\"Payroll items retrieval success message\", function () {",
+									"    pm.expect(pm.response.json().message).to.eql('Payroll Items retrieved successfully');",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"id": "fce0ff20-1e94-4fd3-8ecb-94e615f0072f",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "22|ErBe8eui6I1caOSmwL5qoN5F5tv0FGPhlfrGIF861ec2dfbe"
-							}
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -11900,21 +12071,19 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api/payroll/items/:payrollId",
+							"raw": "{{baseUrl}}/payroll/items/:payrollId",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"api",
 								"payroll",
 								"items",
 								":payrollId"
 							],
 							"variable": [
 								{
-									"id": "13ed9913-a313-4c4a-9b0b-79b417059cf2",
 									"key": "payrollId",
-									"value": ""
+									"value": "{{payrollId}}"
 								}
 							]
 						}
