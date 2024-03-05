@@ -1,0 +1,5 @@
+{
+    "name": "Forward",
+    "description": "Regional Assurance Consultant",
+    "permissions": []
+}
