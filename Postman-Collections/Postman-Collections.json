@@ -7250,29 +7250,37 @@
 					]
 				},
 				{
-					"name": "Approve Business By ID",
+					"name": "Blacklist Business By ID",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "0a4f5633-3849-4c16-9ac6-731901a4ee3e",
+								"id": "b3da6da9-32fb-4ebc-a423-a6c7e1865b7a",
 								"exec": [
-									"pm.test(\"Response status code is 200\", function () {\r",
+									"/**pm.test(\"Response status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Response is a JSON object with success property\", function () {\r",
-									"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('success');\r",
+									"pm.test(\"Response is a successful object with data property\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an('object').that.has.property('success', true);\r",
+									"    pm.expect(jsonData).to.have.property('data').that.is.an('object');\r",
 									"});\r",
-									"pm.test(\"Business approval success message\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.be.a('string');\r",
-									"});"
+									"\r",
+									"pm.test(\"Data object contains specific properties\", function () {\r",
+									"    var data = pm.response.json().data;\r",
+									"    pm.expect(data).to.include.all.keys(['id', 'business_name', 'rc_number', 'business_type', 'state_id', 'bank_details_id', 'address', 'enable_sms', 'enable_email', 'has_completed_kyb', 'owner_id', 'status', 'created_at', 'updated_at']);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Business Blacklist  message is not an empty string\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Business blacklisted successfully\");\r",
+									"});**/"
 								],
 								"type": "text/javascript"
 							}
 						}
 					],
-					"id": "c5628d58-55aa-41b3-b39b-e00ff2c3a960",
+					"id": "dc663b31-dadf-48cb-8768-610841983a13",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -7280,26 +7288,26 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/businesses/:id/activate",
+							"raw": "{{baseUrl}}/businesses/:id/blacklist",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"businesses",
 								":id",
-								"activate"
+								"blacklist"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "{{businessId}}"
+									"value": ""
 								}
 							]
 						}
 					},
 					"response": [
 						{
-							"id": "8ccc1baf-8571-4f52-b6b6-8c91d8f68402",
+							"id": "ba3ef043-7173-422f-b9e5-abd32bcf5c36",
 							"name": "Get Business Documents By ID Copy",
 							"originalRequest": {
 								"method": "GET",
@@ -7358,37 +7366,29 @@
 					]
 				},
 				{
-					"name": "Blacklist Business By ID",
+					"name": "Approve Business By ID",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "b3da6da9-32fb-4ebc-a423-a6c7e1865b7a",
+								"id": "0a4f5633-3849-4c16-9ac6-731901a4ee3e",
 								"exec": [
 									"pm.test(\"Response status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Response is a successful object with data property\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData).to.be.an('object').that.has.property('success', true);\r",
-									"    pm.expect(jsonData).to.have.property('data').that.is.an('object');\r",
+									"pm.test(\"Response is a JSON object with success property\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('success');\r",
 									"});\r",
-									"\r",
-									"pm.test(\"Data object contains specific properties\", function () {\r",
-									"    var data = pm.response.json().data;\r",
-									"    pm.expect(data).to.include.all.keys(['id', 'business_name', 'rc_number', 'business_type', 'state_id', 'bank_details_id', 'address', 'enable_sms', 'enable_email', 'has_completed_kyb', 'owner_id', 'status', 'created_at', 'updated_at']);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Business Blacklist  message is not an empty string\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.equal(\"Business blacklisted successfully\");\r",
+									"pm.test(\"Business approval success message\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.be.a('string');\r",
 									"});"
 								],
 								"type": "text/javascript"
 							}
 						}
 					],
-					"id": "dc663b31-dadf-48cb-8768-610841983a13",
+					"id": "c5628d58-55aa-41b3-b39b-e00ff2c3a960",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -7396,14 +7396,14 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/businesses/:id/blacklist",
+							"raw": "{{baseUrl}}/businesses/:id/activate",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"businesses",
 								":id",
-								"blacklist"
+								"activate"
 							],
 							"variable": [
 								{
@@ -7415,7 +7415,7 @@
 					},
 					"response": [
 						{
-							"id": "ba3ef043-7173-422f-b9e5-abd32bcf5c36",
+							"id": "8ccc1baf-8571-4f52-b6b6-8c91d8f68402",
 							"name": "Get Business Documents By ID Copy",
 							"originalRequest": {
 								"method": "GET",
