@@ -1,6 +1,0 @@
-{
-"email": "sultan+525@assurdly.com",
-"password": "Password123$",
-"password_confirmation":"Password123$",
-"token":"ucKclf93dCOheKzSGlExKRij5AtNg2oIqecu0jg66QuM66xBG4AcTBqOUeck"
-}
