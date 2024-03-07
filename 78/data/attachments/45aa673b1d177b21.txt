@@ -1,5 +1,0 @@
-{
-    "name": "Senior",
-    "description": "Global Quality Analyst",
-    "permissions": []
-}

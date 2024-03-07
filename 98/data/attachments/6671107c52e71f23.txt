@@ -1,0 +1,1 @@
+{"success":true,"data":{"id":15,"name":"Central","description":"Internal","business_id":null,"status":"active","is_default":0,"created_at":"2024-03-07T11:22:30.000000Z","updated_at":"2024-03-07T11:29:46.000000Z"},"pagination":null,"message":"Central activated successfully"}
