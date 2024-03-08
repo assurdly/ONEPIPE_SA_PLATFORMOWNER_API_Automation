@@ -1,1 +1,0 @@
-{"success":false,"message":"Invite has already been accepted","error":"Invite has already been accepted"}
