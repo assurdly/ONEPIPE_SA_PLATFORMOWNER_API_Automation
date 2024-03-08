@@ -6882,6 +6882,244 @@
 					]
 				},
 				{
+					"name": "Decline Business By ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "05fa1d73-2a2e-42a6-b07b-c251f45c9054",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is an object with success property\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response data has id, business_name, rc_number, business_type, state_id, and address properties\", function () {\r",
+									"    var data = pm.response.json().data;\r",
+									"    pm.expect(data).to.include.all.keys('id', 'business_name', 'rc_number', 'business_type', 'state_id', 'address');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response data has enable_sms, enable_email, and has_completed_kyb properties\", function () {\r",
+									"    var data = pm.response.json().data;\r",
+									"    pm.expect(data).to.include.all.keys('enable_sms', 'enable_email', 'has_completed_kyb');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response data has owner_id, status, created_at, and updated_at properties\", function () {\r",
+									"    var data = pm.response.json().data;\r",
+									"    pm.expect(data).to.include.all.keys('owner_id', 'status', 'created_at', 'updated_at');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Business Decline  message is not an empty string\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Business deactivated successfully\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "3013995d-fe51-4ab7-aceb-c22aa8c4b0b1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/businesses/:id/deactivate",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"businesses",
+								":id",
+								"deactivate"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{businessId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "361fe9a0-f3f4-4745-93ef-485832ce22ba",
+							"name": "DeActivate Business By ID",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": "{{baseUrl}}/api/businesses/01hq1kpxkvma8gbjx328hjkh7k/deactivate"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 21 Feb 2024 11:10:38 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 21 Feb 2024 11:10:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n        \"business_name\": \"Habeeb12\",\n        \"rc_number\": \"123456\",\n        \"business_type\": \"Telecommunications\",\n        \"state_id\": \"01hq1khn0zhdfddzyw4p5506rs\",\n        \"bank_details_id\": \"01hq495acq84b25qzz4j3s79sk\",\n        \"address\": \"No 3 Eromosel Avenue, Lagos\",\n        \"enable_sms\": 0,\n        \"enable_email\": 0,\n        \"has_completed_kyb\": false,\n        \"owner_id\": \"01hq1kpxmkxjjs46pv5kz9pms4\",\n        \"status\": \"inactive\",\n        \"created_at\": \"2024-02-19T21:17:50.000000Z\",\n        \"updated_at\": \"2024-02-21T11:10:38.000000Z\"\n    },\n    \"pagination\": null,\n    \"message\": \"Business deactivated successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Approve Business By ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0a4f5633-3849-4c16-9ac6-731901a4ee3e",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is a JSON object with success property\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('success');\r",
+									"});\r",
+									"pm.test(\"Business approval success message\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.be.a('string');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "c5628d58-55aa-41b3-b39b-e00ff2c3a960",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/businesses/:id/activate",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"businesses",
+								":id",
+								"activate"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{businessId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "8ccc1baf-8571-4f52-b6b6-8c91d8f68402",
+							"name": "Get Business Documents By ID Copy",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseUrl}}/api/businesses/01hq1kpxkvma8gbjx328hjkh7k/documents"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 20:25:56 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 20:25:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": \"01hq1nf4s5f3s44py6hb2f8ehw\",\n            \"document_name\": \"Tax Identification Number\",\n            \"file_url\": \"/storage/Documents/pexels-pixabay-268533.jpg\",\n            \"date_submited\": \"19/02/2024 @ 10:48PM\"\n        }\n    ],\n    \"pagination\": null,\n    \"message\": \"Business doucuments fetched successfully\"\n}"
+						}
+					]
+				},
+				{
 					"name": "Deactivate Business By ID",
 					"event": [
 						{
@@ -7126,130 +7364,6 @@
 					]
 				},
 				{
-					"name": "Decline Business By ID",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "05fa1d73-2a2e-42a6-b07b-c251f45c9054",
-								"exec": [
-									"pm.test(\"Response status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response is an object with success property\", function () {\r",
-									"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('success');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response data has id, business_name, rc_number, business_type, state_id, and address properties\", function () {\r",
-									"    var data = pm.response.json().data;\r",
-									"    pm.expect(data).to.include.all.keys('id', 'business_name', 'rc_number', 'business_type', 'state_id', 'address');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response data has enable_sms, enable_email, and has_completed_kyb properties\", function () {\r",
-									"    var data = pm.response.json().data;\r",
-									"    pm.expect(data).to.include.all.keys('enable_sms', 'enable_email', 'has_completed_kyb');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response data has owner_id, status, created_at, and updated_at properties\", function () {\r",
-									"    var data = pm.response.json().data;\r",
-									"    pm.expect(data).to.include.all.keys('owner_id', 'status', 'created_at', 'updated_at');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Business Decline  message is not an empty string\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.equal(\"Business deactivated successfully\");\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"id": "3013995d-fe51-4ab7-aceb-c22aa8c4b0b1",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/businesses/:id/deactivate",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"businesses",
-								":id",
-								"deactivate"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{businessId}}"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"id": "361fe9a0-f3f4-4745-93ef-485832ce22ba",
-							"name": "DeActivate Business By ID",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"url": "{{baseUrl}}/api/businesses/01hq1kpxkvma8gbjx328hjkh7k/deactivate"
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "localhost:8000"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 21 Feb 2024 11:10:38 GMT"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 21 Feb 2024 11:10:38 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.4"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "59"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n        \"business_name\": \"Habeeb12\",\n        \"rc_number\": \"123456\",\n        \"business_type\": \"Telecommunications\",\n        \"state_id\": \"01hq1khn0zhdfddzyw4p5506rs\",\n        \"bank_details_id\": \"01hq495acq84b25qzz4j3s79sk\",\n        \"address\": \"No 3 Eromosel Avenue, Lagos\",\n        \"enable_sms\": 0,\n        \"enable_email\": 0,\n        \"has_completed_kyb\": false,\n        \"owner_id\": \"01hq1kpxmkxjjs46pv5kz9pms4\",\n        \"status\": \"inactive\",\n        \"created_at\": \"2024-02-19T21:17:50.000000Z\",\n        \"updated_at\": \"2024-02-21T11:10:38.000000Z\"\n    },\n    \"pagination\": null,\n    \"message\": \"Business deactivated successfully\"\n}"
-						}
-					]
-				},
-				{
 					"name": "Blacklist Business By ID",
 					"event": [
 						{
@@ -7308,114 +7422,6 @@
 					"response": [
 						{
 							"id": "ba3ef043-7173-422f-b9e5-abd32bcf5c36",
-							"name": "Get Business Documents By ID Copy",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": "{{baseUrl}}/api/businesses/01hq1kpxkvma8gbjx328hjkh7k/documents"
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Host",
-									"value": "localhost:8000"
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 20 Feb 2024 20:25:56 GMT"
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 20 Feb 2024 20:25:56 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "close"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "PHP/8.2.4"
-								},
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, private"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "60"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "59"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": \"01hq1nf4s5f3s44py6hb2f8ehw\",\n            \"document_name\": \"Tax Identification Number\",\n            \"file_url\": \"/storage/Documents/pexels-pixabay-268533.jpg\",\n            \"date_submited\": \"19/02/2024 @ 10:48PM\"\n        }\n    ],\n    \"pagination\": null,\n    \"message\": \"Business doucuments fetched successfully\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Approve Business By ID",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "0a4f5633-3849-4c16-9ac6-731901a4ee3e",
-								"exec": [
-									"pm.test(\"Response status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response is a JSON object with success property\", function () {\r",
-									"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('success');\r",
-									"});\r",
-									"pm.test(\"Business approval success message\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.be.a('string');\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"id": "c5628d58-55aa-41b3-b39b-e00ff2c3a960",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/businesses/:id/activate",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"businesses",
-								":id",
-								"activate"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "{{businessId}}"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"id": "8ccc1baf-8571-4f52-b6b6-8c91d8f68402",
 							"name": "Get Business Documents By ID Copy",
 							"originalRequest": {
 								"method": "GET",
