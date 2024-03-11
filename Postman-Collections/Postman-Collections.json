@@ -7021,6 +7021,146 @@
 					]
 				},
 				{
+					"name": "Decline Business By ID Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "05fa1d73-2a2e-42a6-b07b-c251f45c9054",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is an object with success property\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('success');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response data has id, business_name, rc_number, business_type, state_id, and address properties\", function () {\r",
+									"    var data = pm.response.json().data;\r",
+									"    pm.expect(data).to.include.all.keys('id', 'business_name', 'rc_number', 'business_type', 'state_id', 'address');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response data has enable_sms, enable_email, and has_completed_kyb properties\", function () {\r",
+									"    var data = pm.response.json().data;\r",
+									"    pm.expect(data).to.include.all.keys('enable_sms', 'enable_email', 'has_completed_kyb');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response data has owner_id, status, created_at, and updated_at properties\", function () {\r",
+									"    var data = pm.response.json().data;\r",
+									"    pm.expect(data).to.include.all.keys('owner_id', 'status', 'created_at', 'updated_at');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Business Decline  message is not an empty string\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Business deactivated successfully\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "9ce8a9b1-174d-4b55-88f7-81eb94658756",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reason\": \"Your KYB is not complete\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/businesses/:id/deactivate",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"businesses",
+								":id",
+								"deactivate"
+							],
+							"variable": [
+								{
+									"id": "936d659e-9562-44cd-8f13-137f0842886f",
+									"key": "id",
+									"value": "{{businessId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "7c87f56d-c356-4e4c-9f14-aae3fc3924bc",
+							"name": "DeActivate Business By ID",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": "{{baseUrl}}/api/businesses/01hq1kpxkvma8gbjx328hjkh7k/deactivate"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 21 Feb 2024 11:10:38 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 21 Feb 2024 11:10:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n        \"business_name\": \"Habeeb12\",\n        \"rc_number\": \"123456\",\n        \"business_type\": \"Telecommunications\",\n        \"state_id\": \"01hq1khn0zhdfddzyw4p5506rs\",\n        \"bank_details_id\": \"01hq495acq84b25qzz4j3s79sk\",\n        \"address\": \"No 3 Eromosel Avenue, Lagos\",\n        \"enable_sms\": 0,\n        \"enable_email\": 0,\n        \"has_completed_kyb\": false,\n        \"owner_id\": \"01hq1kpxmkxjjs46pv5kz9pms4\",\n        \"status\": \"inactive\",\n        \"created_at\": \"2024-02-19T21:17:50.000000Z\",\n        \"updated_at\": \"2024-02-21T11:10:38.000000Z\"\n    },\n    \"pagination\": null,\n    \"message\": \"Business deactivated successfully\"\n}"
+						}
+					]
+				},
+				{
 					"name": "Approve Business By ID",
 					"event": [
 						{
@@ -7196,6 +7336,132 @@
 					"response": [
 						{
 							"id": "25b11af0-a67a-429b-91a7-6d4b1dcfd8f9",
+							"name": "DeActivate Business By ID",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": "{{baseUrl}}/api/businesses/01hq1kpxkvma8gbjx328hjkh7k/deactivate"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 21 Feb 2024 11:10:38 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 21 Feb 2024 11:10:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n        \"business_name\": \"Habeeb12\",\n        \"rc_number\": \"123456\",\n        \"business_type\": \"Telecommunications\",\n        \"state_id\": \"01hq1khn0zhdfddzyw4p5506rs\",\n        \"bank_details_id\": \"01hq495acq84b25qzz4j3s79sk\",\n        \"address\": \"No 3 Eromosel Avenue, Lagos\",\n        \"enable_sms\": 0,\n        \"enable_email\": 0,\n        \"has_completed_kyb\": false,\n        \"owner_id\": \"01hq1kpxmkxjjs46pv5kz9pms4\",\n        \"status\": \"inactive\",\n        \"created_at\": \"2024-02-19T21:17:50.000000Z\",\n        \"updated_at\": \"2024-02-21T11:10:38.000000Z\"\n    },\n    \"pagination\": null,\n    \"message\": \"Business deactivated successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Deactivate Business By ID Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9d6160d6-85d1-41f6-90f0-e014f007d29a",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is a successful object with data property\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an('object').that.has.property('success', true);\r",
+									"    pm.expect(jsonData).to.have.property('data').that.is.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data object contains specific properties\", function () {\r",
+									"    var data = pm.response.json().data;\r",
+									"    pm.expect(data).to.include.all.keys(['id', 'business_name', 'rc_number', 'business_type', 'state_id', 'bank_details_id', 'address', 'enable_sms', 'enable_email', 'has_completed_kyb', 'owner_id', 'status', 'created_at', 'updated_at']);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Business Decline  message is not an empty string\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Business deactivated successfully\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "30169c28-abe2-4512-ba0c-5798c7cc8844",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reason\": \"You are not following the rules of the platform\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/businesses/:id/deactivate",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"businesses",
+								":id",
+								"deactivate"
+							],
+							"variable": [
+								{
+									"id": "b2f80053-f365-47c9-a29b-71d598b01ff7",
+									"key": "id",
+									"value": "{{businessId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "3a28523f-8c06-476a-bef6-fdbc6dc41476",
 							"name": "DeActivate Business By ID",
 							"originalRequest": {
 								"method": "POST",
