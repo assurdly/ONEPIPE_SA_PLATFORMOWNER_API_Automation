@@ -1,0 +1,5 @@
+{
+    "name": "Forward",
+    "description": "Global Applications Coordinator",
+    "permissions": []
+}
