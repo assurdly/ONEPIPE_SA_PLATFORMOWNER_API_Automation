@@ -1,5 +1,0 @@
-{
-    "name": "Internal",
-    "description": "Corporate Operations Designer",
-    "permissions": []
-}
