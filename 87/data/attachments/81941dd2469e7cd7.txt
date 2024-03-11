@@ -1,1 +1,0 @@
-{"success":true,"data":{"id":13,"name":"Internal","description":"Legacy Paradigm Administrator","business_id":null,"status":"active","is_default":0,"created_at":"2024-03-04T16:16:56.000000Z","updated_at":"2024-03-04T16:23:58.000000Z"},"pagination":null,"message":"Internal activated successfully"}
