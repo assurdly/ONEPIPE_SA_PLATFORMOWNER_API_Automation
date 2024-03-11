@@ -6935,7 +6935,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"reason\": \"\"\n}",
+							"raw": "{\n    \"reason\": \"Your KYB is not complete\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
