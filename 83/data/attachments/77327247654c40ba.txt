@@ -1,5 +1,0 @@
-{
-    "name": "Dynamic",
-    "description": "Legacy Factors Architect",
-    "permissions": []
-}

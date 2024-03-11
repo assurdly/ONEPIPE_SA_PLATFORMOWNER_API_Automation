@@ -1,0 +1,1 @@
+{"success":true,"data":{"inactivity_timeout":"600","auth_token_expiration_duration":"600","password_reset_token_expiration_duration":"300","invite_token_expiration_duration":"300","max_login_attempts":"4","support_email":"platformowner@salaryadvance.com","contact_number":"08173106732"},"pagination":null,"message":"Settings fetched successfully"}
