@@ -7168,7 +7168,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"reason\": \"\"\n}",
+							"raw": "{\n    \"reason\": \"You are not following the rules of the platform\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -7421,7 +7421,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"reason\": \"\"\n}",
+							"raw": "{\n    \"reason\": \"You have violated the rules of the platform\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
