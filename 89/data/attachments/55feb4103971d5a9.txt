@@ -1,5 +1,0 @@
-{
-    "first_name": "202-963-1233",
-    "last_name": "498-593-1390",
-    "password": "XrLGzXTcphJJ0RX"
-}

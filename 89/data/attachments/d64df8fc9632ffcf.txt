@@ -1,5 +1,0 @@
-{
-    "name": "International",
-    "description": "Senior Data Developer",
-    "permissions": []
-}

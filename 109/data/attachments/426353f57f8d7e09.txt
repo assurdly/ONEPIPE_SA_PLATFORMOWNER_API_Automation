@@ -1,0 +1,3 @@
+{
+    "reason": "You have violated the rules of the platform"
+}
