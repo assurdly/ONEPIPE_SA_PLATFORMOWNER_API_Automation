@@ -1,0 +1,1 @@
+{"success":true,"data":{"id":9,"name":"Forward","description":"Corporate Branding Developer","business_id":null,"status":"active","is_default":0,"created_at":"2024-03-11T17:00:28.000000Z","updated_at":"2024-03-11T17:00:52.000000Z"},"pagination":null,"message":"Role updated successfully"}
