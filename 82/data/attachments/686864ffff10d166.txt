@@ -1,5 +1,0 @@
-{
-    "name": "Legacy",
-    "description": "Customer Operations Director",
-    "permissions": []
-}
