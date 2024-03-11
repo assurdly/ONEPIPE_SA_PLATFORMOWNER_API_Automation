@@ -7769,7 +7769,7 @@
 							"script": {
 								"id": "b3da6da9-32fb-4ebc-a423-a6c7e1865b7a",
 								"exec": [
-									"/**pm.test(\"Response status code is 200\", function () {\r",
+									"pm.test(\"Response status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
@@ -7786,7 +7786,7 @@
 									"\r",
 									"pm.test(\"Business Blacklist  message is not an empty string\", function () {\r",
 									"    pm.expect(pm.response.json().message).to.equal(\"Business blacklisted successfully\");\r",
-									"});**/"
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -7894,24 +7894,19 @@
 							"script": {
 								"id": "b3da6da9-32fb-4ebc-a423-a6c7e1865b7a",
 								"exec": [
-									"/**pm.test(\"Response status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"var jsonData = pm.response.json()\r",
+									"\r",
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Response is a successful object with data property\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData).to.be.an('object').that.has.property('success', true);\r",
-									"    pm.expect(jsonData).to.have.property('data').that.is.an('object');\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"Unprocessable Content\");\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Data object contains specific properties\", function () {\r",
-									"    var data = pm.response.json().data;\r",
-									"    pm.expect(data).to.include.all.keys(['id', 'business_name', 'rc_number', 'business_type', 'state_id', 'bank_details_id', 'address', 'enable_sms', 'enable_email', 'has_completed_kyb', 'owner_id', 'status', 'created_at', 'updated_at']);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Business Blacklist  message is not an empty string\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.equal(\"Business blacklisted successfully\");\r",
-									"});**/"
+									"pm.test(\"Already blacklisted business error message is returned \", function () {\r",
+									"    pm.expect(jsonData.message).to.eql(\"Business is blacklisted already\");\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -8020,35 +8015,18 @@
 							"script": {
 								"id": "0213a06f-cb6a-443e-89e6-c4df41747076",
 								"exec": [
-									"pm.test(\"Response status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"var jsonData = pm.response.json()\r",
+									"\r",
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Response is a success object with data property\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData).to.have.property('success', true);\r",
-									"    pm.expect(jsonData).to.have.property('data').that.is.an('object');\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"Unprocessable Content\");\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Data property contains necessary fields\", function () {\r",
-									"    var data = pm.response.json().data;\r",
-									"    pm.expect(data).to.have.property('id');\r",
-									"    pm.expect(data).to.have.property('business_name');\r",
-									"    pm.expect(data).to.have.property('rc_number');\r",
-									"    pm.expect(data).to.have.property('business_type');\r",
-									"    pm.expect(data).to.have.property('state_id');\r",
-									"    pm.expect(data).to.have.property('address');\r",
-									"    pm.expect(data).to.have.property('enable_sms');\r",
-									"    pm.expect(data).to.have.property('enable_email');\r",
-									"    pm.expect(data).to.have.property('has_completed_kyb');\r",
-									"    pm.expect(data).to.have.property('owner_id');\r",
-									"    pm.expect(data).to.have.property('status');\r",
-									"    pm.expect(data).to.have.property('created_at');\r",
-									"    pm.expect(data).to.have.property('updated_at');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Business activation success message \", function () {\r",
-									"    pm.expect(pm.response.json().message).to.be.a('string');\r",
+									"pm.test(\"Activating already blacklisted business error message is returned \", function () {\r",
+									"    pm.expect(jsonData.message).to.eql(\"Business is blacklisted\");\r",
 									"});"
 								],
 								"type": "text/javascript"
