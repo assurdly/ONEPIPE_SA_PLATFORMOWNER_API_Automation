@@ -7821,7 +7821,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": ""
+									"value": "{{businessId}}"
 								}
 							]
 						}
@@ -7940,9 +7940,8 @@
 							],
 							"variable": [
 								{
-									"id": "d963cfc9-49c0-460b-945b-415dd1fd52ff",
 									"key": "id",
-									"value": ""
+									"value": "{{businessId}}"
 								}
 							]
 						}
