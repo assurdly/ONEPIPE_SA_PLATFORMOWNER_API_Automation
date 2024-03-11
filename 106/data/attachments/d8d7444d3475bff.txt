@@ -1,0 +1,5 @@
+{
+    "name": "Future",
+    "description": "Dynamic Quality Assistant",
+    "permissions": []
+}

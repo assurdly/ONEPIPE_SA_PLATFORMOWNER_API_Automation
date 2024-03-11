@@ -1,1 +1,0 @@
-{"message":"The last name field is required.","errors":{"last_name":["The last name field is required."]}}

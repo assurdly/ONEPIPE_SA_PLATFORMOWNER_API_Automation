@@ -1,0 +1,1 @@
+{"message":"The document name field is required. (and 3 more errors)","errors":{"document_name":["The document name field is required."],"document_size":["The document size field is required."],"document_type":["The document type field is required."],"mandatory":["The mandatory field is required."]}}

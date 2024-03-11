@@ -1,5 +1,0 @@
-{
-    "name": "Customer",
-    "description": "Forward Marketing Supervisor",
-    "permissions": []
-}
