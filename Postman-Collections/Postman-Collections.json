@@ -7885,6 +7885,261 @@
 							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": \"01hq1nf4s5f3s44py6hb2f8ehw\",\n            \"document_name\": \"Tax Identification Number\",\n            \"file_url\": \"/storage/Documents/pexels-pixabay-268533.jpg\",\n            \"date_submited\": \"19/02/2024 @ 10:48PM\"\n        }\n    ],\n    \"pagination\": null,\n    \"message\": \"Business doucuments fetched successfully\"\n}"
 						}
 					]
+				},
+				{
+					"name": "Blacklist Business By ID - Already blacklisted",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b3da6da9-32fb-4ebc-a423-a6c7e1865b7a",
+								"exec": [
+									"/**pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is a successful object with data property\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an('object').that.has.property('success', true);\r",
+									"    pm.expect(jsonData).to.have.property('data').that.is.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data object contains specific properties\", function () {\r",
+									"    var data = pm.response.json().data;\r",
+									"    pm.expect(data).to.include.all.keys(['id', 'business_name', 'rc_number', 'business_type', 'state_id', 'bank_details_id', 'address', 'enable_sms', 'enable_email', 'has_completed_kyb', 'owner_id', 'status', 'created_at', 'updated_at']);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Business Blacklist  message is not an empty string\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.equal(\"Business blacklisted successfully\");\r",
+									"});**/"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "8fe59340-8be4-46ea-a6d7-f23ba5f96ca4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reason\": \"You have violated the rules of the platform\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/businesses/:id/blacklist",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"businesses",
+								":id",
+								"blacklist"
+							],
+							"variable": [
+								{
+									"id": "d963cfc9-49c0-460b-945b-415dd1fd52ff",
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "a5209227-e4f3-4911-bf88-b379ba077404",
+							"name": "Get Business Documents By ID Copy",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseUrl}}/api/businesses/01hq1kpxkvma8gbjx328hjkh7k/documents"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 20:25:56 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 20:25:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": \"01hq1nf4s5f3s44py6hb2f8ehw\",\n            \"document_name\": \"Tax Identification Number\",\n            \"file_url\": \"/storage/Documents/pexels-pixabay-268533.jpg\",\n            \"date_submited\": \"19/02/2024 @ 10:48PM\"\n        }\n    ],\n    \"pagination\": null,\n    \"message\": \"Business doucuments fetched successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Activate Business By ID- Blacklisted Business",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0213a06f-cb6a-443e-89e6-c4df41747076",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is a success object with data property\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('success', true);\r",
+									"    pm.expect(jsonData).to.have.property('data').that.is.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data property contains necessary fields\", function () {\r",
+									"    var data = pm.response.json().data;\r",
+									"    pm.expect(data).to.have.property('id');\r",
+									"    pm.expect(data).to.have.property('business_name');\r",
+									"    pm.expect(data).to.have.property('rc_number');\r",
+									"    pm.expect(data).to.have.property('business_type');\r",
+									"    pm.expect(data).to.have.property('state_id');\r",
+									"    pm.expect(data).to.have.property('address');\r",
+									"    pm.expect(data).to.have.property('enable_sms');\r",
+									"    pm.expect(data).to.have.property('enable_email');\r",
+									"    pm.expect(data).to.have.property('has_completed_kyb');\r",
+									"    pm.expect(data).to.have.property('owner_id');\r",
+									"    pm.expect(data).to.have.property('status');\r",
+									"    pm.expect(data).to.have.property('created_at');\r",
+									"    pm.expect(data).to.have.property('updated_at');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Business activation success message \", function () {\r",
+									"    pm.expect(pm.response.json().message).to.be.a('string');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "ae2b558b-f4e2-4ca0-8a10-fb653a901a54",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/businesses/:id/activate",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"businesses",
+								":id",
+								"activate"
+							],
+							"variable": [
+								{
+									"id": "46c1fc97-67c6-4913-ad4e-f491f0b950aa",
+									"key": "id",
+									"value": "{{businessId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "c85595be-7a2f-4945-95a3-2d7dee4bb158",
+							"name": "Get Business Documents By ID Copy",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseUrl}}/api/businesses/01hq1kpxkvma8gbjx328hjkh7k/documents"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 20:25:56 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 20 Feb 2024 20:25:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": \"01hq1nf4s5f3s44py6hb2f8ehw\",\n            \"document_name\": \"Tax Identification Number\",\n            \"file_url\": \"/storage/Documents/pexels-pixabay-268533.jpg\",\n            \"date_submited\": \"19/02/2024 @ 10:48PM\"\n        }\n    ],\n    \"pagination\": null,\n    \"message\": \"Business doucuments fetched successfully\"\n}"
+						}
+					]
 				}
 			],
 			"id": "1a421e7f-6ef5-4ffd-98be-afbadef99206"
