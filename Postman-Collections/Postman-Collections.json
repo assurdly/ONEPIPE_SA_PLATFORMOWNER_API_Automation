@@ -7643,24 +7643,19 @@
 							"script": {
 								"id": "b3da6da9-32fb-4ebc-a423-a6c7e1865b7a",
 								"exec": [
-									"/**pm.test(\"Response status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"var jsonData = pm.response.json()\r",
+									"\r",
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Response is a successful object with data property\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData).to.be.an('object').that.has.property('success', true);\r",
-									"    pm.expect(jsonData).to.have.property('data').that.is.an('object');\r",
+									"pm.test(\"Status code name has string\", function () {\r",
+									"    pm.response.to.have.status(\"Unprocessable Content\");\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Data object contains specific properties\", function () {\r",
-									"    var data = pm.response.json().data;\r",
-									"    pm.expect(data).to.include.all.keys(['id', 'business_name', 'rc_number', 'business_type', 'state_id', 'bank_details_id', 'address', 'enable_sms', 'enable_email', 'has_completed_kyb', 'owner_id', 'status', 'created_at', 'updated_at']);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Business Blacklist  message is not an empty string\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.equal(\"Business blacklisted successfully\");\r",
-									"});**/"
+									"pm.test(\"No reason for business blacklist error message is returned \", function () {\r",
+									"    pm.expect(jsonData.errors.reason[0]).to.eql(\"The reason field is required.\");\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -7672,10 +7667,16 @@
 					},
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"reason\": \"You have violated the rules of the platform\"\n}",
+							"raw": "{\n    \"reason\": \"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -7694,9 +7695,8 @@
 							],
 							"variable": [
 								{
-									"id": "a8e1c4ca-3483-48d7-82e8-5b7fdb2a8dbb",
 									"key": "id",
-									"value": ""
+									"value": "{{businessId}}"
 								}
 							]
 						}
