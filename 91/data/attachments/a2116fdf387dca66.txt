@@ -1,5 +1,0 @@
-{
-    "name": "Direct",
-    "description": "Investor Security Designer",
-    "permissions": []
-}

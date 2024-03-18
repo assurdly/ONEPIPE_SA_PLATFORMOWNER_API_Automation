@@ -1,0 +1,1 @@
+{"success":true,"data":{"id":22,"name":"National","description":"Legacy Marketing Executive","business_id":null,"status":"inactive","is_default":0,"created_at":"2024-03-18T11:29:51.000000Z","updated_at":"2024-03-18T11:30:17.000000Z"},"pagination":null,"message":"National deactivated successfully"}

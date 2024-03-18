@@ -1,0 +1,12 @@
+{
+    "Date": "Mon, 18 Mar 2024 11:31:28 GMT",
+    "Content-Type": "text/html; charset=UTF-8",
+    "Transfer-Encoding": "chunked",
+    "Connection": "keep-alive",
+    "Server": "nginx/1.19.1",
+    "Vary": "Accept-Encoding",
+    "Cache-Control": "no-cache, private",
+    "Access-Control-Allow-Origin": "*",
+    "Set-Cookie": "laravel_session=eyJpdiI6IlpMRkZEbXQxYWsramVRTncxcDd0VEE9PSIsInZhbHVlIjoiY3NNa1FqaFV6MmNHZ2tnb0dUQ0hCektBVHBKd2syMWM4ekxleE1iRDFYZ2tJeGJxR3ZQU05JMEM5eVhRYjV2RUZEZU5OaWNPVHd0dzM1TDhPSUtPeC9NNFRJNzZvM0UwQkIxcnBmQUJLMmgwQ0xSMGFlbFVRU2dZdE1hL01BZEkiLCJtYWMiOiI4ZWQyZDg4YzFiN2VlZmZlNmJlZTY1MzRjNDIwYTExNmNjYjFmNmQzYmVjYjEyNDMyOTMxYzNkNjFkODE5MjVhIiwidGFnIjoiIn0%3D; expires=Mon, 18 Mar 2024 13:31:28 GMT; Max-Age=7200; path=/; httponly; samesite=lax",
+    "Content-Encoding": "gzip"
+}

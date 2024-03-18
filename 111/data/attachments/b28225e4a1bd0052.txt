@@ -1,0 +1,5 @@
+{
+    "name": "Global",
+    "description": "Forward Optimization Producer",
+    "permissions": []
+}
