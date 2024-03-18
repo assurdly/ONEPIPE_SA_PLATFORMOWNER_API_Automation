@@ -1,0 +1,5 @@
+{
+    "name": "Forward",
+    "description": "Central Infrastructure Developer",
+    "permissions": []
+}

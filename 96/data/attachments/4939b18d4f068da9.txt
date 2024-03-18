@@ -1,1 +1,0 @@
-{"success":true,"data":{"document_name":"Certificate of Incorporation","document_size":"6","document_type":"JPEG","mandatory":"yes","id":"01hr7f378h3vcacj65nnfs9nzz","updated_at":"2024-03-05T14:08:19.000000Z","created_at":"2024-03-05T14:08:19.000000Z"},"pagination":null,"message":"KYB setting created successfully"}

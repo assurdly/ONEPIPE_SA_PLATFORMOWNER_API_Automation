@@ -1,1 +1,0 @@
-{"success":true,"data":{"name":"Product","description":"National Tactics Assistant","status":"active","business_id":null,"updated_at":"2024-03-05T14:06:13.000000Z","created_at":"2024-03-05T14:06:13.000000Z","id":7},"pagination":null,"message":"Role created successfully"}
