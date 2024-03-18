@@ -1,0 +1,5 @@
+{
+    "name": "Internal",
+    "description": "Chief Factors Designer",
+    "permissions": []
+}

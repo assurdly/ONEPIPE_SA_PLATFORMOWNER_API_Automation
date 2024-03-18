@@ -1,0 +1,11 @@
+{
+    "inactivity_timeout": "3600",
+    "auth_token_expiration_duration": "86400",
+    "password_reset_token_expiration_duration": "600",
+    "invite_token_expiration_duration": "600",
+    "max_login_attempts": "4",
+    "support_email": "platformowner@salaryadvance.com",
+    "contact_number": "08173106732",
+    "transaction_fee": "1",
+    "sms_fee": "2"
+}
