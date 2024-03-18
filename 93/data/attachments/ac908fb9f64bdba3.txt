@@ -1,5 +1,0 @@
-{
-    "name": "Regional",
-    "description": "Corporate Assurance Analyst",
-    "permissions": []
-}

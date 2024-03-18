@@ -1,0 +1,1 @@
+{"success":true,"data":{"id":22,"name":"Chief","description":"Corporate Directives Consultant","business_id":null,"status":"active","is_default":0,"created_at":"2024-03-18T11:29:51.000000Z","updated_at":"2024-03-18T11:40:41.000000Z"},"pagination":null,"message":"Chief activated successfully"}
