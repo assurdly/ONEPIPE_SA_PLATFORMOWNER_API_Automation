@@ -1,0 +1,5 @@
+{
+    "name": "Investor",
+    "description": "Corporate Assurance Agent",
+    "permissions": []
+}

@@ -1,5 +1,0 @@
-{
-    "name": "Senior",
-    "description": "Direct Operations Representative",
-    "permissions": []
-}
