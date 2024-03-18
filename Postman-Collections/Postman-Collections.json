@@ -8167,7 +8167,8 @@
 											"\r",
 											""
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
@@ -8190,7 +8191,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"inactivity_timeout\": \"\",\n    \"auth_token_expiration_duration\": \"\",\n    \"password_reset_token_expiration_duration\": \"\",\n    \"invite_token_expiration_duration\": \"\",\n    \"max_login_attempts\": \"\"\n}",
+									"raw": "{\n    \"inactivity_timeout\": \"\",\n    \"auth_token_expiration_duration\": \"\",\n    \"password_reset_token_expiration_duration\": \"\",\n    \"invite_token_expiration_duration\": \"\",\n    \"max_login_attempts\": \"\",\n    \"support_email\": \"\",\n    \"contact_number\": \"\",\n    \"transaction_fee\": \"\",\n    \"sms_fee\": \"\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -8512,7 +8513,8 @@
 											"    pm.expect(pm.response.json().message).to.be.a('string');\r",
 											"});"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
@@ -8535,7 +8537,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"inactivity_timeout\": \"3600\",\n    \"auth_token_expiration_duration\": \"86400\",\n    \"password_reset_token_expiration_duration\": \"600\",\n    \"invite_token_expiration_duration\": \"600\",\n    \"max_login_attempts\": \"4\"\n}",
+									"raw": "{\n    \"inactivity_timeout\": \"3600\",\n    \"auth_token_expiration_duration\": \"86400\",\n    \"password_reset_token_expiration_duration\": \"600\",\n    \"invite_token_expiration_duration\": \"600\",\n    \"max_login_attempts\": \"4\",\n    \"support_email\": \"platformowner@salaryadvance.com\",\n    \"contact_number\": \"08173106732\",\n    \"transaction_fee\": \"1\",\n    \"sms_fee\": \"2\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9139,6 +9141,76 @@
 						}
 					],
 					"id": "1df04649-452a-4c2c-a0ab-089d90047b6a"
+				},
+				{
+					"name": "Email Template",
+					"item": [
+						{
+							"name": "Email templates",
+							"id": "bbfaa5de-dad5-4897-810d-5c1e850f2f23",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/admin/settings/email-templates"
+							},
+							"response": []
+						},
+						{
+							"name": "Update email template",
+							"id": "226c10ef-dfab-450d-b7c8-fe48bc2a637c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"type\": \"onepipe.io\",\n    \"subject\": \"onepipe.io\",\n    \"body\": \"1234567890asa#sdsas\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/admin/settings/email-templates"
+							},
+							"response": []
+						}
+					],
+					"id": "b9a3012c-36b3-45fa-9010-72eae6a770e3"
 				},
 				{
 					"name": "Loan Type",
