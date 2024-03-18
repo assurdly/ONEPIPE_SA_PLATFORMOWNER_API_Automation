@@ -12138,7 +12138,8 @@
 									"})\r",
 									"**/"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -12147,12 +12148,6 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "73|ztkpoNJEugi2c4BY6qB0vgC1F4IBYvEIOWJcvc65d3e74d55"
-							}
-						},
 						"method": "GET",
 						"header": [
 							{
