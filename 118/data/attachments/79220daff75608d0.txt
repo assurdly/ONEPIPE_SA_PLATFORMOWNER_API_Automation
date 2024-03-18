@@ -1,0 +1,1 @@
+{"success":true,"data":{"id":25,"name":"Senior","description":"Lead Paradigm Officer","business_id":null,"status":"active","is_default":0,"created_at":"2024-03-18T16:22:03.000000Z","updated_at":"2024-03-18T16:22:32.000000Z"},"pagination":null,"message":"Senior activated successfully"}

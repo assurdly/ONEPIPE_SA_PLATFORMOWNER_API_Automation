@@ -1,0 +1,5 @@
+{
+    "name": "Senior",
+    "description": "District Data Assistant",
+    "permissions": []
+}
