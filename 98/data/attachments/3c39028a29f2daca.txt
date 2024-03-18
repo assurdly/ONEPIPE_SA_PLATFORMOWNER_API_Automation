@@ -1,5 +1,0 @@
-{
-    "name": "Legacy",
-    "description": "Human Implementation Orchestrator",
-    "permissions": []
-}
