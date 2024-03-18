@@ -1,5 +1,0 @@
-{
-    "first_name": "Genevieve",
-    "last_name": "",
-    "password": "C4NhdvXvP32qm9X"
-}

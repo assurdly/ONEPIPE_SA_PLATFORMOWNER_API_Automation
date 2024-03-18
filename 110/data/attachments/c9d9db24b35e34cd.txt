@@ -1,0 +1,5 @@
+{
+    "name": "Future",
+    "description": "Legacy Operations Developer",
+    "permissions": []
+}

@@ -1,1 +1,0 @@
-{"message":"The mandatory field is required.","errors":{"mandatory":["The mandatory field is required."]}}
