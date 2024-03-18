@@ -12253,7 +12253,7 @@
 							"script": {
 								"id": "d72e564b-f7fa-488c-a1a7-a1d18f3bd173",
 								"exec": [
-									"/**pm.test(\"Response status code is 200\", function () {\r",
+									"pm.test(\"Response status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
@@ -12266,10 +12266,11 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Loan details retrieval success message\", function () {\r",
-									"    pm.expect(pm.response.json().message).to.eql('Loan details fetched successfully');\r",
-									"})**/"
+									"    pm.expect(pm.response.json().message).to.eql('Loan fetched successfully');\r",
+									"})"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -12278,12 +12279,6 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "5|c14aP2J7BojYPRZ8fn5GPbI4xikSX59wxRC0kzJaee8c2ee5"
-							}
-						},
 						"method": "GET",
 						"header": [
 							{
