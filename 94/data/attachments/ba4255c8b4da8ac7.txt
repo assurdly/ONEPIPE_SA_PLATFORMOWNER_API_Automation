@@ -1,6 +1,0 @@
-{
-    "document_name": "Certificate of Incorporation",
-    "document_size": "14",
-    "document_type": "",
-    "mandatory": "yes"
-}

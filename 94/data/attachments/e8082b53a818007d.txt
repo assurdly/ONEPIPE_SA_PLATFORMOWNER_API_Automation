@@ -1,1 +1,0 @@
-{"message":"The api secret key field is required.","errors":{"api_secret_key":["The api secret key field is required."]}}
