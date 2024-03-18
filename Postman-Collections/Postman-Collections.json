@@ -12115,7 +12115,7 @@
 							"script": {
 								"id": "054dd073-833e-4e28-8691-a1e5ea560a6e",
 								"exec": [
-									"/**pm.test('Status code is 200', function () {\r",
+									"pm.test('Status code is 200', function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"})\r",
 									"\r",
@@ -12134,9 +12134,9 @@
 									"\r",
 									"pm.test(\"Loan retrieval success message\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"   pm.expect(jsonData.message).to.eql('List of laons fetched successfully')\r",
+									"   pm.expect(jsonData.message).to.eql('Loans retrieved successfully')\r",
 									"})\r",
-									"**/"
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -12174,7 +12174,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -12182,7 +12183,7 @@
 							"script": {
 								"id": "a2e76b7e-eec3-4831-a6b4-a3ea54dda958",
 								"exec": [
-									"/**pm.test(\"Response status code is 404\", function () {\r",
+									"pm.test(\"Response status code is 404\", function () {\r",
 									"    pm.response.to.have.status(404);\r",
 									"});\r",
 									"\r",
@@ -12201,9 +12202,10 @@
 									"pm.test(\"Non existing loan error message is returned\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"   pm.expect(jsonData.error).to.eql('Loan not found')\r",
-									"})**/"
+									"})"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -12212,12 +12214,6 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "5|c14aP2J7BojYPRZ8fn5GPbI4xikSX59wxRC0kzJaee8c2ee5"
-							}
-						},
 						"method": "GET",
 						"header": [
 							{
