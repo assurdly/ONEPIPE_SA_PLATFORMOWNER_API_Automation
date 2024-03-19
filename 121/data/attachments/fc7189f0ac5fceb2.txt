@@ -1,0 +1,5 @@
+{
+    "name": "Future",
+    "description": "National Marketing Administrator",
+    "permissions": []
+}
