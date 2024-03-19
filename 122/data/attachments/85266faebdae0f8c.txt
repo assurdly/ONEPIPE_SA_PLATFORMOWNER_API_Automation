@@ -1,0 +1,5 @@
+{
+    "name": "Dynamic",
+    "description": "Internal Markets Coordinator",
+    "permissions": []
+}

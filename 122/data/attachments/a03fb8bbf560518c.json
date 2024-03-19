@@ -1,0 +1,11 @@
+{
+    "Accept": "application/json",
+    "Authorization": "Bearer 108|9VUxmC0vwJXEUxkiCoe7qTwvdewchciyabEZ1Ds4eea7ee6a",
+    "User-Agent": "PostmanRuntime/7.37.1",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "fe1f7ecf-b988-4ba7-a683-92585b13247c",
+    "Host": "salary.dev.onepipe.io",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Cookie": "XSRF-TOKEN=eyJpdiI6ImJKc0tTMlpMbldKNkltT2xIdlRKMEE9PSIsInZhbHVlIjoiVmlGNWRuVHJybWl5N0lWaXo2ZjZ3MThHd3M4SWI4Y2k1VU1xUUZGa1dRZ3RKTFlOU3RrQ3p3enlnWlFIRG9aTk1pY3dHQ1dMZys5WndLR3RXZW40QWZ4SGV2SndabWx3NUdPVldYams4WFpGSDQzZHpwRDRhdjc3dUtrcVBwREciLCJtYWMiOiI5ZDI3ZWQyYTk0NjIyYTU1Y2I3NDY2MDRmM2I5ZDAwYzBjNWRjMzQ2YWY4OGNhZjQyYjc4MDRmY2ZhZGE1OTgxIiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6IktHNmdlbjRxcS9DQkNwYXg3UmR3QkE9PSIsInZhbHVlIjoiYzA1RmN3VzI0NWlJVC9Jdmw0QzFHSzVHYjFHYjkvNktySXN4ZDJDQlk4dy9BdmtwZmZ5c1JvV08yR0dKcmR3bnlrRnl6TUgvQUtNeExLK3dvcTRjUnRPd3hoSlZKRWFaTDNHa3hxMkswNjNvRllweDdKY2IyL0k5UEhDTHNkcG0iLCJtYWMiOiJjOGVjODYzOWU4YzNhMjBlNmE4ZDE3MzA4ZjcwM2M3NzI0ZDM3MDAyMzY2MTk4ZjI3NTdmZDYwZWIzZjg3NDNlIiwidGFnIjoiIn0%3D"
+}

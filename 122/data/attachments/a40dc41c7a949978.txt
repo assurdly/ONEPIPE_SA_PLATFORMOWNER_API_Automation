@@ -1,0 +1,1 @@
+{"success":true,"data":{"id":29,"name":"Human","description":"Dynamic Response Coordinator","business_id":null,"status":"inactive","is_default":0,"created_at":"2024-03-19T09:47:22.000000Z","updated_at":"2024-03-19T09:47:47.000000Z"},"pagination":null,"message":"Human deactivated successfully"}
