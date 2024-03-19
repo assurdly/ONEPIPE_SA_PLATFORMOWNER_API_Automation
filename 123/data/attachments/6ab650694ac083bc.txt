@@ -1,0 +1,5 @@
+{
+    "name": "Internal",
+    "description": "Product Functionality Specialist",
+    "permissions": []
+}

@@ -1,5 +1,0 @@
-{
-    "name": "District",
-    "description": "National Usability Analyst",
-    "permissions": []
-}
