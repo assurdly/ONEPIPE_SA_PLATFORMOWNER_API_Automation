@@ -1,5 +1,0 @@
-{
-    "name": "Senior",
-    "description": "Chief Implementation Facilitator",
-    "permissions": []
-}

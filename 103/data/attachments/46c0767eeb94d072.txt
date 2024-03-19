@@ -1,3 +1,0 @@
-{
-    "reason": "Your KYB is not complete"
-}

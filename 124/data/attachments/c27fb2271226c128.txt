@@ -1,0 +1,11 @@
+{
+    "inactivity_timeout": "",
+    "auth_token_expiration_duration": "",
+    "password_reset_token_expiration_duration": "",
+    "invite_token_expiration_duration": "",
+    "max_login_attempts": "",
+    "support_email": "",
+    "contact_number": "",
+    "transaction_fee": "",
+    "sms_fee": ""
+}

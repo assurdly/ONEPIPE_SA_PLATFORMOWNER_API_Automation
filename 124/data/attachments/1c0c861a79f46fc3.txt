@@ -1,0 +1,5 @@
+{
+    "name": "District",
+    "description": "Dynamic Creative Associate",
+    "permissions": []
+}
