@@ -12993,6 +12993,154 @@
 					]
 				},
 				{
+					"name": "Get  Transaction details By ID- Invalid ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f63b651c-c20e-41de-8b65-f6f15ebf0416",
+								"exec": [
+									"pm.test(\"Response status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is a JSON object\", function () {\r",
+									"    pm.response.to.have.jsonBody();\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Non-existing payroll error message is returned\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.equal(\"Transaction doesn't exist\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "3289be11-18ba-4c71-9d23-a16800cd8411",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/transaction/details/:transactionId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transaction",
+								"details",
+								":transactionId"
+							],
+							"variable": [
+								{
+									"key": "transactionId",
+									"value": "1128223038398"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "e5cc689a-200a-40db-a40a-baec2db90d8e",
+							"name": "Get  Transaction details By ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/transaction/details/:transactionId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"transaction",
+										"details",
+										":transactionId"
+									],
+									"variable": [
+										{
+											"key": "transactionId",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Mar 2024 01:17:15 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Mar 2024 01:17:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"data\": {\n        \"id\": \"01hrqkwh4g54t6rfcxa2wvbf8d\",\n        \"reference\": \"01HRQKWH4G54T6RFCXA2WVBF8C\",\n        \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n        \"payroll_id\": \"01hrqkwh45fr4m120jqzz0aksy\",\n        \"loan_id\": null,\n        \"employee_id\": \"01hq1ns9zhpd730x7510mayj2f\",\n        \"type\": \"PAYROLL\",\n        \"narration\": \"SALARY/May 2024 Payroll\",\n        \"amount\": \"83333.33\",\n        \"status\": \"pending\",\n        \"deleted_at\": null,\n        \"created_at\": \"2024-03-11T20:39:53.000000Z\",\n        \"updated_at\": \"2024-03-11T20:39:53.000000Z\",\n        \"business\": {\n            \"id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"business_name\": \"Habeeb12\",\n            \"rc_number\": \"123456\",\n            \"email\": null,\n            \"phone_number\": null,\n            \"business_type\": \"Telecommunications\",\n            \"state_id\": \"01hq1khn0zhdfddzyw4p5506rs\",\n            \"bank_details_id\": \"01hq8bxbgns30qe3vaqxd3rcv4\",\n            \"address\": \"No 3 Eromosel Avenue, Lagos\",\n            \"enable_sms\": 0,\n            \"enable_email\": 0,\n            \"has_completed_kyb\": 1,\n            \"owner_id\": \"01hq1kpxmkxjjs46pv5kz9pms4\",\n            \"status\": \"active\",\n            \"created_at\": \"2024-02-19T21:17:50.000000Z\",\n            \"updated_at\": \"2024-02-22T12:16:13.000000Z\"\n        }\n    },\n    \"message\": \"Transaction details fetched successfully\",\n    \"code\": 200\n}"
+						}
+					]
+				},
+				{
 					"name": "Get  Transaction details By ID",
 					"event": [
 						{
@@ -13141,17 +13289,26 @@
 				},
 				{
 					"name": "Download Transactions As CSV By Date Range",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "655444de-03a8-4c96-9a88-7a1cd4ad7879",
+								"exec": [
+									"pm.test('Status code is 200', function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "97541cbb-c34b-4471-850b-10108981edef",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "145|8fYxSyBo79K4mfq58wPzKMUxqa1cGzVscwq6s0N1480233be"
-							}
-						},
 						"method": "POST",
 						"header": [
 							{
@@ -13166,14 +13323,14 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"fromDate\": \"2024-03-11\",\n    \"toDate\": \"2024-03-12\"\n}",
+							"raw": "{\n    \"fromDate\": \"2024-03-11\",\n    \"toDate\": \"2024-03-19\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{baseUrl}}/api/transaction/export"
+						"url": "{{baseUrl}}/transaction/export"
 					},
 					"response": []
 				}
