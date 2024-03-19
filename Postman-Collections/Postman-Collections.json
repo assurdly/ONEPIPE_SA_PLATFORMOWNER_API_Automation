@@ -12870,17 +12870,44 @@
 			"item": [
 				{
 					"name": "Get  List of Transactions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b0ecfc1c-5598-4a8a-be5b-c4b87ffb5bbe",
+								"exec": [
+									"pm.test('Status code is 200', function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Set Transaction Id Value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.collectionVariables.set(\"transId\", jsonData.data[0].id);\r",
+									"});\r",
+									"\r",
+									"pm.test('Response is a success object with data, pagination, and message properties', function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('success', true);\r",
+									"    pm.expect(jsonData).to.have.property('data');\r",
+									"    pm.expect(jsonData).to.have.property('pagination');\r",
+									"    pm.expect(jsonData).to.have.property('message');\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Transactions retrieval success message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"   pm.expect(jsonData.message).to.eql('List of transactions fetched successfully')\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "0e19d6ad-2eba-42c5-8e89-0e528b725452",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "121|iZ3s4ZhBEYyTCGHXunxVxkeYyG5v7ghZFcv3ELHt03be01d2"
-							}
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -12893,7 +12920,7 @@
 								"disabled": true
 							}
 						],
-						"url": "{{baseUrl}}/api/transaction"
+						"url": "{{baseUrl}}/transaction"
 					},
 					"response": [
 						{
@@ -12967,17 +12994,34 @@
 				},
 				{
 					"name": "Get  Transaction details By ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f63b651c-c20e-41de-8b65-f6f15ebf0416",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has data object\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('data').that.is.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Transaction details retrieval success message\", function () {\r",
+									"    pm.expect(pm.response.json().message).to.eql('Transaction details fetched successfully');\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"id": "3c44b3b9-8fdf-4c7e-82fe-3609874bdb47",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "121|iZ3s4ZhBEYyTCGHXunxVxkeYyG5v7ghZFcv3ELHt03be01d2"
-							}
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -12991,21 +13035,19 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api/transaction/details/:transactionId",
+							"raw": "{{baseUrl}}/transaction/details/:transactionId",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"api",
 								"transaction",
 								"details",
 								":transactionId"
 							],
 							"variable": [
 								{
-									"id": "47ff345f-6853-4c6a-b857-f30fa3fedb7f",
 									"key": "transactionId",
-									"value": ""
+									"value": "{{transId}}"
 								}
 							]
 						}
@@ -13601,6 +13643,10 @@
 		},
 		{
 			"key": "payrollId",
+			"value": ""
+		},
+		{
+			"key": "transId",
 			"value": ""
 		}
 	]
