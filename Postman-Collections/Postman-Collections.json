@@ -7782,11 +7782,11 @@
 									"pm.test(\"Data object contains specific properties\", function () {\r",
 									"    var data = pm.response.json().data;\r",
 									"    pm.expect(data).to.include.all.keys(['id', 'business_name', 'rc_number', 'business_type', 'state_id', 'bank_details_id', 'address', 'enable_sms', 'enable_email', 'has_completed_kyb', 'owner_id', 'status', 'created_at', 'updated_at']);\r",
-									"});**/\r",
+									"});\r",
 									"\r",
 									"pm.test(\"Business Blacklist  message is returned\", function () {\r",
 									"    pm.expect(pm.response.json().message).to.equal(\"Business blacklisted successfully\");\r",
-									"});"
+									"});**/"
 								],
 								"type": "text/javascript",
 								"packages": {}
