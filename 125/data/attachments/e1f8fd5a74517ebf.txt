@@ -1,0 +1,5 @@
+{
+    "name": "Future",
+    "description": "Human Optimization Designer",
+    "permissions": []
+}

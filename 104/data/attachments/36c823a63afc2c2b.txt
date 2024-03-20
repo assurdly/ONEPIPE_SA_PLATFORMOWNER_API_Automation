@@ -1,5 +1,0 @@
-{
-    "first_name": "348-602-8318",
-    "last_name": "827-315-5851",
-    "password": "H4EnC_fbRn4dgkM"
-}

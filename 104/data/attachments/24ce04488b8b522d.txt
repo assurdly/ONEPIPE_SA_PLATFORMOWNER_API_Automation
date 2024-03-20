@@ -1,5 +1,0 @@
-{
-    "name": "Dynamic",
-    "description": "District Infrastructure Coordinator",
-    "permissions": []
-}
