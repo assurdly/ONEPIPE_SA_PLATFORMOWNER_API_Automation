@@ -1,0 +1,5 @@
+{
+    "name": "Legacy",
+    "description": "Dynamic Metrics Strategist",
+    "permissions": []
+}
