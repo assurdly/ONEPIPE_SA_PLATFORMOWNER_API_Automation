@@ -12163,7 +12163,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/loans?filters[status]=all&filters[date_range][0]=12 Mar 2024&filters[date_range][1]=16 Mar 2024",
+							"raw": "{{baseUrl}}/loans?filters[status]=all&filters[date_range][0]=12 Mar 2024&filters[date_range][1]=19 Mar 2024",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -12182,7 +12182,88 @@
 								},
 								{
 									"key": "filters[date_range][1]",
-									"value": "16 Mar 2024"
+									"value": "19 Mar 2024"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get  List of Loans- Filter with no data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "054dd073-833e-4e28-8691-a1e5ea560a6e",
+								"exec": [
+									"pm.test('Status code is 200', function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Set Loan Id Value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.collectionVariables.set(\"loanId\", jsonData.data[0].id);\r",
+									"});\r",
+									"\r",
+									"pm.test('Response is a success object with data, pagination, and message properties', function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('success', true);\r",
+									"    pm.expect(jsonData).to.have.property('data');\r",
+									"    pm.expect(jsonData).to.have.property('pagination');\r",
+									"    pm.expect(jsonData).to.have.property('message');\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Loan retrieval success message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"   pm.expect(jsonData.message).to.eql('Loans retrieved successfully')\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "28dc68be-c446-4c46-9f41-b3498e93c6b7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/loans?filters[date_range][0]=01 Mar 2024&filters[date_range][1]=02 Mar 2024",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"loans"
+							],
+							"query": [
+								{
+									"key": "filters[status]",
+									"value": "all",
+									"description": "all,",
+									"disabled": true
+								},
+								{
+									"key": "filters[date_range][0]",
+									"value": "01 Mar 2024"
+								},
+								{
+									"key": "filters[date_range][1]",
+									"value": "02 Mar 2024"
 								}
 							]
 						}
