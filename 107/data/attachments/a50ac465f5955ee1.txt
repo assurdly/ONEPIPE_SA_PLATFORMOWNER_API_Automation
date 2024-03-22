@@ -1,5 +1,0 @@
-{
-"email": "platformowner@advance.com",
- "password": "pasword"
-
- }

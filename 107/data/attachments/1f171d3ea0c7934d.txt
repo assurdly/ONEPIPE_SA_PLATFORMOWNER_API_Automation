@@ -1,5 +1,0 @@
-{
-    "name": "Central",
-    "description": "Dynamic Data Strategist",
-    "permissions": []
-}

@@ -1,5 +1,0 @@
-{
-"email": "platformownersalaryadvance.com",
- "password": "pasword"
-
- }

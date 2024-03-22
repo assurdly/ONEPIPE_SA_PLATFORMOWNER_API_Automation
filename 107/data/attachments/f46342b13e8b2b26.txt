@@ -1,8 +1,0 @@
-{
-    "host_url": "",
-    "webhook_url": "onepipe.io",
-    "api_key": "1234567890asa#sdsas",
-    "api_secret_key": "qwqweqewqwads122324wedfwfegrthr",
-    "timeout": "4",
-    "client_id": "412334ASAS"
-}

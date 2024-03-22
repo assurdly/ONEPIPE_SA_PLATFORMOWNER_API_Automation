@@ -1,6 +1,0 @@
-{
-    "document_name": "Certificate",
-    "document_size": "6",
-    "document_type": "",
-    "mandatory": "yes"
-}

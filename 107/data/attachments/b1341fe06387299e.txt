@@ -1,6 +1,0 @@
-{
-    "document_name": "",
-    "document_size": "",
-    "document_type": "",
-    "mandatory": ""
-}

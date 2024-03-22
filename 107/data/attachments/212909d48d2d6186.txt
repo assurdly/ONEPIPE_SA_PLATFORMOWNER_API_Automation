@@ -1,5 +1,0 @@
-{
-    "name": "National",
-    "description": "Dynamic Integration Developer",
-    "permissions": []
-}

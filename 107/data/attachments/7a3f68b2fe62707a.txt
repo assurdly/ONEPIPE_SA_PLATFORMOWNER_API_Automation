@@ -1,1 +1,0 @@
-{"success":true,"data":{"id":11,"name":"Central","description":"Internal Directives Associate","business_id":null,"status":"active","is_default":0,"created_at":"2024-03-11T17:16:33.000000Z","updated_at":"2024-03-11T17:16:59.000000Z"},"pagination":null,"message":"Role updated successfully"}
