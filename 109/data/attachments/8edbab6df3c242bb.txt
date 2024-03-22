@@ -1,5 +1,0 @@
-{
-    "name": "Forward",
-    "description": "Direct Tactics Specialist",
-    "permissions": []
-}

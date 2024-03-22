@@ -1,1 +1,0 @@
-{"success":true,"data":[],"pagination":{"current_page":1,"per_page":15,"total":0,"next_page_url":null,"prev_page_url":null},"message":"Loan types retrieved successfully"}

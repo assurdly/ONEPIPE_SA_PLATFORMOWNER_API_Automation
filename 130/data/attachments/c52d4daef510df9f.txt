@@ -1,0 +1,1 @@
+{"success":true,"data":{"id":"01hskazx76kdcfqe4pt6sxccvv","document_name":"Certificate of Incorporation","document_size":"8","document_type":"JPEG,JPG,PDF","mandatory":"yes","deleted_at":null,"created_at":"2024-03-22T15:03:11.000000Z","updated_at":"2024-03-22T15:03:22.000000Z"},"pagination":null,"message":"Document details updated successfully"}

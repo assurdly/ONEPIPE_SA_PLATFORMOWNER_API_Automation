@@ -1,0 +1,1 @@
+{"success":true,"data":{"id":6,"name":"Future","description":"District Functionality Executive","business_id":null,"status":"active","is_default":0,"created_at":"2024-03-22T15:00:10.000000Z","updated_at":"2024-03-22T15:00:44.000000Z"},"pagination":null,"message":"Future activated successfully"}
