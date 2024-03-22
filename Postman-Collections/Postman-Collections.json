@@ -12162,7 +12162,30 @@
 								"disabled": true
 							}
 						],
-						"url": "{{baseUrl}}/loans"
+						"url": {
+							"raw": "{{baseUrl}}/loans?filters[status]=all&filters[date_range][0]=12 Mar 2024&filters[date_range][1]=16 Mar 2024",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"loans"
+							],
+							"query": [
+								{
+									"key": "filters[status]",
+									"value": "all",
+									"description": "all,"
+								},
+								{
+									"key": "filters[date_range][0]",
+									"value": "12 Mar 2024"
+								},
+								{
+									"key": "filters[date_range][1]",
+									"value": "16 Mar 2024"
+								}
+							]
+						}
 					},
 					"response": []
 				},
