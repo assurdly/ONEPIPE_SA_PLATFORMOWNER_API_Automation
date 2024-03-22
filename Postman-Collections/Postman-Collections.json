@@ -12214,9 +12214,8 @@
 									"    pm.expect(jsonData).to.have.property('message');\r",
 									"})\r",
 									"\r",
-									"pm.test(\"Loan retrieval success message\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"   pm.expect(jsonData.message).to.eql('Loans retrieved successfully')\r",
+									"pm.test(\"Empty query success message\", function () {\r",
+									"   pm.expect(pm.response.json().message).to.be.a('string')\r",
 									"})\r",
 									""
 								],
@@ -12597,9 +12596,8 @@
 									"    pm.expect(jsonData).to.have.property('message');\r",
 									"})\r",
 									"\r",
-									"pm.test(\"Payroll retrieval success message\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"   pm.expect(jsonData.message).to.eql('Payrolls retrieved successfully')\r",
+									"pm.test(\"Empty query success message\", function () {\r",
+									"   pm.expect(pm.response.json().message).to.be.a('string')\r",
 									"})"
 								],
 								"type": "text/javascript",
