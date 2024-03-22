@@ -12452,7 +12452,8 @@
 									"   pm.expect(jsonData.message).to.eql('Payrolls retrieved successfully')\r",
 									"})"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -12473,11 +12474,185 @@
 								"disabled": true
 							}
 						],
-						"url": "{{baseUrl}}/payrolls"
+						"url": {
+							"raw": "{{baseUrl}}/payrolls?filters[status]=all&filters[date_range][0]=01 Mar 2024&filters[date_range][1]=02 Mar 2024",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"payrolls"
+							],
+							"query": [
+								{
+									"key": "filters[status]",
+									"value": "all",
+									"description": "all,",
+									"type": "text"
+								},
+								{
+									"key": "filters[date_range][0]",
+									"value": "01 Mar 2024",
+									"type": "text"
+								},
+								{
+									"key": "filters[date_range][1]",
+									"value": "02 Mar 2024",
+									"type": "text"
+								}
+							]
+						}
 					},
 					"response": [
 						{
 							"id": "86129ba8-e955-4a8c-91b7-e06918b80329",
+							"name": "Get  List of Payrolls",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+										"disabled": true
+									}
+								],
+								"url": "{{baseUrl}}/api/payrolls"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Feb 2024 12:06:52 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Feb 2024 12:06:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "54"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": \"01hqjmfbxt7n89rvznm4aa760k\",\n            \"name\": \"March 2024 Payroll\",\n            \"cycle_starts\": \"Mar 27, 2024\",\n            \"cycle_ends\": \"Apr 27, 2024\",\n            \"amount_disbursed\": \"84999.99\",\n            \"date_created\": \"26/02/2024 @ 12:58PM\",\n            \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"employee_count\": \"3\",\n            \"status\": \"pending\"\n        },\n        {\n            \"id\": \"01hqhrzbp0d43jbfzzaaxm56bj\",\n            \"name\": \"February 2024 Payroll\",\n            \"cycle_starts\": \"Feb 27, 2024\",\n            \"cycle_ends\": \"Mar 27, 2024\",\n            \"amount_disbursed\": \"84999.99\",\n            \"date_created\": \"26/02/2024 @ 04:57AM\",\n            \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"employee_count\": \"3\",\n            \"status\": \"Approved\"\n        },\n        {\n            \"id\": \"2\",\n            \"name\": \"August Payroll\",\n            \"cycle_starts\": \"Feb 14, 2024\",\n            \"cycle_ends\": \"Feb 17, 2024\",\n            \"amount_disbursed\": \"10000.00\",\n            \"date_created\": \"14/02/2024 @ 01:11AM\",\n            \"business_id\": \"01hq1kpxkvma8gbjx328hjkh7k\",\n            \"employee_count\": \"1\",\n            \"status\": \"Approved\"\n        }\n    ],\n    \"pagination\": {\n        \"current_page\": 1,\n        \"per_page\": 10,\n        \"total\": 3,\n        \"next_page_url\": null,\n        \"prev_page_url\": null\n    },\n    \"message\": \"Payrolls retrieved successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get  List of Payrolls- Filter with no data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "75da6ad3-09ab-4e65-a725-dbe8bdda7aba",
+								"exec": [
+									"pm.test('Status code is 200', function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Set Loan Id Value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.collectionVariables.set(\"payrollId\", jsonData.data[0].id);\r",
+									"});\r",
+									"\r",
+									"pm.test('Response is a success object with data, pagination, and message properties', function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('success', true);\r",
+									"    pm.expect(jsonData).to.have.property('data');\r",
+									"    pm.expect(jsonData).to.have.property('pagination');\r",
+									"    pm.expect(jsonData).to.have.property('message');\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Payroll retrieval success message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"   pm.expect(jsonData.message).to.eql('Payrolls retrieved successfully')\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "7eab0423-10d4-4f84-901f-1d547e72cada",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 6|7OFI5KRIQdOZir1ELLTF6T4GPHJXXYzSA8zWXqS89f352e1d",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/payrolls?filters[date_range][0]=01 Mar 2024&filters[date_range][1]=02 Mar 2024",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"payrolls"
+							],
+							"query": [
+								{
+									"key": "filters[status]",
+									"value": "all",
+									"description": "all,",
+									"disabled": true
+								},
+								{
+									"key": "filters[date_range][0]",
+									"value": "01 Mar 2024"
+								},
+								{
+									"key": "filters[date_range][1]",
+									"value": "02 Mar 2024"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "2741548e-9199-4ece-8b14-720cb4f3a4e3",
 							"name": "Get  List of Payrolls",
 							"originalRequest": {
 								"method": "GET",
