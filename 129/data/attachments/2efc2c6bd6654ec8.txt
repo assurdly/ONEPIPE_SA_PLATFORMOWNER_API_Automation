@@ -1,0 +1,5 @@
+{
+    "name": "Investor",
+    "description": "District Division Facilitator",
+    "permissions": []
+}
