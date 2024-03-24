@@ -1,0 +1,5 @@
+{
+    "name": "Direct",
+    "description": "Central Operations Representative",
+    "permissions": []
+}
