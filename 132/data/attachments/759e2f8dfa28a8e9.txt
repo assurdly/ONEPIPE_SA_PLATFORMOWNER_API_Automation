@@ -1,0 +1,1 @@
+{"message":"The max login attempts field is required. (and 4 more errors)","errors":{"max_login_attempts":["The max login attempts field is required."],"contact_number":["The contact number field is required."],"support_email":["The support email field is required."],"sms_fee":["The sms fee field is required."],"transaction_fee":["The transaction fee field is required."]}}
