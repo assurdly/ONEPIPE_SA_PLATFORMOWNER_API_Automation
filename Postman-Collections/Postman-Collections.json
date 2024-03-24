@@ -4376,7 +4376,8 @@
 								"exec": [
 									"pm.globals.set(\"ran\", _.random(100, 999))"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -4387,10 +4388,10 @@
 									"pm.test(\"Response status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"pm.test(\"Set Team invite Id Value\", function () {",
+									"/**pm.test(\"Set Team invite Id Value\", function () {",
 									"    var jsonData = pm.response.json();",
 									"    pm.collectionVariables.set(\"inviteId\", jsonData.data.id);",
-									"});",
+									"});**/",
 									"pm.test(\"Set resend resend email Value\", function () {",
 									"    var jsonData = pm.response.json();",
 									"    pm.collectionVariables.set(\"resendEmail\", jsonData.data.email);",
@@ -4409,7 +4410,8 @@
 									"   pm.expect(jsonData.message).to.eql('Team Invite sent successfully')",
 									"})"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -4592,6 +4594,11 @@
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
+									"pm.test(\"Set Team invite Id Value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.collectionVariables.set(\"inviteId\", jsonData.data.id);\r",
+									"});\r",
+									"\r",
 									"pm.test(\"Response is an object with success property\", function () {\r",
 									"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('success');\r",
 									"});\r",
@@ -4605,7 +4612,8 @@
 									"    pm.expect(pm.response.json().message).to.eql('Team invite resent successfully');\r",
 									"});"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
