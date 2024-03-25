@@ -9310,6 +9310,85 @@
 								"url": "{{baseUrl}}/profile/change-password"
 							},
 							"response": []
+						},
+						{
+							"name": "Change password Copy",
+							"id": "0b28ed00-8e34-4f30-b560-359f67bebae7",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"current_password\": \"Password@1\",\n    \"new_password\": \"Password@2\",\n    \"new_password_confirmation\": \"Password@2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/profile/change-password"
+							},
+							"response": []
+						},
+						{
+							"name": "Change password- Invalid current password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b6fa4255-931b-4ab3-a7ce-4b8fbb3925b5",
+										"exec": [
+											"var jsonData = pm.response.json()\r",
+											"\r",
+											"pm.test(\"Status code is 422\", function () {\r",
+											"    pm.response.to.have.status(422);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Unprocessable Content\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Invalid current password message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.current_password[0]).to.eql(\"Invalid current password\");\r",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"id": "7addb2ed-6da1-4c9e-9800-03631f789b21",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"current_password\": \"Password@1\",\n    \"new_password\": \"Password@2\",\n    \"new_password_confirmation\": \"Password@2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/profile/change-password"
+							},
+							"response": []
 						}
 					],
 					"id": "2ada28ab-a6f6-478a-ac36-df700e7beaaf"
