@@ -1,0 +1,5 @@
+{
+    "name": "Principal",
+    "description": "Dynamic Infrastructure Administrator",
+    "permissions": []
+}
