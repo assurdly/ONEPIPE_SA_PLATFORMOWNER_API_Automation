@@ -9312,7 +9312,39 @@
 							"response": []
 						},
 						{
-							"name": "Change password Copy",
+							"name": "Change password- Blank field",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "03d27741-fbaf-4a05-b6be-a4bb74b90d21",
+										"exec": [
+											"var jsonData = pm.response.json()\r",
+											"\r",
+											"pm.test(\"Status code is 422\", function () {\r",
+											"    pm.response.to.have.status(422);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Unprocessable Content\");\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Current password required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.current_password[0]).to.eql(\"The current password field is required.\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"New password required message is returned \", function () {\r",
+											"    pm.expect(jsonData.errors.new_password[0]).to.eql(\"The new password field is required.\");\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "0b28ed00-8e34-4f30-b560-359f67bebae7",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -9327,7 +9359,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"current_password\": \"Password@1\",\n    \"new_password\": \"Password@2\",\n    \"new_password_confirmation\": \"Password@2\"\n}",
+									"raw": "{\n    \"current_password\": \"\",\n    \"new_password\": \"\",\n    \"new_password_confirmation\": \"\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
