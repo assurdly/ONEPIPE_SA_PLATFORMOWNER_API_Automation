@@ -1,0 +1,5 @@
+{
+    "name": "Chief",
+    "description": "Chief Data Analyst",
+    "permissions": []
+}
