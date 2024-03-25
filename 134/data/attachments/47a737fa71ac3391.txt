@@ -1,0 +1,5 @@
+{
+    "current_password": "Password@1",
+    "new_password": "Password@2",
+    "new_password_confirmation": "Password@2"
+}

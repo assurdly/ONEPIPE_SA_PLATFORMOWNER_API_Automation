@@ -1,0 +1,5 @@
+{
+    "name": "Internal",
+    "description": "Dynamic Program Associate",
+    "permissions": []
+}
