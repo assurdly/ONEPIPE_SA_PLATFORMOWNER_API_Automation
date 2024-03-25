@@ -9265,12 +9265,54 @@
 										"value": "application/json"
 									}
 								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": "{{baseUrl}}/admin/settings/loan-types"
 							},
 							"response": []
 						}
 					],
 					"id": "06c807a5-b8bf-4cd2-807e-4c13a4f733a9"
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "Change password",
+							"id": "b90aa27b-c39c-43a3-8d02-e186b8110f3f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"current_password\": \"Password@1\",\n    \"new_password\": \"Password@2\",\n    \"new_password_confirmation\": \"Password@2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/profile/change-password"
+							},
+							"response": []
+						}
+					],
+					"id": "2ada28ab-a6f6-478a-ac36-df700e7beaaf"
 				},
 				{
 					"name": "Add document- Blank document details",
