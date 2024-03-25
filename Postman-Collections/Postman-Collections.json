@@ -9286,6 +9286,31 @@
 					"item": [
 						{
 							"name": "Change password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b2657c82-819d-423e-b82f-2d77093aca6b",
+										"exec": [
+											"var jsonData = pm.response.json()\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Change password sucess message is returned \", function () {\r",
+											"    pm.expect(jsonData.message).to.eql(\"Password Changed successfully\");\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
 							"id": "b90aa27b-c39c-43a3-8d02-e186b8110f3f",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -9300,7 +9325,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"current_password\": \"Password@1\",\n    \"new_password\": \"Password@2\",\n    \"new_password_confirmation\": \"Password@2\"\n}",
+									"raw": "{\n    \"current_password\": \"Test419$\",\n    \"new_password\": \"Test419$\",\n    \"new_password_confirmation\": \"Test419$\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
