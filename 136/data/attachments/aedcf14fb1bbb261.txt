@@ -1,0 +1,5 @@
+{
+    "current_password": "Test419$",
+    "new_password": "Test419$",
+    "new_password_confirmation": "Test419$"
+}

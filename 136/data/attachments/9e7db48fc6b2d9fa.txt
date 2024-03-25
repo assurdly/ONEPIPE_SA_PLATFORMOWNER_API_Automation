@@ -1,0 +1,5 @@
+{
+    "name": "Global",
+    "description": "Regional Group Coordinator",
+    "permissions": []
+}
